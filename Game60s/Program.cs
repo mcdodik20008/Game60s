@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Game60s
 {
@@ -10,11 +12,15 @@ namespace Game60s
     {
         public static void Main()
         {
-            object x = 1;
-            if  (x is var x2)
+            var clientSize = new Size(800, 850);
+            new GameModell(clientSize);
+            Application.Run(new MainWindow()
             {
-                Console.WriteLine(x2);
-            }
+                ClientSize = clientSize,
+                StartPosition = FormStartPosition.CenterScreen,
+                MaximumSize = clientSize,
+                MinimumSize = clientSize
+            });
         }
     }
 }
