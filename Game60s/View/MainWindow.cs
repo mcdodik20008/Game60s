@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace Game60s
+namespace Viev
 {
     internal class MainWindow : Form
     {

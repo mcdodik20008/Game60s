@@ -1,8 +1,8 @@
 ﻿using System.Drawing;
 
-namespace Game60s
+namespace Model
 {
-    internal class GameModell
+    public class GameModell
     {
         private Size clientSize;
 
