@@ -55,7 +55,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\Controller.cs" />
+    <Compile Include="Controller\ControllerWindow.cs" />
     <Compile Include="Model\Entity\EndMap.cs" />
     <Compile Include="Model\Entity\Player.cs" />
     <Compile Include="Model\Entity\Resourse.cs" />

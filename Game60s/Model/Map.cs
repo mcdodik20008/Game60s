@@ -6,9 +6,11 @@ namespace Game60s.Model
 {
     internal class Map : IEnumerable
     {
-        internal IEntity[][] Mapp;
+        internal static IEntity[][] Mapp;
         internal int LengthX { get => Mapp.Length; }
         internal int LengthY { get => Mapp.Length; }
+
+        public static Func<int, int, bool> IsWithinMap = (i, j) => i > -1 && j > -1 && i < Mapp.Length && j < Mapp[i].Length;
 
         internal Map(int size)
         {
@@ -23,15 +25,13 @@ namespace Game60s.Model
         {
             get
             {
-                if (i > -1 && j > -1 && i < Mapp.Length && j < Mapp[i].Length)
-                    return Mapp[i][j];
-                throw new IndexOutOfRangeException($"Ты еблан? Какой нахуй ты делаешь.");
+                return IsWithinMap(i ,j) ? Mapp[i][j] :
+                    throw new IndexOutOfRangeException($"Ты еблан? Какой нахуй ты делаешь.");
             }
             set
             {
-                if (i > -1 && j > -1 && i < Mapp.Length && j < Mapp[i].Length)
-                    Mapp[i][j] = value;
-                throw new IndexOutOfRangeException($"Ты еблан? Какой нахуй ты делаешь.");
+                Mapp[i][j] = IsWithinMap(i, j) ? value :
+                    throw new IndexOutOfRangeException($"Ты еблан? Какой нахуй ты делаешь.");
             }
         }
 

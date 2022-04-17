@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Numerics;
 using System.Windows.Forms;
 
@@ -8,6 +9,6 @@ namespace Game60s.Model
     {
         Point PositionOnMap();
         string GetNameImage();
-        Vector2 Act(Keys key);
+        Vector2 Act(HashSet<Keys> key);
     }
 }

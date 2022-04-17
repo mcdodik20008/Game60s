@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Numerics;
 using System.Windows.Forms;
 
@@ -11,7 +12,7 @@ namespace Game60s.Model
 
         public abstract string GetNameImage();
 
-        public Vector2 Act(Keys key) => Vector2.Zero;
+        public Vector2 Act(HashSet<Keys> key) => Vector2.Zero;
 
         public Point PositionOnMap() => new Point(X, Y);
     }
