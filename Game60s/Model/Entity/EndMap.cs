@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Numerics;
+using System.Windows.Forms;
 
 namespace Game60s.Model
 {
@@ -14,7 +15,7 @@ namespace Game60s.Model
         }
 
         public static IEntity Create(int x, int y) => new EndMap(x, y);
-        public Vector2 Act(int x, int y) => Vector2.Zero;
+        public Vector2 Act(Keys key) => Vector2.Zero;
         public string GetNameImage() => "EndMap.png";
         public Point PositionOnMap() => new Point(X, Y);
     }
