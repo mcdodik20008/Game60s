@@ -58,6 +58,9 @@
     <Compile Include="Controller\Controller.cs" />
     <Compile Include="Model\Entity\EndMap.cs" />
     <Compile Include="Model\Entity\Player.cs" />
+    <Compile Include="Model\Entity\Resourse.cs" />
+    <Compile Include="Model\Entity\Stone.cs" />
+    <Compile Include="Model\Entity\Wood.cs" />
     <Compile Include="Model\GameModell.cs" />
     <Compile Include="Model\Entity\IEntity.cs" />
     <Compile Include="Model\Map.cs" />
