@@ -1,15 +1,13 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace Viev
+namespace Game60s.Viev
 {
     internal class MainWindow : Form
     {
-        public Size ClientSize { get; set; }
-        public Size MaximumSize { get; set; }
-        public Size MinimumSize { get; set; }
-        public MainWindow()
+        internal MainWindow() : base()
         {
+
         }
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace View
+namespace Game60s.View
 {
-    internal class View
+    internal class Animation
     {
     }
 }

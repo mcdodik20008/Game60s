@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Game60s.Model;
+using Game60s.Viev;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Game60s
@@ -13,7 +10,7 @@ namespace Game60s
         public static void Main()
         {
             var clientSize = new Size(800, 850);
-            new GameModell(clientSize);
+            new GameModell();
             Application.Run(new MainWindow()
             {
                 ClientSize = clientSize,

@@ -52,10 +52,17 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\View.cs" />
-    <Compile Include="GameModel\GameModell.cs" />
+    <Compile Include="Controller\Controller.cs" />
+    <Compile Include="Model\Entity\EndMap.cs" />
+    <Compile Include="Model\Entity\Player.cs" />
+    <Compile Include="Model\GameModell.cs" />
+    <Compile Include="Model\Entity\IEntity.cs" />
+    <Compile Include="Model\Map.cs" />
+    <Compile Include="Model\MapCreator.cs" />
+    <Compile Include="View\Animation.cs" />
     <Compile Include="View\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,8 +83,13 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="Model\Images\EndMap.png" />
+    <Content Include="Model\Map.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
