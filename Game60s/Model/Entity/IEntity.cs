@@ -9,6 +9,6 @@ namespace Game60s.Model
     {
         Point PositionOnMap();
         string GetNameImage();
-        Vector2 Act(HashSet<Keys> key);
+        void Act(HashSet<Keys> key);
     }
 }

@@ -12,7 +12,7 @@ namespace Game60s.Viev
     {
         // проси меня что-то добавить в контроллер, пользуйся в основном контроллером, неймспейс я подрубил.
         // время до катастрофы из гей моледи
-        private static int n = 0;
+        private static int n = 1;
         private int timerTick = 0;
         
         public const int SizeVisibleMap = 12;
@@ -27,14 +27,14 @@ namespace Game60s.Viev
             foreach (var e in imagesDirectory.GetFiles("*.png"))
                 bitmaps[e.Name] = (Bitmap)Image.FromFile(e.FullName);
 
-            timer.Interval = 100;
+            timer.Interval = 1;
             timer.Tick += TimerTick;
             timer.Start();
         }
 
         private void TimerTick(object sender, EventArgs e)
         {
-            GameModell.Act();
+            ControllerWindow.EterationGameModel();
             Invalidate();
             timerTick++;
         }
@@ -42,21 +42,21 @@ namespace Game60s.Viev
         protected override void OnPaint(PaintEventArgs e)
         {
             e.Graphics.FillRectangle(
-                Brushes.Black, 0, ElementSize, ElementSize * GameModell.Map.LengthX,
-                ElementSize * GameModell.Map.LengthY);
+                Brushes.Black, 0, GameModell.ElementSize, GameModell.ElementSize * GameModell.Map.LengthX,
+                GameModell.ElementSize * GameModell.Map.LengthY);
             var Position = new Point(0, 0);
             for (int x = 0; x < SizeVisibleMap; x++)
             {
                 for (int y = 0; y < SizeVisibleMap; y++)
                 {
                     e.Graphics.DrawImage(bitmaps[GameModell.Map[x, y].GetNameImage()], Position);
-                    Position = new Point(Position.X + ElementSize, Position.Y);
+                    Position = new Point(Position.X + GameModell.ElementSize, Position.Y);
                 }
-                Position = new Point(0, Position.Y + ElementSize);
+                Position = new Point(0, Position.Y + GameModell.ElementSize);
             }
             e.Graphics.DrawImage(bitmaps[GameModell.player.GetNameImage()], new Point(
-                GameModell.player.PositionOnMap().X * ElementSize / (n % 10), 
-                GameModell.player.PositionOnMap().Y * ElementSize / (n % 10)));
+                GameModell.player.PositionOnMap().X, 
+                GameModell.player.PositionOnMap().Y));
         }
         protected override void OnKeyDown(KeyEventArgs e) => ControllerWindow.SetPressedKey(e.KeyCode);
         protected override void OnKeyUp(KeyEventArgs e) => ControllerWindow.RemoveKey(e.KeyCode);

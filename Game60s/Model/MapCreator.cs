@@ -24,7 +24,9 @@ namespace Game60s.Model
 
         internal static Dictionary<char, Func<int, int, IEntity>> charToIEntity = new Dictionary<char, Func<int, int, IEntity>>()
         {
-            ['E'] = EndMap.Create
+            ['E'] = EndMap.Create,
+            ['F'] = Floor.Create,
+            ['W'] = Wall.Create
         };
 
         internal static IEntity[][] GetMapIEntity(List<List<char>> charCell)
@@ -34,7 +36,7 @@ namespace Game60s.Model
             for (int x = 0; x < charCell.Count; x++)
             {
                 for (int y = 0; y < charCell[x].Count; y++)
-                    row[y] = charToIEntity[charCell[x][y]](x, y);
+                    row[y] = charToIEntity[charCell[x][y]](x * GameModell.ElementSize, y * GameModell.ElementSize);
                 map[x] = row.Clone() as IEntity[];
             }  
             return map;

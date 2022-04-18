@@ -16,7 +16,7 @@ namespace Game60s.Model
         }
 
         public static IEntity Create(int x, int y) => new EndMap(x, y);
-        public Vector2 Act(HashSet<Keys> key) => Vector2.Zero;
+        public void Act(HashSet<Keys> key) { }
         public string GetNameImage() => "EndMap.png";
         public Point PositionOnMap() => new Point(X, Y);
     }

@@ -12,7 +12,7 @@ namespace Game60s.Model
 
         public abstract string GetNameImage();
 
-        public Vector2 Act(HashSet<Keys> key) => Vector2.Zero;
+        public void Act(HashSet<Keys> key) { }
 
         public Point PositionOnMap() => new Point(X, Y);
     }

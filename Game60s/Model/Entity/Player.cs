@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Numerics;
 using System.Windows.Forms;
 
 namespace Game60s.Model
@@ -15,20 +14,16 @@ namespace Game60s.Model
             X = x; Y = y;
         }
 
-        public Vector2 Act(HashSet<Keys> keys)
+        public void Act(HashSet<Keys> keys)
         {
-            Vector2 vector2 = new Vector2(0, 0);
-            if (keys.Contains(Keys.Up) && Map.IsWithinMap(X + (int)vector2.X, Y + (int)vector2.Y))
+            if (keys.Contains(Keys.Left) && Map.IsWithinMap(X, Y) && GameModell.Map[Y / GameModell.ElementSize, (X - 1) / GameModell.ElementSize] is Floor)
                 X -= 1;
-            if (keys.Contains(Keys.Down) && Map.IsWithinMap(X + (int)vector2.X, Y + (int)vector2.Y))
+            if (keys.Contains(Keys.Right) && Map.IsWithinMap(X, Y) && GameModell.Map[Y / GameModell.ElementSize, X / GameModell.ElementSize+1] is Floor)
                 X += 1;
-            if (keys.Contains(Keys.Left) && Map.IsWithinMap(X + (int)vector2.X, Y + (int)vector2.Y))
+            if (keys.Contains(Keys.Up) && Map.IsWithinMap(X, Y) && GameModell.Map[(Y - 1) / GameModell.ElementSize, X / GameModell.ElementSize] is Floor)
                 Y -= 1;
-            if (keys.Contains(Keys.Right)&& Map.IsWithinMap(X + (int)vector2.X, Y + (int)vector2.Y))
+            if (keys.Contains(Keys.Down) && Map.IsWithinMap(X, Y) && GameModell.Map[Y / GameModell.ElementSize+1, X / GameModell.ElementSize] is Floor)
                 Y += 1;
-            if (Map.IsWithinMap(X + (int)vector2.X, Y + (int)vector2.Y))
-                return Vector2.Zero;
-            return vector2;
         }
 
         public string GetNameImage() => "Player.png";
