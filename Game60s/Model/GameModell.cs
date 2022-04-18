@@ -2,16 +2,17 @@
 using System.Windows.Forms;
 using System;
 using System.Numerics;
+using System.Drawing;
 
 namespace Game60s.Model
 {
     public class GameModell
     {
         public static TimeSpan TimeToDisaster = new TimeSpan(0, 1, 0);
+        public static Player player = new Player(0, 0);
         public const int ElementSize = 65;
-        public const int SizeVisibleMap = 12;
         internal static Map Map;
-        internal static HashSet<Keys> KeysPressed;
+        internal static HashSet<Keys> KeysPressed = new HashSet<Keys>();
         internal GameModell()
         {
             Map = MapCreator.Create();
@@ -19,9 +20,7 @@ namespace Game60s.Model
 
         public static void Act()
         {
-            foreach (IEntity[] row in Map)
-                foreach (var item in row)
-                    item.Act(KeysPressed);
+            player.Act(KeysPressed);
         }
     }
 }

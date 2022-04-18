@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Game60s.Model
 {
-    internal class Player : IEntity
+    public class Player : IEntity
     {
         public int X;
         public int Y;
@@ -18,14 +18,14 @@ namespace Game60s.Model
         public Vector2 Act(HashSet<Keys> keys)
         {
             Vector2 vector2 = new Vector2(0, 0);
-            if (keys.Contains(Keys.Up))
-                vector2.X -= 1;
-            if (keys.Contains(Keys.Down))
-                vector2.X += 1;
-            if (keys.Contains(Keys.Left))
-                vector2.Y -= 1;
-            if (keys.Contains(Keys.Right))
-                vector2.Y += 1;
+            if (keys.Contains(Keys.Up) && Map.IsWithinMap(X + (int)vector2.X, Y + (int)vector2.Y))
+                X -= 1;
+            if (keys.Contains(Keys.Down) && Map.IsWithinMap(X + (int)vector2.X, Y + (int)vector2.Y))
+                X += 1;
+            if (keys.Contains(Keys.Left) && Map.IsWithinMap(X + (int)vector2.X, Y + (int)vector2.Y))
+                Y -= 1;
+            if (keys.Contains(Keys.Right)&& Map.IsWithinMap(X + (int)vector2.X, Y + (int)vector2.Y))
+                Y += 1;
             if (Map.IsWithinMap(X + (int)vector2.X, Y + (int)vector2.Y))
                 return Vector2.Zero;
             return vector2;
