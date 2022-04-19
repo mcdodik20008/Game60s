@@ -55,8 +55,8 @@ namespace Game60s.Viev
                 Position = new Point(0, Position.Y + GameModell.ElementSize);
             }
             e.Graphics.DrawImage(bitmaps[GameModell.player.GetNameImage()], new Point(
-                GameModell.player.PositionOnMap().X, 
-                GameModell.player.PositionOnMap().Y));
+                GameModell.player.Position.X, 
+                GameModell.player.Position.Y));
         }
         protected override void OnKeyDown(KeyEventArgs e) => ControllerWindow.SetPressedKey(e.KeyCode);
         protected override void OnKeyUp(KeyEventArgs e) => ControllerWindow.RemoveKey(e.KeyCode);

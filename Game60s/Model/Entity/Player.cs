@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Game60s.Model
 {
-    public class Player : IEntity
+    internal class Player : IEntity
     {
         public int X;
         public int Y;
@@ -14,20 +14,29 @@ namespace Game60s.Model
             X = x; Y = y;
         }
 
-        public void Act(HashSet<Keys> keys)
+        public override void Act(HashSet<Keys> keys)
         {
-            if (keys.Contains(Keys.Left) && Map.IsWithinMap(X, Y) && GameModell.Map[Y / GameModell.ElementSize, (X - 1) / GameModell.ElementSize] is Floor)
+            //пофиксить
+            if (keys.Contains(Keys.Left) && Map.IsWithinMap(X, Y) && NewMethod(X + 1, Y) && NewMethod(X, Y + GameModell.ElementSize - 1))
                 X -= 1;
-            if (keys.Contains(Keys.Right) && Map.IsWithinMap(X, Y) && GameModell.Map[Y / GameModell.ElementSize, X / GameModell.ElementSize+1] is Floor)
+            if (keys.Contains(Keys.Right) && Map.IsWithinMap(X, Y) && NewMethod(X + GameModell.ElementSize, Y) && NewMethod(X + GameModell.ElementSize, Y + GameModell.ElementSize - 5))
                 X += 1;
-            if (keys.Contains(Keys.Up) && Map.IsWithinMap(X, Y) && GameModell.Map[(Y - 1) / GameModell.ElementSize, X / GameModell.ElementSize] is Floor)
+            if (keys.Contains(Keys.Up) && Map.IsWithinMap(X, Y) && NewMethod(X, Y - 1) && NewMethod(X + GameModell.ElementSize - 5, Y - 1))
                 Y -= 1;
-            if (keys.Contains(Keys.Down) && Map.IsWithinMap(X, Y) && GameModell.Map[Y / GameModell.ElementSize+1, X / GameModell.ElementSize] is Floor)
+            if (keys.Contains(Keys.Down) && Map.IsWithinMap(X, Y) && NewMethod(X, Y + GameModell.ElementSize) && NewMethod(X + GameModell.ElementSize - 5, Y + GameModell.ElementSize))
                 Y += 1;
+
+            Position = new Point(X, Y);
         }
 
-        public string GetNameImage() => "Player.png";
+        private bool NewMethod(int x, int y)
+        {
+            return GameModell.Map[y / GameModell.ElementSize, x / GameModell.ElementSize] is Floor;
+        }
 
-        public Point PositionOnMap() => new Point(X, Y);
+        public override string GetNameImage() => "Player.png";
+
+
+
     }
 }
