@@ -12,9 +12,11 @@ namespace Game60s.Controller
         public static void RemoveKey(Keys unPressedKey) => 
             KeysPressed.Remove(unPressedKey);
 
-        public static void EterationGameModel()
+        public static void EterationGameModel(int timerTick)
         {
             GameModell.player.Act(KeysPressed);
+            if (timerTick % 100 == 0)
+                GameModell.xyiZnaetKakNazvat();
         }
     }
 }

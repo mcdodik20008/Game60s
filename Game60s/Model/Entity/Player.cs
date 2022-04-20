@@ -36,7 +36,6 @@ namespace Game60s.Model
 
         public override string GetNameImage() => "Player.png";
 
-
-
+        public override IEntity Die() => this;
     }
 }

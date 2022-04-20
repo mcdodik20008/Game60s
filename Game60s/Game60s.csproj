@@ -98,6 +98,7 @@
     <Content Include="Model\Images\Floor.png" />
     <Content Include="Model\Images\Player.png" />
     <Content Include="Model\Images\Wall.png" />
+    <Content Include="Model\test.txt" />
     <Content Include="Model\Map.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

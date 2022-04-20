@@ -34,7 +34,7 @@ namespace Game60s.Viev
 
         private void TimerTick(object sender, EventArgs e)
         {
-            ControllerWindow.EterationGameModel();
+            ControllerWindow.EterationGameModel(timerTick);
             Invalidate();
             timerTick++;
         }

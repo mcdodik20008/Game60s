@@ -25,8 +25,8 @@ namespace Game60s.Model
         {
             get
             {
-                return IsWithinMap(i ,j) ? Mapp[i][j] :
-                    throw new IndexOutOfRangeException($"Ты еблан? Какой нахуй ты делаешь.");
+                return IsWithinMap(i * GameModell.ElementSize ,j * GameModell.ElementSize) ? Mapp[i][j] :
+                    new EndMap(i, j);
             }
             set
             {

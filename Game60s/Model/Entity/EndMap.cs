@@ -18,5 +18,7 @@ namespace Game60s.Model
         public override void Act(HashSet<Keys> key) { }
 
         public override string GetNameImage() => "EndMap.png";
+
+        public override IEntity Die() => this;
     }
 }

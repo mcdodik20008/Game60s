@@ -14,6 +14,11 @@ namespace Game60s.Model
 
         public override void Act(HashSet<Keys> key) { }
 
+        public override IEntity Die()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override string GetNameImage() => "Stone.png";
     }
 }

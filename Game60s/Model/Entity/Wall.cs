@@ -20,5 +20,7 @@ namespace Game60s.Model
         public override string GetNameImage() => "Wall.png";
 
         public override void Act(HashSet<Keys> key) { }
+
+        public override IEntity Die() => EndMap.Create(X, Y);
     }
 }
