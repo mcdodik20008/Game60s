@@ -45,11 +45,11 @@ namespace Game60s.Viev
                 Brushes.Black, 0, GameModell.ElementSize, GameModell.ElementSize * GameModell.Map.LengthX,
                 GameModell.ElementSize * GameModell.Map.LengthY);
             var Position = new Point(0, 0);
-            for (int x = 0; x < SizeVisibleMap; x++)
+            for (int y = 0; y < SizeVisibleMap; y++)
             {
-                for (int y = 0; y < SizeVisibleMap; y++)
+                for (int x = 0; x < SizeVisibleMap; x++)
                 {
-                    e.Graphics.DrawImage(bitmaps[GameModell.Map[x, y].GetNameImage()], Position);
+                    e.Graphics.DrawImage(bitmaps[GameModell.Map[x, y].GetNameImage()], GameModell.Map[y, x].Position);
                     Position = new Point(Position.X + GameModell.ElementSize, Position.Y);
                 }
                 Position = new Point(0, Position.Y + GameModell.ElementSize);

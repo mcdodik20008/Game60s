@@ -36,7 +36,7 @@ namespace Game60s.Model
             for (int x = 0; x < charCell.Count; x++)
             {
                 for (int y = 0; y < charCell[x].Count; y++)
-                    row[y] = charToIEntity[charCell[x][y]](x * GameModell.ElementSize, y * GameModell.ElementSize);
+                    row[y] = charToIEntity[charCell[x][y]](x, y);
                 map[x] = row.Clone() as IEntity[];
             }  
             return map;

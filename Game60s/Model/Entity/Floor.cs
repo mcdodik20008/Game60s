@@ -10,7 +10,7 @@ namespace Game60s.Model
         public Floor(int x, int y)
         {
             X = x; Y = y;
-            Position = new Point(x, y);
+            Position = new Point(x * GameModell.ElementSize, y * GameModell.ElementSize);
         }
 
         internal static IEntity Create(int x, int y) => new Floor(x, y);

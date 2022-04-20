@@ -10,7 +10,7 @@ namespace Game60s.Model
         public EndMap(int x, int y)
         {
             X = x; Y = y;
-            Position = new Point(x, y);
+            Position = new Point(x * GameModell.ElementSize, y * GameModell.ElementSize);
         }
 
         public static IEntity Create(int x, int y) => new EndMap(x, y);
