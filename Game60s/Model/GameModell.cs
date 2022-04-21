@@ -21,9 +21,11 @@ namespace Game60s.Model
         {
             // не пугайся
             for (int x = 0; x < Map.LengthY; x++)
-            {
                 for (int y = 0; y < Map.LengthY; y++)
                 {
+                    if (Map[x, y] is EndMap)
+                        continue;
+
                     var n = 0;
                     for (int i = -1; i <= 1; i++)
                         for (int j = -1; j <= 1; j++)
@@ -33,12 +35,11 @@ namespace Game60s.Model
                     if (n >= 2 && Map[x, y] as EndMap == null)
                         Map[x, y].Hp--;
                 }
-            }
+
             for (int x = 0; x < Map.LengthY; x++)
                 for (int y = 0; y < Map.LengthY; y++)
                     if (Map[x, y].Hp == 0)
                         Map[x, y] = Map[x, y].Die();
-
         }
     }
 }

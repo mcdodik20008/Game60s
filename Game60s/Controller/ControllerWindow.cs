@@ -7,8 +7,10 @@ namespace Game60s.Controller
     public static class ControllerWindow
     {
         internal static HashSet<Keys> KeysPressed = new HashSet<Keys>();
+
         public static void SetPressedKey(Keys pressedKey) =>
             KeysPressed.Add(pressedKey);
+
         public static void RemoveKey(Keys unPressedKey) => 
             KeysPressed.Remove(unPressedKey);
 
