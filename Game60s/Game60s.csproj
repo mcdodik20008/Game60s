@@ -57,13 +57,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ControllerWindow.cs" />
-    <Compile Include="Model\Entity\EndMap.cs" />
-    <Compile Include="Model\Entity\Floor.cs" />
+    <Compile Include="Model\Entity\Ocean.cs" />
+    <Compile Include="Model\Entity\Grass.cs" />
     <Compile Include="Model\Entity\Player.cs" />
     <Compile Include="Model\Entity\Resourse.cs" />
     <Compile Include="Model\Entity\Stone.cs" />
-    <Compile Include="Model\Entity\Wall.cs" />
-    <Compile Include="Model\Entity\Wood.cs" />
+    <Compile Include="Model\Entity\Border.cs" />
+    <Compile Include="Model\Entity\Sticks.cs" />
     <Compile Include="Model\GameModell.cs" />
     <Compile Include="Model\Entity\IEntity.cs" />
     <Compile Include="Model\Map.cs" />
@@ -97,9 +97,9 @@
     <Content Include="Model\Images\angle.png" />
     <Content Include="Model\Images\angle_inside.png" />
     <Content Include="Model\Images\border.png" />
-    <Content Include="Model\Images\endmap.png" />
+    <Content Include="Model\Images\ocean.png" />
     <Content Include="Model\Images\grass.png" />
-    <Content Include="Model\Images\Player.png" />
+    <Content Include="Model\Images\player.png" />
     <Content Include="Model\Images\raft.png" />
     <Content Include="Model\Images\sticks.png" />
     <Content Include="Model\test.txt" />

@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace Game60s.Model
 {
-    internal class Wood : Resourse
+    internal class Sticks : Resourse
     {
-        public Wood(int x, int y)
+        public Sticks(int x, int y)
         {
             X = x; Y = y;
             Position = new Point(x, y);
@@ -19,6 +19,6 @@ namespace Game60s.Model
             throw new System.NotImplementedException();
         }
 
-        public override string GetNameImage() => "Wood.png";
+        public override string GetNameImage() => "sticks.png";
     }
 }

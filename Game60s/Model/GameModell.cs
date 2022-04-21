@@ -23,16 +23,16 @@ namespace Game60s.Model
             for (int x = 0; x < Map.LengthY; x++)
                 for (int y = 0; y < Map.LengthY; y++)
                 {
-                    if (Map[x, y] is EndMap)
+                    if (Map[x, y] is Ocean)
                         continue;
 
                     var n = 0;
                     for (int i = -1; i <= 1; i++)
                         for (int j = -1; j <= 1; j++)
-                            if (Math.Abs(i) != Math.Abs(j) && Map[x + i, y + j] is EndMap)
+                            if (Math.Abs(i) != Math.Abs(j) && Map[x + i, y + j] is Ocean)
                                 n++;
 
-                    if (n >= 2 && Map[x, y] as EndMap == null)
+                    if (n >= 2 && Map[x, y] as Ocean == null)
                         Map[x, y].Hp--;
                 }
 

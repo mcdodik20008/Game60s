@@ -24,9 +24,9 @@ namespace Game60s.Model
 
         internal static Dictionary<char, Func<int, int, IEntity>> charToIEntity = new Dictionary<char, Func<int, int, IEntity>>()
         {
-            ['E'] = EndMap.Create,
-            ['F'] = Floor.Create,
-            ['W'] = Wall.Create
+            ['O'] = Ocean.Create,
+            ['G'] = Grass.Create,
+            ['B'] = Border.Create
         };
 
         internal static IEntity[][] GetMapIEntity(List<List<char>> charCell)

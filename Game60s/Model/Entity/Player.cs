@@ -31,10 +31,10 @@ namespace Game60s.Model
 
         private bool NewMethod(int x, int y)
         {
-            return GameModell.Map[y / GameModell.ElementSize, x / GameModell.ElementSize] is Floor;
+            return GameModell.Map[y / GameModell.ElementSize, x / GameModell.ElementSize] is Grass;
         }
 
-        public override string GetNameImage() => "Player.png";
+        public override string GetNameImage() => "player.png";
 
         public override IEntity Die() => this;
     }

@@ -1,26 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using System.Numerics;
 using System.Windows.Forms;
 
 namespace Game60s.Model
 {
-    internal class Wall : IEntity
+    internal class Ocean : IEntity
     {
-        public int X, Y;
-
-        public Wall(int x, int y)
+        public Ocean(int x, int y)
         {
             X = x; Y = y;
             Position = new Point(x * GameModell.ElementSize, y * GameModell.ElementSize);
         }
 
-
-        public static IEntity Create(int x, int y) => new Wall(x, y);
-
-        public override string GetNameImage() => "Wall.png";
+        public static IEntity Create(int x, int y) => new Ocean(x, y);
 
         public override void Act(HashSet<Keys> key) { }
 
-        public override IEntity Die() => EndMap.Create(X, Y);
+        public override string GetNameImage() => "ocean.png";
+
+        public override IEntity Die() => this;
     }
 }

@@ -26,7 +26,7 @@ namespace Game60s.Model
             get
             {
                 return IsWithinMap(i * GameModell.ElementSize ,j * GameModell.ElementSize) ? Mapp[i][j] :
-                    new EndMap(i, j);
+                    new Ocean(i, j);
             }
             set
             {

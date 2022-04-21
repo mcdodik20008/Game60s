@@ -1,24 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Numerics;
 using System.Windows.Forms;
 
 namespace Game60s.Model
 {
-    internal class EndMap : IEntity
+    internal class Grass : IEntity
     {
-        public EndMap(int x, int y)
+        public int X, Y;
+        public Grass(int x, int y)
         {
             X = x; Y = y;
             Position = new Point(x * GameModell.ElementSize, y * GameModell.ElementSize);
         }
 
-        public static IEntity Create(int x, int y) => new EndMap(x, y);
-
+        internal static IEntity Create(int x, int y) => new Grass(x, y);
+        public override string GetNameImage() => "grass.png";
         public override void Act(HashSet<Keys> key) { }
 
-        public override string GetNameImage() => "EndMap.png";
-
-        public override IEntity Die() => this;
+        public override IEntity Die() => Ocean.Create(X, Y);
     }
 }
