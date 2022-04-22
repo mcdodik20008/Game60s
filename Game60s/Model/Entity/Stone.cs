@@ -14,7 +14,7 @@ namespace Game60s.Model
 
         public override void Act(HashSet<Keys> key) { }
 
-        public override IEntity Die()
+        public override AEntity Die()
         {
             throw new System.NotImplementedException();
         }

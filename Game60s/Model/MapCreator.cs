@@ -22,22 +22,22 @@ namespace Game60s.Model
         internal static List<List<char>> GetMapChar(string[] stringMap) =>
             stringMap.Select(x => x.Select(y => y).ToList()).ToList();
 
-        internal static Dictionary<char, Func<int, int, IEntity>> charToIEntity = new Dictionary<char, Func<int, int, IEntity>>()
+        internal static Dictionary<char, Func<int, int, AEntity>> charToIEntity = new Dictionary<char, Func<int, int, AEntity>>()
         {
             ['O'] = Ocean.Create,
             ['G'] = Grass.Create,
             ['B'] = Border.Create
         };
 
-        internal static IEntity[][] GetMapIEntity(List<List<char>> charCell)
+        internal static AEntity[][] GetMapIEntity(List<List<char>> charCell)
         {
-            var map = new IEntity[charCell.Count][];
-            var row = new IEntity[charCell.Count];
+            var map = new AEntity[charCell.Count][];
+            var row = new AEntity[charCell.Count];
             for (int x = 0; x < charCell.Count; x++)
             {
                 for (int y = 0; y < charCell[x].Count; y++)
                     row[y] = charToIEntity[charCell[x][y]](x, y);
-                map[x] = row.Clone() as IEntity[];
+                map[x] = row.Clone() as AEntity[];
             }  
             return map;
         }

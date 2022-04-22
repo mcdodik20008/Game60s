@@ -6,7 +6,7 @@ namespace Game60s.Model
 {
     internal class Map : IEnumerable
     {
-        internal static IEntity[][] Mapp;
+        internal static AEntity[][] Mapp;
         internal int LengthX { get => Mapp.Length; }
         internal int LengthY { get => Mapp.Length; }
 
@@ -14,14 +14,14 @@ namespace Game60s.Model
 
         internal Map(int size)
         {
-            Mapp = new IEntity[size][];
+            Mapp = new AEntity[size][];
             for (int i = 0; i < Mapp.Length; i++)
-                Mapp[i] = new IEntity[size];
+                Mapp[i] = new AEntity[size];
         }
 
-        internal Map(IEntity[][] mapCells) => Mapp = mapCells;
+        internal Map(AEntity[][] mapCells) => Mapp = mapCells;
 
-        internal IEntity this[int i, int j]
+        internal AEntity this[int i, int j]
         {
             get
             {

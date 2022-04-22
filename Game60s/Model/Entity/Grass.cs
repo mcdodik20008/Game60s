@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Game60s.Model
 {
-    internal class Grass : IEntity
+    internal class Grass : AEntity
     {
         public int X, Y;
         public Grass(int x, int y)
@@ -13,10 +13,10 @@ namespace Game60s.Model
             Position = new Point(x * GameModell.ElementSize, y * GameModell.ElementSize);
         }
 
-        internal static IEntity Create(int x, int y) => new Grass(x, y);
+        internal static AEntity Create(int x, int y) => new Grass(x, y);
         public override string GetNameImage() => "grass.png";
         public override void Act(HashSet<Keys> key) { }
 
-        public override IEntity Die() => Ocean.Create(X, Y);
+        public override AEntity Die() => Ocean.Create(X, Y);
     }
 }

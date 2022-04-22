@@ -15,6 +15,23 @@ namespace Game60s.Model
         internal GameModell()
         {
             Map = MapCreator.Create();
+            for (int i = 0; i < Map.LengthX; i++)
+            {
+                for (int j = 0; j < Map.LengthY; j++)
+                {
+                    if (Map[i, j] is Border b)
+                    {
+                        if (Map[i + 1, j + 1] is Ocean && Map[i, j + 1] is Ocean) b.Direction = DirectionType.Up; else
+                        if (Map[i - 1, j + 1] is Ocean && Map[i, j + 1] is Ocean) b.Direction = DirectionType.Down; else
+                        if (Map[i - 1, j - 1] is Ocean && Map[i, j + 1] is Ocean) b.Direction = DirectionType.Right; else
+                        if (Map[i + 1, j + 1] is Ocean && Map[i, j + 1] is Ocean) b.Direction = DirectionType.Left; else
+                        if (Map[i, j + 1] is Ocean) b.Direction = DirectionType.Up; else
+                        if (Map[i, j - 1] is Ocean) b.Direction = DirectionType.Down; else
+                        if (Map[i + 1, j] is Ocean) b.Direction = DirectionType.Right; else
+                        if (Map[i - 1, j] is Ocean) b.Direction = DirectionType.Left;
+                    }
+                }
+            }
         }
 
         internal static void xyiZnaetKakNazvat()
@@ -41,5 +58,7 @@ namespace Game60s.Model
                     if (Map[x, y].Hp == 0)
                         Map[x, y] = Map[x, y].Die();
         }
+
+        Func<Map, int, int, DirectionType> TrySetDirection(AEntity aE) => 
     }
 }

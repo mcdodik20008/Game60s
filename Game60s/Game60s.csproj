@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Game60s</RootNamespace>
     <AssemblyName>Game60s</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -57,6 +57,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ControllerWindow.cs" />
+    <Compile Include="Model\Direction.cs" />
+    <Compile Include="Model\Entity\IBorderElement.cs" />
     <Compile Include="Model\Entity\Ocean.cs" />
     <Compile Include="Model\Entity\Grass.cs" />
     <Compile Include="Model\Entity\Player.cs" />
@@ -65,7 +67,7 @@
     <Compile Include="Model\Entity\Border.cs" />
     <Compile Include="Model\Entity\Sticks.cs" />
     <Compile Include="Model\GameModell.cs" />
-    <Compile Include="Model\Entity\IEntity.cs" />
+    <Compile Include="Model\Entity\AEntity.cs" />
     <Compile Include="Model\Map.cs" />
     <Compile Include="Model\MapCreator.cs" />
     <Compile Include="View\Animation.cs" />

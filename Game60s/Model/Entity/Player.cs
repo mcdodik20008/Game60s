@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Game60s.Model
 {
-    internal class Player : IEntity
+    internal class Player : AEntity
     {
         public int X;
         public int Y;
@@ -36,6 +36,6 @@ namespace Game60s.Model
 
         public override string GetNameImage() => "player.png";
 
-        public override IEntity Die() => this;
+        public override AEntity Die() => this;
     }
 }

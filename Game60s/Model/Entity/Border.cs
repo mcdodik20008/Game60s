@@ -4,9 +4,10 @@ using System.Windows.Forms;
 
 namespace Game60s.Model
 {
-    internal class Border : IEntity
+    internal class Border : AEntity
     {
         public int X, Y;
+        public DirectionType Direction { get; set; }
 
         public Border(int x, int y)
         {
@@ -15,12 +16,12 @@ namespace Game60s.Model
         }
 
 
-        public static IEntity Create(int x, int y) => new Border(x, y);
+        public static AEntity Create(int x, int y) => new Border(x, y);
 
         public override string GetNameImage() => "border.png";
 
         public override void Act(HashSet<Keys> key) { }
 
-        public override IEntity Die() => Ocean.Create(X, Y);
+        public override AEntity Die() => Ocean.Create(X, Y);
     }
 }
