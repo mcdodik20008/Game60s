@@ -34,7 +34,7 @@ namespace Game60s.Model
             }
         }
 
-        internal static void xyiZnaetKakNazvat()
+        internal static void Do()
         {
             // не пугайся
             for (int x = 0; x < Map.LengthY; x++)
@@ -58,7 +58,5 @@ namespace Game60s.Model
                     if (Map[x, y].Hp == 0)
                         Map[x, y] = Map[x, y].Die();
         }
-
-        Func<Map, int, int, DirectionType> TrySetDirection(AEntity aE) => 
     }
 }

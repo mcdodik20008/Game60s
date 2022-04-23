@@ -31,7 +31,7 @@ namespace Game60s.Model
             set
             {
                 Mapp[i][j] = IsWithinMap(i, j) ? value :
-                    throw new IndexOutOfRangeException($"Ты еблан? Какой нахуй ты делаешь.");
+                    throw new IndexOutOfRangeException($"Какой ты делаешь.");
             }
         }
 

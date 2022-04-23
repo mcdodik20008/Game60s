@@ -18,7 +18,7 @@ namespace Game60s.Controller
         {
             GameModell.player.Act(KeysPressed);
             if (timerTick % 100 == 0)
-                GameModell.xyiZnaetKakNazvat();
+                GameModell.Do();
         }
     }
 }
