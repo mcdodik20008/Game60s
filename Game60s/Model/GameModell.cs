@@ -15,6 +15,11 @@ namespace Game60s.Model
         internal GameModell()
         {
             Map = MapCreator.Create();
+            Do2();
+        }
+
+        public static void Do2()
+        {
             for (int i = 0; i < Map.LengthX; i++)
             {
                 for (int j = 0; j < Map.LengthY; j++)
@@ -63,8 +68,10 @@ namespace Game60s.Model
                             if (Math.Abs(i) != Math.Abs(j) && Map[x + i, y + j] is Ocean)
                                 n++;
 
-                    if (n >= 2 && Map[x, y] as Ocean == null)
+                    if (n == 2 && Map[x, y] as Ocean == null)
                         Map[x, y].Hp--;
+                    if (n == 3 && Map[x, y] as Ocean == null)
+                         Map[x, y] = Map[x, y].Die();
                 }
 
             for (int x = 0; x < Map.LengthY; x++)

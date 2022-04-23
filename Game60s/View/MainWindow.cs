@@ -39,18 +39,14 @@ namespace Game60s.Viev
             for (int y = 0; y < SizeVisibleMap; y++)
                 for (int x = 0; x < SizeVisibleMap; x++)
                 {
-                    if (GameModell.Map[x, y] is IBorderElement be)
-                    {
-                        var str = GameModell.Map[x, y].GetNameImage();
+                    if (GameModell.Map[x, y] is IBorderElement BorderElement)
                         e.Graphics
                         .DrawImage(
-                            bitmaps[str]
-                            .RotateImage(
-                                be
+                            bitmaps[GameModell.Map[x, y].GetNameImage()]
+                            .RotateImage(BorderElement
                                 .GetDirection()
                                 .ConvertDirectionToAngle()), 
                             GameModell.Map[y, x].Position);
-                    }
                     else
                         e.Graphics.DrawImage(bitmaps[GameModell.Map[x, y].GetNameImage()], GameModell.Map[y, x].Position);
                 }
