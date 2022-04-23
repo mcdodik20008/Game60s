@@ -31,7 +31,7 @@ namespace Game60s.Model
 
         private bool NewMethod(int x, int y)
         {
-            return GameModell.Map[y / GameModell.ElementSize, x / GameModell.ElementSize] is Grass;
+            return GameModell.Map[y / GameModell.ElementSize, x / GameModell.ElementSize] is Border b && b.borderType == BorderType.grass;
         }
 
         public override string GetNameImage() => "player.png";

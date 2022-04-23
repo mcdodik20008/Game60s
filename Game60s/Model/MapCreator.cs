@@ -25,7 +25,6 @@ namespace Game60s.Model
         internal static Dictionary<char, Func<int, int, AEntity>> charToIEntity = new Dictionary<char, Func<int, int, AEntity>>()
         {
             ['O'] = Ocean.Create,
-            ['G'] = Grass.Create,
             ['B'] = Border.Create
         };
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Windows.Forms;
 using Game60s.Controller;
@@ -37,7 +38,22 @@ namespace Game60s.Viev
         {
             for (int y = 0; y < SizeVisibleMap; y++)
                 for (int x = 0; x < SizeVisibleMap; x++)
-                    e.Graphics.DrawImage(bitmaps[GameModell.Map[x, y].GetNameImage()], GameModell.Map[y, x].Position);
+                {
+                    if (GameModell.Map[x, y] is IBorderElement be)
+                    {
+                        var str = GameModell.Map[x, y].GetNameImage();
+                        e.Graphics
+                        .DrawImage(
+                            bitmaps[str]
+                            .RotateImage(
+                                be
+                                .GetDirection()
+                                .ConvertDirectionToAngle()), 
+                            GameModell.Map[y, x].Position);
+                    }
+                    else
+                        e.Graphics.DrawImage(bitmaps[GameModell.Map[x, y].GetNameImage()], GameModell.Map[y, x].Position);
+                }
             
             e.Graphics.DrawImage(bitmaps[GameModell.player.GetNameImage()], new Point(
                 GameModell.player.Position.X, 

@@ -17,8 +17,8 @@ namespace Game60s.Controller
         public static void EterationGameModel(int timerTick)
         {
             GameModell.player.Act(KeysPressed);
-            if (timerTick % 100 == 0)
-                GameModell.Do();
+            if (timerTick % 100 == 0) ;
+                //GameModell.Do();
         }
     }
 }
