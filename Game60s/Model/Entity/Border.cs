@@ -4,12 +4,26 @@ using System.Windows.Forms;
 
 namespace Game60s.Model
 {
-    internal class Border : AEntity, IBorderElement
-    {
-        public int X, Y;
+    //Добавил зависимость типа границы и пнг файла. Сделал направление стены и была развернута в правильное направление или нет.
+    internal class Border : AEntity
+    {  
+        public int X, Y;     
+        //может как-то переименовать.
+        public bool isRotated = true;
+
         DirectionType direction;
-        bool isRotated = true;
-        public BorderType borderType = BorderType.grass;
+        public DirectionType Direction 
+        {
+            get => direction; 
+
+            set
+            {
+                isRotated = false;
+                direction = value;
+            }
+        }
+
+        public BorderType BorderType { get; set; }
 
         Dictionary<BorderType, string> borderTypeToNameImage = new Dictionary<BorderType, string>()
         {
@@ -27,31 +41,10 @@ namespace Game60s.Model
 
         public static AEntity Create(int x, int y) => new Border(x, y);
 
-        public override string GetNameImage() => borderTypeToNameImage[borderType];
+        public override string GetNameImage() => borderTypeToNameImage[BorderType];
 
         public override void Act(HashSet<Keys> key) { }
 
         public override AEntity Die() => Ocean.Create(X, Y);
-
-        public DirectionType GetDirection()
-        {
-            return direction;
-        }
-
-        public void SetDirection(DirectionType direction)
-        {
-            isRotated = false;
-            this.direction = direction;
-        }
-
-        public bool NeedTurn()
-        {
-            return isRotated;
-        }
-
-        public void SetBorderType(BorderType bT = BorderType.grass)
-        {
-            borderType = bT;
-        }
     }
 }

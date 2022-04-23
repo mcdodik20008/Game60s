@@ -24,36 +24,35 @@ namespace Game60s.Model
             {
                 for (int j = 0; j < Map.LengthY; j++)
                 {
-                    if (Map[i, j] is IBorderElement b)
+                    if (Map[i, j] is Border b)
                     {
-                        if (IsBorderElement(i - 1, j, i, j - 1) && IsOcean(i - 1, j - 1)) { b.SetDirection(DirectionType.Up); b.SetBorderType(BorderType.angleInside); continue; };
-                        if (IsBorderElement(i - 1, j, i, j + 1) && IsOcean(i - 1, j + 1)) { b.SetDirection(DirectionType.Right); b.SetBorderType(BorderType.angleInside); continue; };
-                        if (IsBorderElement(i + 1, j, i, j - 1) && IsOcean(i + 1, j - 1)) { b.SetDirection(DirectionType.Left); b.SetBorderType(BorderType.angleInside); continue; };
-                        if (IsBorderElement(i + 1, j, i, j + 1) && IsOcean(i + 1, j + 1)) { b.SetDirection(DirectionType.Down); b.SetBorderType(BorderType.angleInside); continue; };
-
-                        if (IsOcean(i - 1, j) && IsOcean(i, j - 1)) { b.SetDirection(DirectionType.Up); b.SetBorderType(BorderType.angle); continue; };
-                        if (IsOcean(i - 1, j) && IsOcean(i, j + 1)) { b.SetDirection(DirectionType.Right); b.SetBorderType(BorderType.angle); continue; };
-                        if (IsOcean(i + 1, j) && IsOcean(i, j - 1)) { b.SetDirection(DirectionType.Left); b.SetBorderType(BorderType.angle); continue; };
-                        if (IsOcean(i + 1, j) && IsOcean(i, j + 1)) { b.SetDirection(DirectionType.Down); b.SetBorderType(BorderType.angle); continue; };
-
-                        if (IsOcean(i - 1, j)) { b.SetDirection(DirectionType.Up); b.SetBorderType(BorderType.border); continue; };
-                        if (IsOcean(i + 1, j)) { b.SetDirection(DirectionType.Down); b.SetBorderType(BorderType.border); continue; };
-                        if (IsOcean(i, j - 1)) { b.SetDirection(DirectionType.Left); b.SetBorderType(BorderType.border); continue; };
-                        if (IsOcean(i, j + 1)) { b.SetDirection(DirectionType.Right); b.SetBorderType(BorderType.border); continue; };
+                        //внутренние углы
+                        if (IsBorderElement(i - 1, j, i, j - 1) && IsOcean(i - 1, j - 1)) { b.Direction = DirectionType.Up; b.BorderType = BorderType.angleInside; continue; };
+                        if (IsBorderElement(i - 1, j, i, j + 1) && IsOcean(i - 1, j + 1)) { b.Direction = DirectionType.Right; b.BorderType = BorderType.angleInside; continue; };
+                        if (IsBorderElement(i + 1, j, i, j - 1) && IsOcean(i + 1, j - 1)) { b.Direction = DirectionType.Left; b.BorderType = BorderType.angleInside; continue; };
+                        if (IsBorderElement(i + 1, j, i, j + 1) && IsOcean(i + 1, j + 1)) { b.Direction = DirectionType.Down; b.BorderType = BorderType.angleInside; continue; };
+                        //внешние углы
+                        if (IsOcean(i - 1, j) && IsOcean(i, j - 1)) { b.Direction = DirectionType.Up; b.BorderType = BorderType.angle; continue; };
+                        if (IsOcean(i - 1, j) && IsOcean(i, j + 1)) { b.Direction = DirectionType.Right; b.BorderType = BorderType.angle; continue; };
+                        if (IsOcean(i + 1, j) && IsOcean(i, j - 1)) { b.Direction = DirectionType.Left; b.BorderType = BorderType.angle; continue; };
+                        if (IsOcean(i + 1, j) && IsOcean(i, j + 1)) { b.Direction = DirectionType.Down; b.BorderType = BorderType.angle; continue; };
+                        //прямые границы
+                        if (IsOcean(i - 1, j)) { b.Direction = DirectionType.Up; b.BorderType = BorderType.border; continue; };
+                        if (IsOcean(i + 1, j)) { b.Direction = DirectionType.Down; b.BorderType = BorderType.border; continue; };
+                        if (IsOcean(i, j - 1)) { b.Direction = DirectionType.Left; b.BorderType = BorderType.border; continue; };
+                        if (IsOcean(i, j + 1)) { b.Direction = DirectionType.Right; b.BorderType = BorderType.border; continue; };
                     }
                 }
             }
         }
 
-        private static bool IsBorderElement(int i, int j, int x, int y)
-        {
-            return Map[i, j] is IBorderElement && Map[x, y] is IBorderElement;
-        }
-
         private static bool IsOcean(int i, int j) => Map[i, j] is Ocean;
-        
+        private static bool IsBorderElement(int i, int j, int x, int y) => Map[i, j] is Border && Map[x, y] is Border;
 
-        internal static void Do()
+        //это уберется, когда ты добавишь высоты и затопления клеток.
+        // что нжно сделать. Добавить высоту клетки + поднимать "Уровень воды(тоже надо сделать)" в модели
+        // и придумать как распределять высоты по клеткам. При подъеме на определенную высоту клетка должна умирать.
+        internal static void Do1()
         {
             // не пугайся
             for (int x = 0; x < Map.LengthY; x++)

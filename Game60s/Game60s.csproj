@@ -59,9 +59,7 @@
     <Compile Include="Controller\ControllerWindow.cs" />
     <Compile Include="Model\Direction.cs" />
     <Compile Include="Model\Entity\BorterType.cs" />
-    <Compile Include="Model\Entity\IBorderElement.cs" />
     <Compile Include="Model\Entity\Ocean.cs" />
-    <Compile Include="Model\Entity\Grass.cs" />
     <Compile Include="Model\Entity\Player.cs" />
     <Compile Include="Model\Entity\Resourse.cs" />
     <Compile Include="Model\Entity\Stone.cs" />
@@ -71,7 +69,6 @@
     <Compile Include="Model\Entity\AEntity.cs" />
     <Compile Include="Model\Map.cs" />
     <Compile Include="Model\MapCreator.cs" />
-    <Compile Include="View\Animation.cs" />
     <Compile Include="View\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>

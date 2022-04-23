@@ -6,6 +6,7 @@ namespace Game60s.Controller
 {
     public static class ControllerWindow
     {
+        //тут все понятно
         internal static HashSet<Keys> KeysPressed = new HashSet<Keys>();
 
         public static void SetPressedKey(Keys pressedKey) =>
@@ -19,7 +20,7 @@ namespace Game60s.Controller
             GameModell.player.Act(KeysPressed);
             if (timerTick % 100 == 0)
             {
-                GameModell.Do();
+                GameModell.Do1();
                 GameModell.Do2();
             }
         }

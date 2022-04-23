@@ -6,10 +6,10 @@ namespace Game60s.Model
 {
     internal class Player : AEntity
     {
+        public int X, Y;
         Size sizePng = new Size(28, 46);
-        public int X;
-        public int Y;
-        int step = 2;
+        int step = 4;
+
         public Player(int x, int y)
         {
             X = x; Y = y;
@@ -17,7 +17,7 @@ namespace Game60s.Model
 
         public override void Act(HashSet<Keys> keys)
         {
-            //пофиксить
+            //Добавь ограничения на ходьбу
             if (keys.Contains(Keys.Left))
                 X -= step;
             if (keys.Contains(Keys.Right))

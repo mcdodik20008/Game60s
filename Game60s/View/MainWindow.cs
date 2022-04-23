@@ -39,12 +39,13 @@ namespace Game60s.Viev
             for (int y = 0; y < SizeVisibleMap; y++)
                 for (int x = 0; x < SizeVisibleMap; x++)
                 {
-                    if (GameModell.Map[x, y] is IBorderElement BorderElement)
+                    //эта страшная штука определяет вид и наклон стены
+                    if (GameModell.Map[x, y] is Border BorderElement)
                         e.Graphics
                         .DrawImage(
                             bitmaps[GameModell.Map[x, y].GetNameImage()]
                             .RotateImage(BorderElement
-                                .GetDirection()
+                                .Direction
                                 .ConvertDirectionToAngle()), 
                             GameModell.Map[y, x].Position);
                     else
