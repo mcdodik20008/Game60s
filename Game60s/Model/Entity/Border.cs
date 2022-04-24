@@ -12,15 +12,15 @@ namespace Game60s.Model
 
     //Добавил зависимость типа границы и пнг файла. Сделал направление стены и была развернута в правильное направление или нет.
     internal class Border : AEntity
-    {  
-        public int X, Y;     
+    {
+        public int X, Y;
         //может как-то переименовать.
         public bool WasRotated = true;
 
         DirectionType direction;
-        public DirectionType Direction 
+        public DirectionType Direction
         {
-            get => direction; 
+            get => direction;
 
             set
             {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 
 namespace Game60s.Model
 {
@@ -25,7 +24,7 @@ namespace Game60s.Model
         {
             get
             {
-                return IsWithinMap(i * GameModell.ElementSize ,j * GameModell.ElementSize) ? Mapp[i][j] :
+                return IsWithinMap(i * GameModell.ElementSize, j * GameModell.ElementSize) ? Mapp[i][j] :
                     new Ocean(i, j);
             }
             set

@@ -12,7 +12,7 @@ namespace Game60s.Controller
         public static void SetPressedKey(Keys pressedKey) =>
             KeysPressed.Add(pressedKey);
 
-        public static void RemoveKey(Keys unPressedKey) => 
+        public static void RemoveKey(Keys unPressedKey) =>
             KeysPressed.Remove(unPressedKey);
 
         public static void EterationGameModel(int timerTick)
