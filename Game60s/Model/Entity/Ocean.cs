@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Numerics;
 using System.Windows.Forms;
 
 namespace Game60s.Model
@@ -10,7 +9,7 @@ namespace Game60s.Model
         public Ocean(int x, int y)
         {
             X = x; Y = y;
-            Position = new Point(x * GameModell.ElementSize, y * GameModell.ElementSize);
+            PositionOnForm = new Point(x * GameModell.ElementSize, y * GameModell.ElementSize);
         }
 
         public static AEntity Create(int x, int y) => new Ocean(x, y);

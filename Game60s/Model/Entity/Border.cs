@@ -4,12 +4,18 @@ using System.Windows.Forms;
 
 namespace Game60s.Model
 {
+    //сделал для определения вида "пляжа" и/или угла
+    public enum BorderType
+    {
+        grass, border, angle, angleInside
+    }
+
     //Добавил зависимость типа границы и пнг файла. Сделал направление стены и была развернута в правильное направление или нет.
     internal class Border : AEntity
     {  
         public int X, Y;     
         //может как-то переименовать.
-        public bool isRotated = true;
+        public bool WasRotated = true;
 
         DirectionType direction;
         public DirectionType Direction 
@@ -18,7 +24,7 @@ namespace Game60s.Model
 
             set
             {
-                isRotated = false;
+                WasRotated = false;
                 direction = value;
             }
         }
@@ -36,7 +42,7 @@ namespace Game60s.Model
         public Border(int x, int y)
         {
             X = x; Y = y;
-            Position = new Point(x * GameModell.ElementSize, y * GameModell.ElementSize);
+            PositionOnForm = new Point(x * GameModell.ElementSize, y * GameModell.ElementSize);
         }
 
         public static AEntity Create(int x, int y) => new Border(x, y);

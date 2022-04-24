@@ -8,7 +8,7 @@ namespace Game60s.Model
     {
         public int X, Y;
         public int Hp = 3;
-        public Point Position { get; set; }
+        public Point PositionOnForm { get; set; }
         public abstract string GetNameImage();
         public abstract void Act(HashSet<Keys> key);
         public abstract AEntity Die();

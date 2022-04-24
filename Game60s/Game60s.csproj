@@ -58,7 +58,6 @@
   <ItemGroup>
     <Compile Include="Controller\ControllerWindow.cs" />
     <Compile Include="Model\Direction.cs" />
-    <Compile Include="Model\Entity\BorterType.cs" />
     <Compile Include="Model\Entity\Ocean.cs" />
     <Compile Include="Model\Entity\Player.cs" />
     <Compile Include="Model\Entity\Resourse.cs" />

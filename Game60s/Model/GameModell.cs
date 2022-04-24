@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows.Forms;
-using System;
-using System.Numerics;
-using System.Drawing;
+﻿using System;
 
 namespace Game60s.Model
 {
@@ -18,6 +14,7 @@ namespace Game60s.Model
             Do2();
         }
 
+        //может быть убрать в бордер?
         public static void Do2()
         {
             for (int i = 0; i < Map.LengthX; i++)
@@ -47,10 +44,11 @@ namespace Game60s.Model
         }
 
         private static bool IsOcean(int i, int j) => Map[i, j] is Ocean;
+
         private static bool IsBorderElement(int i, int j, int x, int y) => Map[i, j] is Border && Map[x, y] is Border;
 
         //это уберется, когда ты добавишь высоты и затопления клеток.
-        // что нжно сделать. Добавить высоту клетки + поднимать "Уровень воды(тоже надо сделать)" в модели
+        // Что нжно сделать. Добавить высоту клетки + поднимать "Уровень воды(тоже надо сделать)" в модели
         // и придумать как распределять высоты по клеткам. При подъеме на определенную высоту клетка должна умирать.
         internal static void Do1()
         {
@@ -70,7 +68,7 @@ namespace Game60s.Model
                     if (n == 2 && Map[x, y] as Ocean == null)
                         Map[x, y].Hp--;
                     if (n == 3 && Map[x, y] as Ocean == null)
-                         Map[x, y] = Map[x, y].Die();
+                        Map[x, y] = Map[x, y].Die();
                 }
 
             for (int x = 0; x < Map.LengthY; x++)

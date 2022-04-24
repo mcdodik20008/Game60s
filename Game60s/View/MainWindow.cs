@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Game60s.Controller;
+using Game60s.Model;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.IO;
 using System.Windows.Forms;
-using Game60s.Controller;
-using Game60s.Model;
 
 namespace Game60s.Viev
 {
@@ -46,15 +45,15 @@ namespace Game60s.Viev
                             bitmaps[GameModell.Map[x, y].GetNameImage()]
                             .RotateImage(BorderElement
                                 .Direction
-                                .ConvertDirectionToAngle()), 
-                            GameModell.Map[y, x].Position);
+                                .ConvertDirectionToAngle()),
+                            GameModell.Map[y, x].PositionOnForm);
                     else
-                        e.Graphics.DrawImage(bitmaps[GameModell.Map[x, y].GetNameImage()], GameModell.Map[y, x].Position);
+                        e.Graphics.DrawImage(bitmaps[GameModell.Map[x, y].GetNameImage()], GameModell.Map[y, x].PositionOnForm);
                 }
-            
+
             e.Graphics.DrawImage(bitmaps[GameModell.player.GetNameImage()], new Point(
-                GameModell.player.Position.X, 
-                GameModell.player.Position.Y));
+                GameModell.player.PositionOnForm.X,
+                GameModell.player.PositionOnForm.Y));
         }
 
         protected override void OnKeyDown(KeyEventArgs e) => ControllerWindow.SetPressedKey(e.KeyCode);
