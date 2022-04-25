@@ -31,14 +31,14 @@ namespace Game60s.Model
                         if (IsBorderElement(i + 1, j, i, j + 1) && IsOcean(i + 1, j + 1)) { b.SwitchType(DirectionType.Down, BorderType.angleInside); continue; };
                         //внешние углы
                         if (IsOcean(i - 1, j) && IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Up, BorderType.angle); continue; };
-                        if (IsOcean(i - 1, j) && IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Right, BorderType.angle); continue; };;
+                        if (IsOcean(i - 1, j) && IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Right, BorderType.angle); continue; };
                         if (IsOcean(i + 1, j) && IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Left, BorderType.angle); continue; };
-                        if (IsOcean(i + 1, j) && IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Down, BorderType.angle ); continue; };  
+                        if (IsOcean(i + 1, j) && IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Down, BorderType.angle); continue; };
                         //прямые границы
                         if (IsOcean(i - 1, j)) { b.SwitchType(DirectionType.Up, BorderType.border); continue; };
-                        if (IsOcean(i + 1, j)) { b.SwitchType(DirectionType.Right, BorderType.border); continue; };;
+                        if (IsOcean(i + 1, j)) { b.SwitchType(DirectionType.Down, BorderType.border); continue; };
                         if (IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Left, BorderType.border); continue; };
-                        if (IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Down, BorderType.border); continue; };
+                        if (IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Right, BorderType.border); continue; };
                     }
                 }
             }
