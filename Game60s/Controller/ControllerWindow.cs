@@ -21,7 +21,7 @@ namespace Game60s.Controller
             if (timerTick % 100 == 0)
             {
                 GameModell.Do1();
-                GameModell.Do2();
+                GameModell.SwitchBorder();
             }
         }
     }

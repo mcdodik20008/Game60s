@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Collections;
 
 namespace Game60s.Model
 {
@@ -9,7 +10,8 @@ namespace Game60s.Model
         Up, Down, Left, Right
     }
 
-    public static class Direction
+
+    public static class Direction 
     {
         //тут понятно
         public static float ConvertDirectionToAngle(this DirectionType dT)
@@ -35,6 +37,12 @@ namespace Game60s.Model
             g.DrawImage(img, new Point(0, 0));
             g.Dispose();
             return bmp;
+        }
+
+        internal static void SwitchType(this Border b, DirectionType direction, BorderType type)
+        {
+            b.Direction = direction;
+            b.BorderType = type;
         }
     }
 }

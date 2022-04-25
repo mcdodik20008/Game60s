@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Game60s.Model
 {
@@ -11,11 +12,11 @@ namespace Game60s.Model
         internal GameModell()
         {
             Map = MapCreator.Create();
-            Do2();
+            SwitchBorder();
         }
 
         //может быть убрать в бордер?
-        public static void Do2()
+        public static void SwitchBorder()
         {
             for (int i = 0; i < Map.LengthX; i++)
             {
@@ -24,20 +25,20 @@ namespace Game60s.Model
                     if (Map[i, j] is Border b)
                     {
                         //внутренние углы
-                        if (IsBorderElement(i - 1, j, i, j - 1) && IsOcean(i - 1, j - 1)) { b.Direction = DirectionType.Up; b.BorderType = BorderType.angleInside; continue; };
-                        if (IsBorderElement(i - 1, j, i, j + 1) && IsOcean(i - 1, j + 1)) { b.Direction = DirectionType.Right; b.BorderType = BorderType.angleInside; continue; };
-                        if (IsBorderElement(i + 1, j, i, j - 1) && IsOcean(i + 1, j - 1)) { b.Direction = DirectionType.Left; b.BorderType = BorderType.angleInside; continue; };
-                        if (IsBorderElement(i + 1, j, i, j + 1) && IsOcean(i + 1, j + 1)) { b.Direction = DirectionType.Down; b.BorderType = BorderType.angleInside; continue; };
+                        if (IsBorderElement(i - 1, j, i, j - 1) && IsOcean(i - 1, j - 1)) { b.SwitchType(DirectionType.Up, BorderType.angleInside); continue; };
+                        if (IsBorderElement(i - 1, j, i, j + 1) && IsOcean(i - 1, j + 1)) { b.SwitchType(DirectionType.Right, BorderType.angleInside); continue; };
+                        if (IsBorderElement(i + 1, j, i, j - 1) && IsOcean(i + 1, j - 1)) { b.SwitchType(DirectionType.Left, BorderType.angleInside); continue; };
+                        if (IsBorderElement(i + 1, j, i, j + 1) && IsOcean(i + 1, j + 1)) { b.SwitchType(DirectionType.Down, BorderType.angleInside); continue; };
                         //внешние углы
-                        if (IsOcean(i - 1, j) && IsOcean(i, j - 1)) { b.Direction = DirectionType.Up; b.BorderType = BorderType.angle; continue; };
-                        if (IsOcean(i - 1, j) && IsOcean(i, j + 1)) { b.Direction = DirectionType.Right; b.BorderType = BorderType.angle; continue; };
-                        if (IsOcean(i + 1, j) && IsOcean(i, j - 1)) { b.Direction = DirectionType.Left; b.BorderType = BorderType.angle; continue; };
-                        if (IsOcean(i + 1, j) && IsOcean(i, j + 1)) { b.Direction = DirectionType.Down; b.BorderType = BorderType.angle; continue; };
+                        if (IsOcean(i - 1, j) && IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Up, BorderType.angle); continue; };
+                        if (IsOcean(i - 1, j) && IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Right, BorderType.angle); continue; };;
+                        if (IsOcean(i + 1, j) && IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Left, BorderType.angle); continue; };
+                        if (IsOcean(i + 1, j) && IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Down, BorderType.angle ); continue; };  
                         //прямые границы
-                        if (IsOcean(i - 1, j)) { b.Direction = DirectionType.Up; b.BorderType = BorderType.border; continue; };
-                        if (IsOcean(i + 1, j)) { b.Direction = DirectionType.Down; b.BorderType = BorderType.border; continue; };
-                        if (IsOcean(i, j - 1)) { b.Direction = DirectionType.Left; b.BorderType = BorderType.border; continue; };
-                        if (IsOcean(i, j + 1)) { b.Direction = DirectionType.Right; b.BorderType = BorderType.border; continue; };
+                        if (IsOcean(i - 1, j)) { b.SwitchType(DirectionType.Up, BorderType.border); continue; };
+                        if (IsOcean(i + 1, j)) { b.SwitchType(DirectionType.Right, BorderType.border); continue; };;
+                        if (IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Left, BorderType.border); continue; };
+                        if (IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Down, BorderType.border); continue; };
                     }
                 }
             }
