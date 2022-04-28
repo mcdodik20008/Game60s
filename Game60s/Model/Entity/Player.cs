@@ -9,6 +9,7 @@ namespace Game60s.Model
         public int X, Y;
         Size sizePng = new Size(28, 46);
         int step = 2;
+        public List<Resourse> Resourses = new List<Resourse>();
 
         public Player(int x, int y)
         {

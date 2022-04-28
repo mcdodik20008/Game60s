@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Game60s.Model
@@ -9,6 +10,7 @@ namespace Game60s.Model
         internal static Player player = new Player(3 * ElementSize, 3 * ElementSize);
         public const int ElementSize = 65;
         internal static Map Map;
+        internal static List<Resourse> ResoursesOnMap = new List<Resourse>();
 
         internal GameModell()
         {
