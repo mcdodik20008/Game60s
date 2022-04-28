@@ -7,6 +7,10 @@ namespace Game60s.Model
 {
     internal static class MapCreator
     {
+        /// <summary>
+        /// Создает карту из символьного представления в файле. Использует доп методы.
+        /// </summary>
+        /// <returns>Карта из AEntity</returns>
         internal static Map Create()
         {
             string FileNameOrPath = @"..\..\Model\Map.txt";
@@ -19,6 +23,11 @@ namespace Game60s.Model
              );
         }
 
+        /// <summary>
+        /// Преобразует строки файла в двумерный список символов.
+        /// </summary>
+        /// <param name="stringMap"></param>
+        /// <returns></returns>
         internal static List<List<char>> GetMapChar(string[] stringMap) =>
             stringMap.Select(x => x.Select(y => y).ToList()).ToList();
 
@@ -28,6 +37,11 @@ namespace Game60s.Model
             ['B'] = Border.Create
         };
 
+        /// <summary>
+        /// Преобразует двумерный список символов в двумерный массим объектов карты.
+        /// </summary>
+        /// <param name="charCell"></param>
+        /// <returns>AEntity[][]</returns>
         internal static AEntity[][] GetMapIEntity(List<List<char>> charCell)
         {
             var map = new AEntity[charCell.Count][];

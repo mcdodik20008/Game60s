@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 
 namespace Game60s.Model
@@ -9,44 +9,12 @@ namespace Game60s.Model
         internal static Player player = new Player(3 * ElementSize, 3 * ElementSize);
         public const int ElementSize = 65;
         internal static Map Map;
+
         internal GameModell()
         {
             Map = MapCreator.Create();
-            SwitchBorder();
+            Map.SwitchBorder();
         }
-
-        //может быть убрать в бордер?
-        public static void SwitchBorder()
-        {
-            for (int i = 0; i < Map.LengthX; i++)
-            {
-                for (int j = 0; j < Map.LengthY; j++)
-                {
-                    if (Map[i, j] is Border b)
-                    {
-                        //внутренние углы
-                        if (IsBorderElement(i - 1, j, i, j - 1) && IsOcean(i - 1, j - 1)) { b.SwitchType(DirectionType.Up, BorderType.angleInside); continue; };
-                        if (IsBorderElement(i - 1, j, i, j + 1) && IsOcean(i - 1, j + 1)) { b.SwitchType(DirectionType.Right, BorderType.angleInside); continue; };
-                        if (IsBorderElement(i + 1, j, i, j - 1) && IsOcean(i + 1, j - 1)) { b.SwitchType(DirectionType.Left, BorderType.angleInside); continue; };
-                        if (IsBorderElement(i + 1, j, i, j + 1) && IsOcean(i + 1, j + 1)) { b.SwitchType(DirectionType.Down, BorderType.angleInside); continue; };
-                        //внешние углы
-                        if (IsOcean(i - 1, j) && IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Up, BorderType.angle); continue; };
-                        if (IsOcean(i - 1, j) && IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Right, BorderType.angle); continue; };
-                        if (IsOcean(i + 1, j) && IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Left, BorderType.angle); continue; };
-                        if (IsOcean(i + 1, j) && IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Down, BorderType.angle); continue; };
-                        //прямые границы
-                        if (IsOcean(i - 1, j)) { b.SwitchType(DirectionType.Up, BorderType.border); continue; };
-                        if (IsOcean(i + 1, j)) { b.SwitchType(DirectionType.Down, BorderType.border); continue; };
-                        if (IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Left, BorderType.border); continue; };
-                        if (IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Right, BorderType.border); continue; };
-                    }
-                }
-            }
-        }
-
-        private static bool IsOcean(int i, int j) => Map[i, j] is Ocean;
-
-        private static bool IsBorderElement(int i, int j, int x, int y) => Map[i, j] is Border && Map[x, y] is Border;
 
         //это уберется, когда ты добавишь высоты и затопления клеток.
         // Что нжно сделать. Добавить высоту клетки + поднимать "Уровень воды(тоже надо сделать)" в модели

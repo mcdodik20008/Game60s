@@ -41,4 +41,44 @@ namespace Game60s.Model
                     yield return item;
         }
     }
+
+    internal static class MapExt
+    {
+        /// <summary>
+        /// Видоизменяет "Border" на карте, меняя в нем Type и Direcction, в зависимости от соседних ячеек.
+        /// Не создает новые обекты.
+        /// </summary>
+        /// <param name="Map"></param>
+        public static void SwitchBorder(this Map Map)
+        {
+            for (int i = 0; i < Map.LengthX; i++)
+            {
+                for (int j = 0; j < Map.LengthY; j++)
+                {
+                    if (Map[i, j] is Border b)
+                    {
+                        //внутренние углы
+                        if (Map.IsBorderElement(i - 1, j, i, j - 1) && Map.IsOcean(i - 1, j - 1)) { b.SwitchType(DirectionType.Up, BorderType.angleInside); continue; };
+                        if (Map.IsBorderElement(i - 1, j, i, j + 1) && Map.IsOcean(i - 1, j + 1)) { b.SwitchType(DirectionType.Right, BorderType.angleInside); continue; };
+                        if (Map.IsBorderElement(i + 1, j, i, j - 1) && Map.IsOcean(i + 1, j - 1)) { b.SwitchType(DirectionType.Left, BorderType.angleInside); continue; };
+                        if (Map.IsBorderElement(i + 1, j, i, j + 1) && Map.IsOcean(i + 1, j + 1)) { b.SwitchType(DirectionType.Down, BorderType.angleInside); continue; };
+                        //внешние углы
+                        if (Map.IsOcean(i - 1, j) && Map.IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Up, BorderType.angle); continue; };
+                        if (Map.IsOcean(i - 1, j) && Map.IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Right, BorderType.angle); continue; };
+                        if (Map.IsOcean(i + 1, j) && Map.IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Left, BorderType.angle); continue; };
+                        if (Map.IsOcean(i + 1, j) && Map.IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Down, BorderType.angle); continue; };
+                        //прямые границы
+                        if (Map.IsOcean(i - 1, j)) { b.SwitchType(DirectionType.Up, BorderType.border); continue; };
+                        if (Map.IsOcean(i + 1, j)) { b.SwitchType(DirectionType.Down, BorderType.border); continue; };
+                        if (Map.IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Left, BorderType.border); continue; };
+                        if (Map.IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Right, BorderType.border); continue; };
+                    }
+                }
+            }
+        }
+
+        internal static bool IsOcean(this Map Map, int i, int j) => Map[i, j] is Ocean;
+
+        internal static bool IsBorderElement(this Map Map, int i, int j, int x, int y) => Map[i, j] is Border && Map[x, y] is Border;
+    }
 }

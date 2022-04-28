@@ -13,7 +13,11 @@ namespace Game60s.Model
 
     public static class Direction 
     {
-        //тут понятно
+        /// <summary>
+        /// Преобразует направление в угол
+        /// </summary>
+        /// <param name="dT"></param>
+        /// <returns>Rotation angle</returns>
         public static float ConvertDirectionToAngle(this DirectionType dT)
         {
             switch (dT)
@@ -27,6 +31,14 @@ namespace Game60s.Model
         }
 
         //для поворота картины
+        /// <summary>
+        /// Создает новую, повернутую на rotationAngle градусов картинку.
+        /// Важно: занимает до 1гб оперативы и во время сборки мусора лагает на слабом пк.
+        /// Утечка памяти сдесь. переписать, чтоб запускалось только при изменении. Может сделать двумерный массив bitmap?
+        /// </summary>
+        /// <param name="img"></param>
+        /// <param name="rotationAngle"></param>
+        /// <returns>Image</returns>
         public static Image RotateImage(this Bitmap img, float rotationAngle)
         {
             Bitmap bmp = new Bitmap(GameModell.ElementSize, GameModell.ElementSize);
@@ -39,6 +51,12 @@ namespace Game60s.Model
             return bmp;
         }
 
+        /// <summary>
+        /// Меняет параметры переданного Border
+        /// </summary>
+        /// <param name="b"></param>
+        /// <param name="direction"></param>
+        /// <param name="type"></param>
         internal static void SwitchType(this Border b, DirectionType direction, BorderType type)
         {
             b.Direction = direction;
