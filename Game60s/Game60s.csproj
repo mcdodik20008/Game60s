@@ -58,11 +58,12 @@
   <ItemGroup>
     <Compile Include="Controller\ControllerWindow.cs" />
     <Compile Include="Model\Direction.cs" />
+    <Compile Include="Model\Entity\IMapObject.cs" />
     <Compile Include="Model\Entity\Ocean.cs" />
     <Compile Include="Model\Entity\Player.cs" />
     <Compile Include="Model\Entity\Resourse.cs" />
     <Compile Include="Model\Entity\Stone.cs" />
-    <Compile Include="Model\Entity\Border.cs" />
+    <Compile Include="Model\Entity\Ground.cs" />
     <Compile Include="Model\Entity\Sticks.cs" />
     <Compile Include="Model\GameModell.cs" />
     <Compile Include="Model\Entity\AEntity.cs" />

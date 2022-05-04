@@ -39,7 +39,7 @@ namespace Game60s.Model
         /// <param name="img"></param>
         /// <param name="rotationAngle"></param>
         /// <returns>Image</returns>
-        public static Image RotateImage(this Bitmap img, float rotationAngle)
+/*        public static Bitmap RotateImage(this Bitmap img, float rotationAngle)
         {
             Bitmap bmp = new Bitmap(GameModell.ElementSize, GameModell.ElementSize);
             Graphics g = Graphics.FromImage(bmp);
@@ -50,17 +50,17 @@ namespace Game60s.Model
             g.Dispose();
             return bmp;
         }
-
+*/
         /// <summary>
         /// Меняет параметры переданного Border
         /// </summary>
         /// <param name="b"></param>
         /// <param name="direction"></param>
         /// <param name="type"></param>
-        internal static void SwitchType(this Border b, DirectionType direction, BorderType type)
+        internal static void SwitchType(this Ground b, DirectionType direction, GroundType type)
         {
             b.Direction = direction;
-            b.BorderType = type;
+            b.GroundType = type;
         }
     }
 }

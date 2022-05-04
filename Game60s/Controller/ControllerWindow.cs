@@ -20,8 +20,11 @@ namespace Game60s.Controller
             GameModell.player.Act(KeysPressed);
             if (timerTick % 100 == 0)
             {
-                GameModell.Do1();
                 GameModell.Map.SwitchBorder();
+            }
+            if (timerTick % 500 == 0)
+            {
+                GameModell.IncreaseWaterLine();
             }
         }
     }

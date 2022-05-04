@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 
 namespace Game60s.Model
@@ -9,42 +11,34 @@ namespace Game60s.Model
         public static TimeSpan TimeToDisaster = new TimeSpan(0, 1, 0);
         internal static Player player = new Player(3 * ElementSize, 3 * ElementSize);
         public const int ElementSize = 65;
+        public static int WaterLine = 0;
         internal static Map Map;
         internal static List<Resourse> ResoursesOnMap = new List<Resourse>();
+        private static readonly DirectoryInfo imagesDirectory = new DirectoryInfo(@"..\..\Model\Images");
+        public static Dictionary<string, Bitmap> EntityImage = new Dictionary<string, Bitmap>();
+
 
         internal GameModell()
         {
+            LoadEntityImages();
             Map = MapCreator.Create();
             Map.SwitchBorder();
+            Map.SetMapHeight();
         }
-
-        //это уберется, когда ты добавишь высоты и затопления клеток.
-        // Что нжно сделать. Добавить высоту клетки + поднимать "Уровень воды(тоже надо сделать)" в модели
-        // и придумать как распределять высоты по клеткам. При подъеме на определенную высоту клетка должна умирать.
-        internal static void Do1()
+        internal static void LoadEntityImages()
         {
-            // не пугайся
+            foreach (var e in imagesDirectory.GetFiles("*.png"))
+                EntityImage[e.Name] = (Bitmap)Image.FromFile(e.FullName);
+        }
+        /// <summary>
+        /// Увеличивает увроень воды и затапливает все участки, которые оказались ниже уровня
+        /// </summary>
+        internal static void IncreaseWaterLine()
+        {
+            WaterLine++;
             for (int x = 0; x < Map.LengthY; x++)
                 for (int y = 0; y < Map.LengthY; y++)
-                {
-                    if (Map[x, y] is Ocean)
-                        continue;
-
-                    var n = 0;
-                    for (int i = -1; i <= 1; i++)
-                        for (int j = -1; j <= 1; j++)
-                            if (Math.Abs(i) != Math.Abs(j) && Map[x + i, y + j] is Ocean)
-                                n++;
-
-                    if (n == 2 && Map[x, y] as Ocean == null)
-                        Map[x, y].Hp--;
-                    if (n == 3 && Map[x, y] as Ocean == null)
-                        Map[x, y] = Map[x, y].Die();
-                }
-
-            for (int x = 0; x < Map.LengthY; x++)
-                for (int y = 0; y < Map.LengthY; y++)
-                    if (Map[x, y].Hp == 0)
+                    if ((Map[x, y] as IMapObject).Height < WaterLine)
                         Map[x, y] = Map[x, y].Die();
         }
     }

@@ -5,15 +5,14 @@ using System.Windows.Forms;
 namespace Game60s.Model
 {
     //сделал для определения вида "пляжа" и/или угла
-    public enum BorderType
+    public enum GroundType
     {
-        grass, border, angle, angleInside
+        grass, border, angle, angleinside
     }
 
     //Добавил зависимость типа границы и пнг файла. Сделал направление стены и была развернута в правильное направление или нет.
-    internal class Border : AEntity
+    internal class Ground : AEntity, IMapObject
     {
-        public int X, Y;
         //может как-то переименовать.
         public bool WasRotated = true;
 
@@ -29,25 +28,16 @@ namespace Game60s.Model
             }
         }
 
-        public BorderType BorderType { get; set; }
+        public GroundType GroundType { get; set; }
+        public int Height { get; set; }
 
-        Dictionary<BorderType, string> borderTypeToNameImage = new Dictionary<BorderType, string>()
-        {
-            [BorderType.border] = "border.png",
-            [BorderType.angleInside] = "angle_inside.png",
-            [BorderType.angle] = "angle.png",
-            [BorderType.grass] = "grass.png"
-        };
-
-        public Border(int x, int y)
+        public Ground(int x, int y)
         {
             X = x; Y = y;
             PositionOnForm = new Point(x * GameModell.ElementSize, y * GameModell.ElementSize);
         }
 
-        public static AEntity Create(int x, int y) => new Border(x, y);
-
-        public override string GetNameImage() => borderTypeToNameImage[BorderType];
+        public static AEntity Create(int x, int y) => new Ground(x, y);
 
         public override void Act(HashSet<Keys> key) { }
 

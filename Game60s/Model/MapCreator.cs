@@ -34,7 +34,7 @@ namespace Game60s.Model
         internal static Dictionary<char, Func<int, int, AEntity>> charToIEntity = new Dictionary<char, Func<int, int, AEntity>>()
         {
             ['O'] = Ocean.Create,
-            ['B'] = Border.Create
+            ['B'] = Ground.Create
         };
 
         /// <summary>
@@ -53,6 +53,17 @@ namespace Game60s.Model
                 map[x] = row.Clone() as AEntity[];
             }
             return map;
+        }
+
+        internal static void SetMapHeight(this Map map)
+        {
+            var rand = new Random();
+            foreach (AEntity area in map)
+            {
+                var x = area.X;
+                var y = area.Y;
+                (area as IMapObject).Height = rand.Next(0, 10);
+            }
         }
     }
 }

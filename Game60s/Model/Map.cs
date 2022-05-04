@@ -55,23 +55,23 @@ namespace Game60s.Model
             {
                 for (int j = 0; j < Map.LengthY; j++)
                 {
-                    if (Map[i, j] is Border b)
+                    if (Map[i, j] is Ground b)
                     {
                         //внутренние углы
-                        if (Map.IsBorderElement(i - 1, j, i, j - 1) && Map.IsOcean(i - 1, j - 1)) { b.SwitchType(DirectionType.Up, BorderType.angleInside); continue; };
-                        if (Map.IsBorderElement(i - 1, j, i, j + 1) && Map.IsOcean(i - 1, j + 1)) { b.SwitchType(DirectionType.Right, BorderType.angleInside); continue; };
-                        if (Map.IsBorderElement(i + 1, j, i, j - 1) && Map.IsOcean(i + 1, j - 1)) { b.SwitchType(DirectionType.Left, BorderType.angleInside); continue; };
-                        if (Map.IsBorderElement(i + 1, j, i, j + 1) && Map.IsOcean(i + 1, j + 1)) { b.SwitchType(DirectionType.Down, BorderType.angleInside); continue; };
+                        if (Map.IsBorderElement(i - 1, j, i, j - 1) && Map.IsOcean(i - 1, j - 1)) { b.SwitchType(DirectionType.Up, GroundType.angleinside); continue; };
+                        if (Map.IsBorderElement(i - 1, j, i, j + 1) && Map.IsOcean(i - 1, j + 1)) { b.SwitchType(DirectionType.Right, GroundType.angleinside); continue; };
+                        if (Map.IsBorderElement(i + 1, j, i, j - 1) && Map.IsOcean(i + 1, j - 1)) { b.SwitchType(DirectionType.Left, GroundType.angleinside); continue; };
+                        if (Map.IsBorderElement(i + 1, j, i, j + 1) && Map.IsOcean(i + 1, j + 1)) { b.SwitchType(DirectionType.Down, GroundType.angleinside); continue; };
                         //внешние углы
-                        if (Map.IsOcean(i - 1, j) && Map.IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Up, BorderType.angle); continue; };
-                        if (Map.IsOcean(i - 1, j) && Map.IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Right, BorderType.angle); continue; };
-                        if (Map.IsOcean(i + 1, j) && Map.IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Left, BorderType.angle); continue; };
-                        if (Map.IsOcean(i + 1, j) && Map.IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Down, BorderType.angle); continue; };
+                        if (Map.IsOcean(i - 1, j) && Map.IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Up, GroundType.angle); continue; };
+                        if (Map.IsOcean(i - 1, j) && Map.IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Right, GroundType.angle); continue; };
+                        if (Map.IsOcean(i + 1, j) && Map.IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Left, GroundType.angle); continue; };
+                        if (Map.IsOcean(i + 1, j) && Map.IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Down, GroundType.angle); continue; };
                         //прямые границы
-                        if (Map.IsOcean(i - 1, j)) { b.SwitchType(DirectionType.Up, BorderType.border); continue; };
-                        if (Map.IsOcean(i + 1, j)) { b.SwitchType(DirectionType.Down, BorderType.border); continue; };
-                        if (Map.IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Left, BorderType.border); continue; };
-                        if (Map.IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Right, BorderType.border); continue; };
+                        if (Map.IsOcean(i - 1, j)) { b.SwitchType(DirectionType.Up, GroundType.border); continue; };
+                        if (Map.IsOcean(i + 1, j)) { b.SwitchType(DirectionType.Down, GroundType.border); continue; };
+                        if (Map.IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Left, GroundType.border); continue; };
+                        if (Map.IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Right, GroundType.border); continue; };
                     }
                 }
             }
@@ -79,6 +79,6 @@ namespace Game60s.Model
 
         internal static bool IsOcean(this Map Map, int i, int j) => Map[i, j] is Ocean;
 
-        internal static bool IsBorderElement(this Map Map, int i, int j, int x, int y) => Map[i, j] is Border && Map[x, y] is Border;
+        internal static bool IsBorderElement(this Map Map, int i, int j, int x, int y) => Map[i, j] is Ground && Map[x, y] is Ground;
     }
 }

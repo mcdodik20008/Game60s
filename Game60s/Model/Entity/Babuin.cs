@@ -27,7 +27,5 @@ namespace Game60s.Model.Entity
         }
 
         public override AEntity Die() => this;
-
-        public override string GetNameImage() => "raft.png";
     }
 }

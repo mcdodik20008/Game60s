@@ -6,7 +6,6 @@ namespace Game60s.Model
 {
     internal class Player : AEntity
     {
-        public int X, Y;
         Size sizePng = new Size(28, 46);
         int step = 2;
         public List<Resourse> Resourses = new List<Resourse>();
@@ -32,9 +31,6 @@ namespace Game60s.Model
 
             PositionOnForm = new Point(X, Y);
         }
-
-        public override string GetNameImage() => "player.png";
-
         public override AEntity Die() => this;
     }
 }
