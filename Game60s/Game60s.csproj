@@ -63,6 +63,7 @@
       <DependentUpon>Images.resx</DependentUpon>
     </Compile>
     <Compile Include="Model\Direction.cs" />
+    <Compile Include="Model\Entity\ICanCollect.cs" />
     <Compile Include="Model\Entity\IMapObject.cs" />
     <Compile Include="Model\Entity\Ocean.cs" />
     <Compile Include="Model\Entity\Player.cs" />
@@ -116,6 +117,7 @@
     <None Include="Model\Images\angleinside_180.png" />
     <None Include="Model\Images\angleinside_270.png" />
     <Content Include="Model\Images\angle_inside.png" />
+    <Content Include="Model\Images\babuin.png" />
     <Content Include="Model\Images\border.png" />
     <None Include="Model\Images\border_0.png" />
     <None Include="Model\Images\border_90.png" />

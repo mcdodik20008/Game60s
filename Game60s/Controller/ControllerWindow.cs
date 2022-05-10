@@ -19,10 +19,10 @@ namespace Game60s.Controller
         {
             GameModell.player.Act(KeysPressed);
             GameModell.Raft?.Act(KeysPressed);
+            GameModell.Babuin.Act(KeysPressed);
 
-            foreach (var item in GameModell.Resourse)
-                if (item != null)
-                    item.TryGetThis(GameModell.player);
+            GameModell.player.TryGetThis(GameModell.Resourse);
+            GameModell.Babuin.TryGetThis(GameModell.Resourse);
             
             if (timerTick % 10 == 0)
                 GameModell.Map.SwitchBorder();

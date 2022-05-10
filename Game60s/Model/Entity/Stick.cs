@@ -10,7 +10,6 @@ namespace Game60s.Model
         public Stick(int x, int y)
         {
             X = x; Y = y;
-            PositionOnForm = new Point(x, y);
         }
 
         public static Bitmap GetImage { get { return Images.sticks; } }

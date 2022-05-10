@@ -13,19 +13,5 @@ namespace Game60s.Model
                 if (this == GameModell.Resourse[i])
                     GameModell.Resourse[i] = null;
         }
-
-        public bool TryGetThis(Player p)
-        {
-            var f = Math.Abs(p.X - X) < 20 && Math.Abs(p.Y - Y) < 40;
-            if (f)
-                GetThis(p);
-            return f;
-        }
-
-        public void GetThis(Player p)
-        {
-            p.IncrementResourse();
-            Dispose();
-        }
     }
 }

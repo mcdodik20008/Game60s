@@ -26,19 +26,21 @@ namespace Game60s.Viev
         {
             for (int y = 0; y < SizeVisibleMap; y++)
                 for (int x = 0; x < SizeVisibleMap; x++)
-                    e.Graphics.DrawImage(GameModell.Map[x, y].GetImage(), GameModell.Map[y, x].PositionOnForm);
+                    e.Graphics.DrawImage(GameModell.Map[x, y].GetImage(), GameModell.Map[y, x].PositionOnFormPoint);
 
 
             foreach (var item in GameModell.Resourse)
                 if (item != null)
-                    e.Graphics.DrawImage(Stick.GetImage, item.PositionOnForm);
+                    e.Graphics.DrawImage(Stick.GetImage, item.PositionOnFormPoint);
 
             if (GameModell.Raft != null)
-                e.Graphics.DrawImage(GameModell.Raft.GetImage(), GameModell.Raft.PositionOnForm);
+                e.Graphics.DrawImage(GameModell.Raft.GetImage(), GameModell.Raft.PositionOnFormPoint);
 
-            e.Graphics.DrawImage(GameModell.player.GetImage(), GameModell.player.PositionOnForm);
+            e.Graphics.DrawImage(GameModell.player.GetImage(), GameModell.player.PositionOnFormPoint);
 
             e.Graphics.DrawString(GameModell.player.CountResourse + @"/" + GameModell.ResoutseToRaft, new Font("Arial", 32), Brushes.Gray, 0, GameModell.ElementSize / 3);
+
+            e.Graphics.DrawImage(GameModell.Babuin.GetImage(), GameModell.Babuin.PositionOnFormPoint);
         }
 
         protected override void OnKeyDown(KeyEventArgs e) => ControllerWindow.SetPressedKey(e.KeyCode);

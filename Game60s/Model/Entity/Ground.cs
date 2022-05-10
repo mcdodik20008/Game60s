@@ -34,7 +34,6 @@ namespace Game60s.Model
         public Ground(int x, int y)
         {
             X = x; Y = y;
-            PositionOnForm = new Point(x * GameModell.ElementSize, y * GameModell.ElementSize);
         }
 
         public static AEntity Create(int x, int y) => new Ground(x, y);

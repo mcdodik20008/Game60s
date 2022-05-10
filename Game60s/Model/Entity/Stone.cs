@@ -9,7 +9,6 @@ namespace Game60s.Model
         public Stone(int x, int y)
         {
             X = x; Y = y;
-            PositionOnForm = new Point(x, y);
         }
 
         public override void Act(HashSet<Keys> key) { }

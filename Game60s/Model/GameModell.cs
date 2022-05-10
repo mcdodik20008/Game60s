@@ -10,6 +10,7 @@ namespace Game60s.Model
         //Сделать рандомную позицию или в центре?
         internal static Player player = new Player(3 * ElementSize, 3 * ElementSize);
         internal static Raft Raft = null;
+        internal static Babuin Babuin = new Babuin(5 * ElementSize, 5 * ElementSize);
         /// Катастрофа
         internal const int TickToWaterLineUp = 1000;
         internal static int WaterLine = 0;

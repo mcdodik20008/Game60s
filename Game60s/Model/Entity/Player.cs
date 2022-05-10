@@ -1,16 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace Game60s.Model
 {
-    internal class Player : AEntity
+    internal class Player : AEntity, ICanCollect
     {
         Size sizePng = new Size(28, 46);
         int step = 2;
         public List<Resourse> Resourses = new List<Resourse>();
         public bool OnRaft = false;
-        public int CountResourse { get; private set; }
+        public int CountResourse { get; set; }
         public void IncrementResourse() => CountResourse++;
 
         public Player(int x, int y)
@@ -23,7 +24,7 @@ namespace Game60s.Model
             //Добавь ограничения на ходьбу
             if (!OnRaft)
             {
-                step = keys.Contains(Keys.ShiftKey) ? 4 : 2;
+                step = keys.Contains(Keys.LShiftKey) ? 8 : 2;
                 step = keys.Contains(Keys.ControlKey) ? 1 : 2;
                 if (keys.Contains(Keys.Left))
                     X -= step;
@@ -36,9 +37,20 @@ namespace Game60s.Model
             }
             else
                 this.ActOnRaft();
-            PositionOnForm = new Point(X, Y);
         }
 
+        public void TryGetThis(Resourse[] resourses)
+        {
+            foreach (var p in resourses)
+                if (p != null && Math.Abs(p.X - X) < 20 && Math.Abs(p.Y - Y) < 40)
+                    GetThis(p);
+        }
+
+        public void GetThis(Resourse res)
+        {
+            this.IncrementResourse();
+            res.Dispose();
+        }
         public override AEntity Die() => this;
     }
 }

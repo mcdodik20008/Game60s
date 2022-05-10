@@ -6,15 +6,14 @@ namespace Game60s.Model
 {
     internal class Raft : AEntity
     {
-        private static Size delta = new Size(50, 100);
+        private static Point delta = new Point(50, 100);
         private static int step = 2;
 
         public Raft(Player player)
         {
             player.OnRaft = true;
-            PositionOnForm = player.PositionOnForm - delta;
-            X = PositionOnForm.X;
-            Y = PositionOnForm.Y;
+            X = player.X - delta.X;
+            Y = player.Y - delta.Y;
         }
 
         public override void Act(HashSet<Keys> keys)
@@ -30,8 +29,6 @@ namespace Game60s.Model
                 Y -= step;
             if (keys.Contains(Keys.Down))
                 Y += step;
-
-            PositionOnForm = new Point(X, Y);
         }
 
         public override AEntity Die() => this;
