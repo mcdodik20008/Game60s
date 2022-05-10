@@ -9,11 +9,18 @@ namespace Game60s.Model
         private static Point delta = new Point(50, 100);
         private static int step = 2;
 
-        public Raft(Player player)
+        public Raft(Player p)
         {
-            player.OnRaft = true;
-            X = player.X - delta.X;
-            Y = player.Y - delta.Y;
+            p.OnRaft = true;
+            X = p.X - delta.X;
+            Y = p.Y - delta.Y;
+        }
+
+        public Raft(Babuin b)
+        {
+            b.OnRaft = true;
+            X = b.X - delta.X;
+            Y = b.Y - delta.Y;
         }
 
         public override void Act(HashSet<Keys> keys)

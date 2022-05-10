@@ -64,6 +64,7 @@
     </Compile>
     <Compile Include="Model\Direction.cs" />
     <Compile Include="Model\Entity\ICanCollect.cs" />
+    <Compile Include="Model\Entity\ICanUseRaft.cs" />
     <Compile Include="Model\Entity\IMapObject.cs" />
     <Compile Include="Model\Entity\Ocean.cs" />
     <Compile Include="Model\Entity\Player.cs" />

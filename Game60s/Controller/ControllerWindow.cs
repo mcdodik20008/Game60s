@@ -20,6 +20,7 @@ namespace Game60s.Controller
             GameModell.player.Act(KeysPressed);
             GameModell.Raft?.Act(KeysPressed);
             GameModell.Babuin.Act(KeysPressed);
+            //GameModell.Babuin2.Act(KeysPressed);
 
             GameModell.player.TryGetThis(GameModell.Resourse);
             GameModell.Babuin.TryGetThis(GameModell.Resourse);
@@ -32,6 +33,9 @@ namespace Game60s.Controller
 
             if (GameModell.Raft == null && GameModell.ResoutseToRaft <= GameModell.player.CountResourse && KeysPressed.Contains(Keys.R))
                 GameModell.Raft = new Raft(GameModell.player);
+
+            if (GameModell.Raft == null && GameModell.ResoutseToRaft <= GameModell.Babuin.CountResourse)
+                GameModell.Raft = new Raft(GameModell.Babuin);
         }
     }
 }

@@ -5,12 +5,12 @@ using System.Windows.Forms;
 
 namespace Game60s.Model
 {
-    internal class Player : AEntity, ICanCollect
+    internal class Player : AEntity, ICanCollect, ICanUseRaft
     {
         Size sizePng = new Size(28, 46);
         int step = 2;
         public List<Resourse> Resourses = new List<Resourse>();
-        public bool OnRaft = false;
+        public bool OnRaft { get; set; }
         public int CountResourse { get; set; }
         public void IncrementResourse() => CountResourse++;
 
@@ -24,8 +24,13 @@ namespace Game60s.Model
             //Добавь ограничения на ходьбу
             if (!OnRaft)
             {
-                step = keys.Contains(Keys.LShiftKey) ? 8 : 2;
-                step = keys.Contains(Keys.ControlKey) ? 1 : 2;
+                if (keys.Contains(Keys.ShiftKey))
+                    step = 3;
+                else if (keys.Contains(Keys.ControlKey))
+                    step = 1;
+                else
+                    step = 2;
+
                 if (keys.Contains(Keys.Left))
                     X -= step;
                 if (keys.Contains(Keys.Right))
