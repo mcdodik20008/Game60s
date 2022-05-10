@@ -1,9 +1,7 @@
 ﻿using Game60s.Controller;
 using Game60s.Model;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 
 namespace Game60s.Viev
@@ -12,7 +10,6 @@ namespace Game60s.Viev
     {
         // проси меня что-то добавить в контроллер, пользуйся в основном контроллером, неймспейс я подрубил.
         // время до катастрофы из гей моледи
-
         private int timerTick = 0;
         public const int SizeVisibleMap = 12;
         public static Timer timer = new Timer();
@@ -31,9 +28,17 @@ namespace Game60s.Viev
                 for (int x = 0; x < SizeVisibleMap; x++)
                     e.Graphics.DrawImage(GameModell.Map[x, y].GetImage(), GameModell.Map[y, x].PositionOnForm);
 
-            e.Graphics.DrawImage(GameModell.player.GetImage(), new Point(
-                            GameModell.player.PositionOnForm.X,
-                            GameModell.player.PositionOnForm.Y));
+
+            foreach (var item in GameModell.Resourse)
+                if (item != null)
+                    e.Graphics.DrawImage(Stick.GetImage, item.PositionOnForm);
+
+            if (GameModell.Raft != null)
+                e.Graphics.DrawImage(GameModell.Raft.GetImage(), GameModell.Raft.PositionOnForm);
+
+            e.Graphics.DrawImage(GameModell.player.GetImage(), GameModell.player.PositionOnForm);
+
+            e.Graphics.DrawString(GameModell.player.CountResourse + @"/" + GameModell.ResoutseToRaft, new Font("Arial", 32), Brushes.Gray, 0, GameModell.ElementSize / 3);
         }
 
         protected override void OnKeyDown(KeyEventArgs e) => ControllerWindow.SetPressedKey(e.KeyCode);

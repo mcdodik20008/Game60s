@@ -6,11 +6,17 @@ namespace Game60s.Model
 {
     internal abstract class AEntity
     {
+        
         public int X, Y;
-        public int Hp = 3;
+        
         public Point PositionOnForm { get; set; }
         public abstract void Act(HashSet<Keys> key);
         public abstract AEntity Die();
+        public void ActOnRaft()
+        {
+            X = GameModell.Raft.X + 50;
+            Y = GameModell.Raft.Y + 100;
+        }
     }
 
     internal static class AEntityExtention

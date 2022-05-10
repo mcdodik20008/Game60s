@@ -18,14 +18,20 @@ namespace Game60s.Controller
         public static void EterationGameModel(int timerTick)
         {
             GameModell.player.Act(KeysPressed);
-            if (timerTick % 100 == 0)
-            {
+            GameModell.Raft?.Act(KeysPressed);
+
+            foreach (var item in GameModell.Resourse)
+                if (item != null)
+                    item.TryGetThis(GameModell.player);
+            
+            if (timerTick % 10 == 0)
                 GameModell.Map.SwitchBorder();
-            }
-            if (timerTick % 500 == 0)
-            {
-                GameModell.IncreaseWaterLine();
-            }
+
+            if (timerTick % GameModell.TickToWaterLineUp == 0) 
+                GameModell.IncreaseWaterLine();   
+
+            if (GameModell.Raft == null && GameModell.ResoutseToRaft <= GameModell.player.CountResourse && KeysPressed.Contains(Keys.R))
+                GameModell.Raft = new Raft(GameModell.player);
         }
     }
 }

@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Game60s</RootNamespace>
     <AssemblyName>Game60s</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -57,14 +57,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ControllerWindow.cs" />
+    <Compile Include="Images.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Images.resx</DependentUpon>
+    </Compile>
     <Compile Include="Model\Direction.cs" />
     <Compile Include="Model\Entity\IMapObject.cs" />
     <Compile Include="Model\Entity\Ocean.cs" />
     <Compile Include="Model\Entity\Player.cs" />
+    <Compile Include="Model\Entity\Raft.cs" />
     <Compile Include="Model\Entity\Resourse.cs" />
     <Compile Include="Model\Entity\Stone.cs" />
     <Compile Include="Model\Entity\Ground.cs" />
-    <Compile Include="Model\Entity\Sticks.cs" />
+    <Compile Include="Model\Entity\Stick.cs" />
     <Compile Include="Model\GameModell.cs" />
     <Compile Include="Model\Entity\AEntity.cs" />
     <Compile Include="Model\Map.cs" />
@@ -73,7 +79,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="Model\Entity\babuin.cs" />
+    <Compile Include="Model\Entity\Babuin.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
@@ -93,11 +99,28 @@
     <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Images.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Images.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Model\Images\angle.png" />
+    <None Include="Model\Images\angle_0.png" />
+    <None Include="Model\Images\angle_90.png" />
+    <None Include="Model\Images\angle_180.png" />
+    <None Include="Model\Images\angle_270.png" />
+    <None Include="Model\Images\angleinside_0.png" />
+    <None Include="Model\Images\angleinside_90.png" />
+    <None Include="Model\Images\angleinside_180.png" />
+    <None Include="Model\Images\angleinside_270.png" />
     <Content Include="Model\Images\angle_inside.png" />
     <Content Include="Model\Images\border.png" />
+    <None Include="Model\Images\border_0.png" />
+    <None Include="Model\Images\border_90.png" />
+    <None Include="Model\Images\border_180.png" />
+    <None Include="Model\Images\border_270.png" />
     <Content Include="Model\Images\ocean.png" />
     <Content Include="Model\Images\grass.png" />
     <Content Include="Model\Images\player.png" />

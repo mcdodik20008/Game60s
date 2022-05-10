@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Drawing;
-using System.Collections;
 
 namespace Game60s.Model
 {
@@ -11,12 +9,11 @@ namespace Game60s.Model
     }
 
 
-    public static class Direction 
+    public static class Direction
     {
         /// <summary>
         /// Преобразует направление в угол
         /// </summary>
-        /// <param name="dT"></param>
         /// <returns>Rotation angle</returns>
         public static float ConvertDirectionToAngle(this DirectionType dT)
         {
@@ -54,9 +51,6 @@ namespace Game60s.Model
         /// <summary>
         /// Меняет параметры переданного Border
         /// </summary>
-        /// <param name="b"></param>
-        /// <param name="direction"></param>
-        /// <param name="type"></param>
         internal static void SwitchType(this Ground b, DirectionType direction, GroundType type)
         {
             b.Direction = direction;
