@@ -58,12 +58,13 @@ namespace Game60s.Model
         internal static void SetMapHeight(this Map map)
         {
             var rand = new Random();
-            foreach (AEntity area in map)
-            {
-                var x = area.X;
-                var y = area.Y;
-                (area as IMapObject).Height = rand.Next(0, 10);
-            }
+ 
+            for (int x = 0; x < map.LengthX; x++)
+                for (int y = 0; y < map.LengthY; y++)
+                {
+                    //int d = (int)Math.Floor(Math.Sqrt((center.Item1 - x) ^ 2 + (center.Item2 - y) ^ 2));
+                    (map[x, y] as IMapObject).Height = rand.Next(0, 10);
+                }
         }
     }
 }
