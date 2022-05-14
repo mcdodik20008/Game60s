@@ -9,7 +9,7 @@ namespace Game60s
     {
         public static void Main()
         {
-            var clientSize = new Size(970, 990);
+            var clientSize = new Size(810, 834);
             new GameModell();
             Application.Run(new MainWindow()
             {

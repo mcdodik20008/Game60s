@@ -11,7 +11,7 @@ namespace Game60s.Viev
         // проси меня что-то добавить в контроллер, пользуйся в основном контроллером, неймспейс я подрубил.
         // время до катастрофы из гей моледи
         private int timerTick = 0;
-        public const int SizeVisibleMap = 20;
+        public const int SizeVisibleMap = 18;
         public static Timer timer = new Timer();
 
         internal MainWindow()
@@ -38,7 +38,7 @@ namespace Game60s.Viev
 
             e.Graphics.DrawImage(GameModell.player.GetImage(), GameModell.player.PositionOnFormPoint);
 
-            e.Graphics.DrawString(GameModell.player.CountResourse + @"/" + GameModell.ResoutseToRaft, new Font("Arial", 32), Brushes.Gray, 0, GameModell.ElementSize / 3);
+            e.Graphics.DrawString(GameModell.player.CountResourse + @"/" + GameModell.ResoutseToRaft, new Font("Arial", 28), Brushes.Gray, 10, 10);
 
             e.Graphics.DrawImage(GameModell.Babuin.GetImage(), GameModell.Babuin.PositionOnFormPoint);
         }
