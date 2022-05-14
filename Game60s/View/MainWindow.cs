@@ -41,7 +41,6 @@ namespace Game60s.Viev
             e.Graphics.DrawString(GameModell.player.CountResourse + @"/" + GameModell.ResoutseToRaft, new Font("Arial", 32), Brushes.Gray, 0, GameModell.ElementSize / 3);
 
             e.Graphics.DrawImage(GameModell.Babuin.GetImage(), GameModell.Babuin.PositionOnFormPoint);
-            //e.Graphics.DrawImage(GameModell.Babuin2.GetImage(), GameModell.Babuin2.PositionOnFormPoint);
         }
 
         protected override void OnKeyDown(KeyEventArgs e) => ControllerWindow.SetPressedKey(e.KeyCode);
