@@ -11,7 +11,7 @@ namespace Game60s.Viev
         // проси меня что-то добавить в контроллер, пользуйся в основном контроллером, неймспейс я подрубил.
         // время до катастрофы из гей моледи
         private int timerTick = 0;
-        public const int SizeVisibleMap = 12;
+        public const int SizeVisibleMap = 20;
         public static Timer timer = new Timer();
 
         internal MainWindow()

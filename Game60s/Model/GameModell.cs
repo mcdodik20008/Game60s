@@ -18,7 +18,7 @@ namespace Game60s.Model
         internal static TimeSpan TimeToDisaster = new TimeSpan(0, 1, 0);
         internal static Random Rnd = new Random();
         /// Карта
-        internal const int ElementSize = 50;
+        internal const int ElementSize = 40;
         internal static Map Map;
         internal static List<Resourse> ResoursesOnMap = new List<Resourse>();
         internal static Resourse[] Resourse;

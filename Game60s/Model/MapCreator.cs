@@ -63,7 +63,8 @@ namespace Game60s.Model
                 for (int y = 0; y < map.LengthY; y++)
                 {
                     //int d = (int)Math.Floor(Math.Sqrt((center.Item1 - x) ^ 2 + (center.Item2 - y) ^ 2));
-                    (map[x, y] as IMapObject).Height = rand.Next(0, 10);
+                    //(map[x, y] as IMapObject).Height = rand.Next(0, 10);
+                    (map[x, y] as IMapObject).Height = 10;
                 }
         }
     }
