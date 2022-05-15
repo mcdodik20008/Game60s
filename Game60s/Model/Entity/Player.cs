@@ -13,7 +13,7 @@ namespace Game60s.Model
         public bool OnRaft { get; set; }
         public int CountResourse { get; set; }
         public void IncrementResourse() => CountResourse++;
-
+        public Bitmap Image { get => Images.player; }
         public Player(int x, int y)
         {
             X = x; Y = y;
