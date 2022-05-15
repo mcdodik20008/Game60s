@@ -8,8 +8,6 @@ namespace Game60s.Viev
 {
     internal class MainWindow : Form
     {
-        // проси меня что-то добавить в контроллер, пользуйся в основном контроллером, неймспейс я подрубил.
-        // время до катастрофы из гей моледи
         private int timerTick = 0;
         public const int SizeVisibleMap = 15;
         public static Timer timer = new Timer();
@@ -28,7 +26,7 @@ namespace Game60s.Viev
                 for (int y = 0; y < SizeVisibleMap; y++)
                 {
                     e.Graphics.DrawImage(GameModell.Map[x, y].GetImage(), GameModell.Map[y, x].PositionOnFormPoint);
-                    if (GameModell.WaterLine == (GameModell.Map[x, y] as IMapObject).Height - 1)
+                    if (GameModell.WaterLine == (GameModell.Map[x, y] as IMapObject).Height)
                         e.Graphics.DrawImage(Images.transparentRed, GameModell.Map[y, x].PositionOnFormPoint);
                 }
             foreach (var item in GameModell.Resourse)

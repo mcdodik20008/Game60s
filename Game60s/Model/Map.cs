@@ -57,21 +57,21 @@ namespace Game60s.Model
                 {
                     if (Map[i, j] is Ground b)
                     {
-                        //внутренние углы
-                        if (Map.IsBorderElement(i - 1, j, i, j - 1) && Map.IsOcean(i - 1, j - 1)) { b.SwitchType(DirectionType.Up, GroundType.angleinside); continue; };
-                        if (Map.IsBorderElement(i - 1, j, i, j + 1) && Map.IsOcean(i - 1, j + 1)) { b.SwitchType(DirectionType.Right, GroundType.angleinside); continue; };
-                        if (Map.IsBorderElement(i + 1, j, i, j - 1) && Map.IsOcean(i + 1, j - 1)) { b.SwitchType(DirectionType.Left, GroundType.angleinside); continue; };
-                        if (Map.IsBorderElement(i + 1, j, i, j + 1) && Map.IsOcean(i + 1, j + 1)) { b.SwitchType(DirectionType.Down, GroundType.angleinside); continue; };
-                        //внешние углы
-                        if (Map.IsOcean(i - 1, j) && Map.IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Up, GroundType.angle); continue; };
-                        if (Map.IsOcean(i - 1, j) && Map.IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Right, GroundType.angle); continue; };
-                        if (Map.IsOcean(i + 1, j) && Map.IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Left, GroundType.angle); continue; };
-                        if (Map.IsOcean(i + 1, j) && Map.IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Down, GroundType.angle); continue; };
-                        //прямые границы
-                        if (Map.IsOcean(i - 1, j)) { b.SwitchType(DirectionType.Up, GroundType.border); continue; };
-                        if (Map.IsOcean(i + 1, j)) { b.SwitchType(DirectionType.Down, GroundType.border); continue; };
-                        if (Map.IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Left, GroundType.border); continue; };
-                        if (Map.IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Right, GroundType.border); continue; };
+                        //внутренние углы angleinside
+                        if (Map.IsBorderElement(i - 1, j, i, j - 1) && Map.IsOcean(i - 1, j - 1)) { b.SwitchType(DirectionType.Up, GroundType.sand); continue; };
+                        if (Map.IsBorderElement(i - 1, j, i, j + 1) && Map.IsOcean(i - 1, j + 1)) { b.SwitchType(DirectionType.Right, GroundType.sand); continue; };
+                        if (Map.IsBorderElement(i + 1, j, i, j - 1) && Map.IsOcean(i + 1, j - 1)) { b.SwitchType(DirectionType.Left, GroundType.sand); continue; };
+                        if (Map.IsBorderElement(i + 1, j, i, j + 1) && Map.IsOcean(i + 1, j + 1)) { b.SwitchType(DirectionType.Down, GroundType.sand); continue; };
+                        //внешние углы angle
+                        if (Map.IsOcean(i - 1, j) && Map.IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Up, GroundType.sand); continue; };
+                        if (Map.IsOcean(i - 1, j) && Map.IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Right, GroundType.sand); continue; };
+                        if (Map.IsOcean(i + 1, j) && Map.IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Left, GroundType.sand); continue; };
+                        if (Map.IsOcean(i + 1, j) && Map.IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Down, GroundType.sand); continue; };
+                        //прямые границы border
+                        if (Map.IsOcean(i - 1, j)) { b.SwitchType(DirectionType.Up, GroundType.sand); continue; };
+                        if (Map.IsOcean(i + 1, j)) { b.SwitchType(DirectionType.Down, GroundType.sand); continue; };
+                        if (Map.IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Left, GroundType.sand); continue; };
+                        if (Map.IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Right, GroundType.sand); continue; };
                     }
                 }
             }
