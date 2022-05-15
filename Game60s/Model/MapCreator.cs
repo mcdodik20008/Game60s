@@ -65,7 +65,7 @@ namespace Game60s.Model
                                                             BasisType.Simplex,
                                                             InterpolationType.Quintic);
             HeightMap.Frequency = 0.05;
-            HeightMap.Octaves = 4;
+            HeightMap.Octaves = 3;
 
             var CalculatedHeightMap = new int[map.LengthX, map.LengthY];
 
@@ -92,17 +92,29 @@ namespace Game60s.Model
             {
                 for (int y = 0; y < map.LengthY; y++)
                 {
-                    int up = 0, down = 0, left = 0, right = 0;
-                    try { up = CalculatedHeightMap[x, y + 1]; } catch { }
-                    try { down = CalculatedHeightMap[x, y - 1]; } catch { }
-                    try { right = CalculatedHeightMap[x + 1, y]; } catch { }
-                    try { left = CalculatedHeightMap[x - 1, y]; } catch { }
+                    CalculatedHeightMap[x, y] -= mapMin;
+                    mapHeight += $"{CalculatedHeightMap[x, y]} ";
+                }
+                mapHeight += "\n";
+            }
 
-                    var current = CalculatedHeightMap[x, y];
-                    if ((up + down + left + right) < 4)
-                        CalculatedHeightMap[x, y] = 0;
-                    if (current == 0 && (up + down + left + right) > 4)
-                        CalculatedHeightMap[x, y] = (up + down + left + right) / 4;
+            //MessageBox.Show(mapHeight);
+            mapHeight = "";
+
+            for (int x = 0; x < map.LengthX; x++)
+            {
+                for (int y = 0; y < map.LengthY; y++)
+                {
+                    int left = (x - 1 >= 0) ? CalculatedHeightMap[x - 1, y] : 0;
+                    int right = (x + 1 <= map.LengthX - 1) ? CalculatedHeightMap[x + 1, y] : 0;
+                    int up = (y - 1 >= 0) ? CalculatedHeightMap[x, y - 1] : 0;
+                    int down = (y + 1 <= map.LengthX - 1) ? CalculatedHeightMap[x, y + 1] : 0;
+
+                    if ((left + right + up + down) / 4 < CalculatedHeightMap[x, y])
+                        CalculatedHeightMap[x, y] = (left + right + up + down) / 4;
+
+                    if ((up + down) / 2 - CalculatedHeightMap[x, y] > 1 && (left + right) / 2 - CalculatedHeightMap[x, y] > 1)
+                        CalculatedHeightMap[x, y] = (left + right + up + down) / 4;
                 }
             }
 
@@ -110,8 +122,8 @@ namespace Game60s.Model
             {
                 for (int y = 0; y < map.LengthY; y++)
                 {
-                    (map[x, y] as IMapObject).Height = CalculatedHeightMap[x, y] - mapMin;
-                    mapHeight += $"{CalculatedHeightMap[x, y] - mapMin} ";
+                    (map[x, y] as IMapObject).Height = CalculatedHeightMap[x, y];
+                    mapHeight += $"{CalculatedHeightMap[x, y]} ";
                 }
                 mapHeight += "\n";
             }
