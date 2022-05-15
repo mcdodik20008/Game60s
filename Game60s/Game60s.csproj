@@ -179,6 +179,7 @@
     <Content Include="Model\Images\player.png" />
     <Content Include="Model\Images\raft.png" />
     <Content Include="Model\Images\sticks.png" />
+    <None Include="Model\Images\transparentRed.png" />
     <Content Include="Model\test.txt" />
     <Content Include="Model\Map.txt" />
   </ItemGroup>
