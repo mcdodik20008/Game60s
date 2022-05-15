@@ -11,7 +11,7 @@ namespace Game60s.Viev
         // проси меня что-то добавить в контроллер, пользуйся в основном контроллером, неймспейс я подрубил.
         // время до катастрофы из гей моледи
         private int timerTick = 0;
-        public const int SizeVisibleMap = 18;
+        public const int SizeVisibleMap = 15;
         public static Timer timer = new Timer();
 
         internal MainWindow()
@@ -24,8 +24,8 @@ namespace Game60s.Viev
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            for (int y = 0; y < SizeVisibleMap; y++)
-                for (int x = 0; x < SizeVisibleMap; x++)
+            for (int x = 0; x < SizeVisibleMap; x++)
+                for (int y = 0; y < SizeVisibleMap; y++)
                     e.Graphics.DrawImage(GameModell.Map[x, y].GetImage(), GameModell.Map[y, x].PositionOnFormPoint);
 
 
