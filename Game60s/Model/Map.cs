@@ -57,9 +57,6 @@ namespace Game60s.Model
                 {
                     if (Map[i, j] is Ground b)
                     {
-                        //
-/*                        if (Map.IsOcean(i, j + 1) && Map.IsOcean(i, j - 1)) { b.Die(); continue; };
-                        if (Map.IsOcean(i + 1, j) && Map.IsOcean(i - 1, j)) { b.Die(); break; };*/
                         //внутренние углы angleinside
                         if (Map.IsBorderElement(i - 1, j, i, j - 1) && Map.IsOcean(i - 1, j - 1)) { b.SwitchType(DirectionType.Up, GroundType.angleinside); continue; };
                         if (Map.IsBorderElement(i - 1, j, i, j + 1) && Map.IsOcean(i - 1, j + 1)) { b.SwitchType(DirectionType.Right, GroundType.angleinside); continue; };

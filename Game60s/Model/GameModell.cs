@@ -36,6 +36,7 @@ namespace Game60s.Model
             Map = MapCreator.Create();
 
             Map.SetMapHeight();
+            
             Resourse = new Stick[Rnd.Next(10, 15)];
             for (int i = 0; i < Resourse.Length; i++)
                 Resourse[i] = Stick.CreateRandomXY();
