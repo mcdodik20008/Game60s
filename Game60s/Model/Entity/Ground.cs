@@ -7,7 +7,7 @@ namespace Game60s.Model
     //сделал для определения вида "пляжа" и/или угла
     public enum GroundType
     {
-        grass, sand //border, angle, angleinside
+        grass, /*sand*/ border, angle, angleinside
     }
 
     //Добавил зависимость типа границы и пнг файла. Сделал направление стены и была развернута в правильное направление или нет.

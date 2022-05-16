@@ -26,10 +26,10 @@ namespace Game60s.Model
         public static Bitmap GetImage(this AEntity entity)
         {
             if (entity is Ground ground)
-                //if (ground.GroundType == GroundType.grass)
+                if (ground.GroundType == GroundType.grass)
                     return GameModell.EntityImage[$"{ground.GroundType}.png"];
-                //else
-                //    return GameModell.EntityImage[$"{ground.GroundType}_{ground.Direction.ConvertDirectionToAngle()}.png"];
+                else
+                    return GameModell.EntityImage[$"{ground.GroundType}_{ground.Direction.ConvertDirectionToAngle()}.png"];
             else
             {
                 var entityType = entity.GetType().ToString().ToLower().Split('.').Last();

@@ -98,7 +98,7 @@ namespace Game60s.Model
                 mapHeight += "\n";
             }
 
-            //MessageBox.Show(mapHeight);
+            MessageBox.Show(mapHeight);
             mapHeight = "";
 
             for (int x = 0; x < map.LengthX; x++)
@@ -115,9 +115,65 @@ namespace Game60s.Model
 
                     if ((up + down) / 2 - CalculatedHeightMap[x, y] > 1 && (left + right) / 2 - CalculatedHeightMap[x, y] > 1)
                         CalculatedHeightMap[x, y] = (left + right + up + down) / 4;
+
+                    if (up == down && up != CalculatedHeightMap[x, y])
+                    {
+                        if (left == right && left != CalculatedHeightMap[x, y])
+                            CalculatedHeightMap[x, y] = left;
+                        else
+                            CalculatedHeightMap[x, y] = up;
+                        continue;
+                    }
+
+                    if (left + right > CalculatedHeightMap[x, y] * 2)
+                        if ((left + right) / 2 < left && (left + right) / 2 < right)
+                            CalculatedHeightMap[x, y] = (left + up) / 2;
+
+                    if (up + down > CalculatedHeightMap[x, y] * 2)
+                        if ((up + down) / 2 < up && (up + down) / 2 < down)
+                            CalculatedHeightMap[x, y] = (up + down) / 2;
+
                 }
             }
 
+            for (int x = 0; x < map.LengthX; x++)
+            {
+                for (int y = 0; y < map.LengthY; y++)
+                {
+                    int left = (x - 1 >= 0) ? CalculatedHeightMap[x - 1, y] : 0;
+                    int right = (x + 1 <= map.LengthX - 1) ? CalculatedHeightMap[x + 1, y] : 0;
+                    int up = (y - 1 >= 0) ? CalculatedHeightMap[x, y - 1] : 0;
+                    int down = (y + 1 <= map.LengthX - 1) ? CalculatedHeightMap[x, y + 1] : 0;
+
+                    if (up + down < CalculatedHeightMap[x, y])
+                    {
+                        if (left + right < CalculatedHeightMap[x, y])
+                            CalculatedHeightMap[x, y] = (left + right) / 2;
+                        else
+                            CalculatedHeightMap[x, y] = (up + down) / 2;
+                    }
+                }
+            }
+
+/*            for (int x = 0; x < map.LengthX; x++)
+            {
+                for (int y = 0; y < map.LengthY; y++)
+                {
+                    int left = (x - 1 >= 0) ? CalculatedHeightMap[x - 1, y] : 0;
+                    int right = (x + 1 <= map.LengthX - 1) ? CalculatedHeightMap[x + 1, y] : 0;
+                    int up = (y - 1 >= 0) ? CalculatedHeightMap[x, y - 1] : 0;
+                    int down = (y + 1 <= map.LengthX - 1) ? CalculatedHeightMap[x, y + 1] : 0;
+
+                    if (up + down < CalculatedHeightMap[x, y])
+                    {
+                        if (left + right < CalculatedHeightMap[x, y])
+                            CalculatedHeightMap[x, y] = (left + right) / 2;
+                        else
+                            CalculatedHeightMap[x, y] = (up + down) / 2;
+                    }
+                }
+            }
+*/
             for (int x = 0; x < map.LengthX; x++)
             {
                 for (int y = 0; y < map.LengthY; y++)
@@ -128,7 +184,7 @@ namespace Game60s.Model
                 mapHeight += "\n";
             }
 
-            //MessageBox.Show(mapHeight);
+            MessageBox.Show(mapHeight);
         }
     }
 }
