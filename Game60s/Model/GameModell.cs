@@ -27,9 +27,6 @@ namespace Game60s.Model
         private static readonly DirectoryInfo imagesDirectory = new DirectoryInfo(@"..\..\Model\Images");
         internal static Dictionary<string, Bitmap> EntityImage = new Dictionary<string, Bitmap>();
         
-        // Нужно сделать генератор высоты у блока, в зависимости от предыдущих высот,
-        // или делать некий рандом относительно какого-то патерна: заранее раданное значение +- 1 в random.Next();
-        // придумать 1-2 патерна и выбирать их рандомно(если их 2)
         internal GameModell()
         {
             LoadEntityImages();
@@ -40,6 +37,7 @@ namespace Game60s.Model
             Resourse = new Stick[Rnd.Next(10, 15)];
             for (int i = 0; i < Resourse.Length; i++)
                 Resourse[i] = Stick.CreateRandomXY();
+
             Map.SwitchBorder();
         }
 

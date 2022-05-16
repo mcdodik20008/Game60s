@@ -143,6 +143,26 @@ namespace Game60s {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap babuin {
+            get {
+                object obj = ResourceManager.GetObject("babuin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap babuin_rage {
+            get {
+                object obj = ResourceManager.GetObject("babuin_rage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap border_0 {
             get {
                 object obj = ResourceManager.GetObject("border_0", resourceCulture);

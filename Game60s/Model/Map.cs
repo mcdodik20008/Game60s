@@ -83,5 +83,8 @@ namespace Game60s.Model
         internal static bool IsOcean(this Map Map, int i, int j) => Map[i, j] is Ocean;
 
         internal static bool IsBorderElement(this Map Map, int i, int j, int x, int y) => Map[i, j] is Ground && Map[x, y] is Ground;
+
+        internal static bool IsOnDirt(this System.Drawing.Point pos) =>
+            GameModell.Map[pos.X / GameModell.ElementSize, pos.Y / GameModell.ElementSize] is Ground;    
     }
 }

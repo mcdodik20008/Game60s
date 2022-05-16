@@ -15,7 +15,7 @@ namespace Game60s.Viev
         internal MainWindow()
         {
             DoubleBuffered = true;
-            timer.Interval = 1;
+            timer.Interval = 10;
             timer.Tick += TimerTick;
             timer.Start();
         }
@@ -29,6 +29,7 @@ namespace Game60s.Viev
                     if (GameModell.WaterLine == (GameModell.Map[x, y] as IMapObject).Height)
                         e.Graphics.DrawImage(Images.transparentRed, GameModell.Map[y, x].PositionOnFormPoint);
                 }
+
             foreach (var item in GameModell.Resourse)
                 if (item != null)
                     e.Graphics.DrawImage(Stick.GetImage, item.PositionOnFormPoint);
@@ -40,7 +41,7 @@ namespace Game60s.Viev
 
             e.Graphics.DrawString(GameModell.player.CountResourse + @"/" + GameModell.ResoutseToRaft, new Font("Arial", 28), Brushes.Gray, 10, 10);
 
-            e.Graphics.DrawImage(GameModell.Babuin.GetImage(), GameModell.Babuin.PositionOnFormPoint);
+            e.Graphics.DrawImage(GameModell.Babuin.Image, GameModell.Babuin.PositionOnFormPoint);
         }
 
         protected override void OnKeyDown(KeyEventArgs e) => ControllerWindow.SetPressedKey(e.KeyCode);

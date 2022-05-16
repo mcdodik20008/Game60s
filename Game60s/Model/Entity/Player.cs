@@ -14,6 +14,8 @@ namespace Game60s.Model
         public int CountResourse { get; set; }
         public void IncrementResourse() => CountResourse++;
         public Bitmap Image { get => Images.player; }
+        public int StanTime { get; set; }
+        public int StanResist { get; set; }
         public Player(int x, int y)
         {
             X = x; Y = y;
@@ -21,6 +23,14 @@ namespace Game60s.Model
 
         public override void Act(HashSet<Keys> keys)
         {
+            if (StanTime > 0)
+            {
+                StanTime -= 1;
+                return;
+            }
+            if (StanResist > 0)
+                StanResist -= 1;
+            
             //Добавь ограничения на ходьбу
             if (!OnRaft)
             {

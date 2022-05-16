@@ -169,6 +169,7 @@
     <None Include="Model\Images\angleinside_270.png" />
     <Content Include="Model\Images\angle_inside.png" />
     <Content Include="Model\Images\babuin.png" />
+    <None Include="Model\Images\babuin_rage.png" />
     <Content Include="Model\Images\border.png" />
     <None Include="Model\Images\border_0.png" />
     <None Include="Model\Images\border_90.png" />

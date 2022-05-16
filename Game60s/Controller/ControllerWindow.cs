@@ -20,7 +20,7 @@ namespace Game60s.Controller
             GameModell.player.Act(KeysPressed);
             GameModell.Raft?.Act(KeysPressed);
             GameModell.Babuin.Act(KeysPressed);
-            //GameModell.Babuin2.Act(KeysPressed);
+            GameModell.Babuin.TryAttack();
 
             GameModell.player.TryGetThis(GameModell.Resourse);
             GameModell.Babuin.TryGetThis(GameModell.Resourse);

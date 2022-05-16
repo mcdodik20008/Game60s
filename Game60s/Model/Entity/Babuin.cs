@@ -18,7 +18,7 @@ namespace Game60s.Model
     {
         public int CountResourse { get; set; }
         public bool OnRaft { get; set; }
-
+        public Bitmap Image { get { return GameModell.player.StanTime > 0 ? Images.babuin_rage : Images.babuin; } }
         public void IncrementResourse() => CountResourse++;
         private const int step = 1;
         public Babuin(int x, int y)
@@ -54,6 +54,26 @@ namespace Game60s.Model
             res.Dispose();
         }
 
+        public void TryAttack()
+        {
+            if (Math.Abs((GameModell.player.PositionOnFormV2 - GameModell.Babuin.PositionOnFormV2).Length()) < 40 
+                && GameModell.player.StanResist <= 0)
+            {
+                GameModell.player.StanResist = 100;
+                GameModell.player.StanTime = 50;
+                if (GameModell.Rnd.Next(0, 1000) < 500)
+                {
+                    GameModell.player.CountResourse -= 1;
+                    GameModell.Babuin.CountResourse += 1;
+                }
+                else
+                {
+                    GameModell.player.CountResourse += 1;
+                    GameModell.Babuin.CountResourse -= 1;
+                }
+            }
+
+        }
         public override AEntity Die() => this;
     }
 }
