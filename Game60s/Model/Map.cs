@@ -72,6 +72,9 @@ namespace Game60s.Model
                         if (Map.IsOcean(i + 1, j)) { b.SwitchType(DirectionType.Down, GroundType.border); continue; };
                         if (Map.IsOcean(i, j - 1)) { b.SwitchType(DirectionType.Left, GroundType.border); continue; };
                         if (Map.IsOcean(i, j + 1)) { b.SwitchType(DirectionType.Right, GroundType.border); continue; };
+                        //
+                        if (Map.IsOcean(i, j - 1) && Map.IsOcean(i, j + 1)) { b.Die(); continue; }
+                        if (Map.IsOcean(i - 1, j) && Map.IsOcean(i + 1, j)) { b.Die(); continue; }
                     }
                 }
             }

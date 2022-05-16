@@ -13,7 +13,7 @@ namespace Game60s.Model
         internal static Babuin Babuin = new Babuin(5 * ElementSize, 5 * ElementSize);
         //internal static Babuin Babuin2 = new Babuin(4 * ElementSize, 4 * ElementSize);
         /// Катастрофа
-        internal const int TickToWaterLineUp = 1000;
+        internal const int TickToWaterLineUp = 500;
         internal static int WaterLine = 0;
         internal static TimeSpan TimeToDisaster = new TimeSpan(0, 1, 0);
         internal static Random Rnd = new Random();

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Windows.Forms;
 using TinkerWorX.AccidentalNoiseLibrary;
 
 namespace Game60s.Model
@@ -73,7 +72,7 @@ namespace Game60s.Model
                 for (int y = 0; y < map.LengthY; y++)
                 {
                     int d = (int)Math.Floor(Math.Sqrt((center.Item1 - x) * (center.Item1 - x) + (center.Item2 - y) * (center.Item2 - y)));
-                    var calculatedHeight = (int)(Math.Abs(HeightMap.Get(x, y) * (1 - d * HeightMap.Frequency) * 10));
+                    var calculatedHeight = (int)(Math.Abs(HeightMap.Get(x, y) * (1.15 - d * HeightMap.Frequency) * 10));
                     CalculatedHeightMap[x, y] = calculatedHeight;
                 }
 
@@ -90,6 +89,8 @@ namespace Game60s.Model
                         CalculatedHeightMap[x, y] = (left + right + up + down) / 4;
                         if ((left + right) / 2 < CalculatedHeightMap[x, y])
                             CalculatedHeightMap[x, y] = (left + right) / 2;
+                        if ((up + down) / 2 < CalculatedHeightMap[x, y])
+                            CalculatedHeightMap[x, y] = (up + down) / 2;
                     }
                 }
 
