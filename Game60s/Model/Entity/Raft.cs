@@ -9,6 +9,7 @@ namespace Game60s.Model
         private static Point delta = new Point(50, 100);
         private static int step = 2;
 
+        //пока так проще
         public Raft(Player p)
         {
             p.OnRaft = true;

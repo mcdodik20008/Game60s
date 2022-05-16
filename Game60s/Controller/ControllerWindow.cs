@@ -22,6 +22,10 @@ namespace Game60s.Controller
             GameModell.Babuin.Act(KeysPressed);
             GameModell.Babuin.TryAttack();
 
+            foreach (var item in GameModell.ResoursesOnMap)
+                item.DieIfOnOcean();
+            
+            
             GameModell.player.TryGetThis(GameModell.Resourse);
             GameModell.Babuin.TryGetThis(GameModell.Resourse);
             

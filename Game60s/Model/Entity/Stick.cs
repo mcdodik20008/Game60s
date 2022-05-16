@@ -23,10 +23,8 @@ namespace Game60s.Model
 
         public override AEntity Die() => this;
 
-        public static Stick CreateRandomXY()
-        {
-            return new Stick(SetRandomCoordinateOnDirt());
-        }
+        public static Stick CreateRandomXY() => 
+            new Stick(SetRandomCoordinateOnDirt());
 
         private static Point SetRandomCoordinateOnDirt()
         {

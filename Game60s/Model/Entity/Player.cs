@@ -28,6 +28,7 @@ namespace Game60s.Model
                 StanTime -= 1;
                 return;
             }
+
             if (StanResist > 0)
                 StanResist -= 1;
             

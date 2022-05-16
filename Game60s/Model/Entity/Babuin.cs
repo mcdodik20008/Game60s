@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Windows.Forms;
 using System.Linq;
-using System.Numerics;
+using System.Windows.Forms;
 
 namespace Game60s.Model
 {
@@ -24,11 +23,11 @@ namespace Game60s.Model
         public Babuin(int x, int y)
         {
             X = x; Y = y;
-        }                                       
+        }
 
         public override void Act(HashSet<Keys> key)
         {
-           var t = PositionOnFormV2.MinVector2(GameModell.Resourse.Where(x => x != null).Select(x => x.PositionOnFormV2));
+            var t = PositionOnFormV2.MinVector2(GameModell.Resourse.Where(x => x != null).Select(x => x.PositionOnFormV2));
             if (t.X != 0)
                 X += t.X < 0 ? -step : step;
             if (t.Y != 0)
@@ -56,7 +55,7 @@ namespace Game60s.Model
 
         public void TryAttack()
         {
-            if (Math.Abs((GameModell.player.PositionOnFormV2 - GameModell.Babuin.PositionOnFormV2).Length()) < 40 
+            if (Math.Abs((GameModell.player.PositionOnFormV2 - GameModell.Babuin.PositionOnFormV2).Length()) < 40
                 && GameModell.player.StanResist <= 0)
             {
                 GameModell.player.StanResist = 100;

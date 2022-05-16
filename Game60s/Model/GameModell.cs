@@ -11,7 +11,6 @@ namespace Game60s.Model
         internal static Player player = new Player(3 * ElementSize, 3 * ElementSize);
         internal static Raft Raft = null;
         internal static Babuin Babuin = new Babuin(5 * ElementSize, 5 * ElementSize);
-        //internal static Babuin Babuin2 = new Babuin(4 * ElementSize, 4 * ElementSize);
         /// Катастрофа
         internal const int TickToWaterLineUp = 500;
         internal static int WaterLine = 0;

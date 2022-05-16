@@ -8,7 +8,6 @@ namespace Game60s.Model
         Up, Down, Left, Right
     }
 
-
     public static class Direction
     {
         /// <summary>
