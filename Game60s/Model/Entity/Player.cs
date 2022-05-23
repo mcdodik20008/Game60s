@@ -42,13 +42,13 @@ namespace Game60s.Model
                 else
                     step = 2;
 
-                if (keys.Contains(Keys.Left))
+                if (keys.Contains(Keys.Left) || keys.Contains(Keys.A))
                     X -= step;
-                if (keys.Contains(Keys.Right))
+                if (keys.Contains(Keys.Right) || keys.Contains(Keys.D))
                     X += step;
-                if (keys.Contains(Keys.Up))
+                if (keys.Contains(Keys.Up) || keys.Contains(Keys.W))
                     Y -= step;
-                if (keys.Contains(Keys.Down))
+                if (keys.Contains(Keys.Down) || keys.Contains(Keys.S))
                     Y += step;
             }
             else

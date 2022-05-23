@@ -25,7 +25,15 @@ namespace Game60s.Model
         /// Прочее
         private static readonly DirectoryInfo imagesDirectory = new DirectoryInfo(@"..\..\Model\Images");
         internal static Dictionary<string, Bitmap> EntityImage = new Dictionary<string, Bitmap>();
-        
+        public static GameStates GameState;
+        public enum GameStates
+        {
+            GameStart,
+            GameProcess,
+            LevelStart,
+            GameOver
+        }
+
         internal GameModell()
         {
             LoadEntityImages();

@@ -22,6 +22,33 @@ namespace Game60s.Viev
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            switch (GameModell.GameState)
+            {
+                case GameModell.GameStates.GameStart:
+                    WaitingScreen(e);
+                    break;
+                case GameModell.GameStates.LevelStart:
+                    WaitingScreen(e);
+                    break;
+                case GameModell.GameStates.GameOver:
+                    WaitingScreen(e);
+                    break;
+                default:
+                    StartGame(e);
+                    break;
+            }
+        }
+
+        private void WaitingScreen(PaintEventArgs e)
+        {
+            if(timerTick / 30 % 2 == 0)
+                e.Graphics.DrawImage(Images.WaitingScreen, 0, 0);
+            else
+                e.Graphics.DrawImage(Images.WaitingScreenAnim, 0, 0);
+        }
+
+        private void StartGame(PaintEventArgs e)
+        {
             for (int x = 0; x < SizeVisibleMap; x++)
                 for (int y = 0; y < SizeVisibleMap; y++)
                 {

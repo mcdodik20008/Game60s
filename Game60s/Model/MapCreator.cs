@@ -96,7 +96,7 @@ namespace Game60s.Model
 
             for (int x = 0; x < map.LengthX; x++)
                 for (int y = 0; y < map.LengthY; y++)
-                    (map[x, y] as IMapObject).Height = CalculatedHeightMap[x, y];
+                    (map[x, y] as IMapObject).Height = (map[x, y] is Ground) ? CalculatedHeightMap[x, y] : -1;
         }
     }
 }

@@ -181,6 +181,8 @@
     <Content Include="Model\Images\raft.png" />
     <Content Include="Model\Images\sticks.png" />
     <None Include="Model\Images\transparentRed.png" />
+    <None Include="Model\Images\WaitingScreenAnim.png" />
+    <None Include="Model\Images\WaitingScreen.png" />
     <Content Include="Model\test.txt" />
     <Content Include="Model\Map.txt" />
   </ItemGroup>
