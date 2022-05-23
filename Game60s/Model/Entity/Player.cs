@@ -31,7 +31,7 @@ namespace Game60s.Model
 
             if (StanResist > 0)
                 StanResist -= 1;
-            
+
             //Добавь ограничения на ходьбу
             if (!OnRaft)
             {
@@ -42,13 +42,21 @@ namespace Game60s.Model
                 else
                     step = 2;
 
-                if (keys.Contains(Keys.Left) || keys.Contains(Keys.A))
+                if ((keys.Contains(Keys.Left)
+                    || keys.Contains(Keys.A))
+                    && GameModell.Map[(X - step - GameModell.ElementSize) / GameModell.ElementSize, Y / GameModell.ElementSize] is Ground)
                     X -= step;
-                if (keys.Contains(Keys.Right) || keys.Contains(Keys.D))
+                if ((keys.Contains(Keys.Right) 
+                    || keys.Contains(Keys.D))
+                    && GameModell.Map[(X + step + GameModell.ElementSize) / GameModell.ElementSize, Y / GameModell.ElementSize] is Ground)
                     X += step;
-                if (keys.Contains(Keys.Up) || keys.Contains(Keys.W))
+                if ((keys.Contains(Keys.Up) 
+                    || keys.Contains(Keys.W))
+                    && GameModell.Map[X / GameModell.ElementSize, (Y - step - GameModell.ElementSize) / GameModell.ElementSize] is Ground)
                     Y -= step;
-                if (keys.Contains(Keys.Down) || keys.Contains(Keys.S))
+                if ((keys.Contains(Keys.Down) 
+                    || keys.Contains(Keys.S))
+                    && GameModell.Map[X / GameModell.ElementSize, (Y + step + GameModell.ElementSize) / GameModell.ElementSize] is Ground)
                     Y += step;
             }
             else

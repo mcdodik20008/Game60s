@@ -68,6 +68,8 @@ namespace Game60s.Viev
 
             e.Graphics.DrawString(GameModell.player.CountResourse + @"/" + GameModell.ResoutseToRaft, new Font("Arial", 28), Brushes.Gray, 10, 10);
 
+            e.Graphics.DrawString($"{GameModell.player.X}, {GameModell.player.Y}", new Font("Arial", 28), Brushes.Gray, 100, 10);
+
             e.Graphics.DrawImage(GameModell.Babuin.Image, GameModell.Babuin.PositionOnFormPoint);
         }
 
