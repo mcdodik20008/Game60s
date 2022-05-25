@@ -43,20 +43,20 @@ namespace Game60s.Model
                     step = 2;
 
                 if ((keys.Contains(Keys.Left)
-                    || keys.Contains(Keys.A))
-                    && GameModell.Map[(X - step - GameModell.ElementSize) / GameModell.ElementSize, Y / GameModell.ElementSize] is Ground)
+                    || keys.Contains(Keys.A)))
+                    //&& GameModell.Map[(X - step - GameModell.ElementSize) / GameModell.ElementSize, Y / GameModell.ElementSize] is Ground)
                     X -= step;
                 if ((keys.Contains(Keys.Right) 
-                    || keys.Contains(Keys.D))
-                    && GameModell.Map[(X + step + GameModell.ElementSize) / GameModell.ElementSize, Y / GameModell.ElementSize] is Ground)
+                    || keys.Contains(Keys.D)))
+                    //&& GameModell.Map[(X + step + GameModell.ElementSize) / GameModell.ElementSize, Y / GameModell.ElementSize] is Ground)
                     X += step;
                 if ((keys.Contains(Keys.Up) 
-                    || keys.Contains(Keys.W))
-                    && GameModell.Map[X / GameModell.ElementSize, (Y - step - GameModell.ElementSize) / GameModell.ElementSize] is Ground)
+                    || keys.Contains(Keys.W)))
+                    //&& GameModell.Map[X / GameModell.ElementSize, (Y - step - GameModell.ElementSize) / GameModell.ElementSize] is Ground)
                     Y -= step;
                 if ((keys.Contains(Keys.Down) 
-                    || keys.Contains(Keys.S))
-                    && GameModell.Map[X / GameModell.ElementSize, (Y + step + GameModell.ElementSize) / GameModell.ElementSize] is Ground)
+                    || keys.Contains(Keys.S)))
+                    //&& GameModell.Map[X / GameModell.ElementSize, (Y + step + GameModell.ElementSize) / GameModell.ElementSize] is Ground)
                     Y += step;
             }
             else

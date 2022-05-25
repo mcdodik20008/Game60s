@@ -27,16 +27,29 @@ namespace Game60s.Viev
                 case GameModell.GameStates.GameStart:
                     WaitingScreen(e);
                     break;
-                case GameModell.GameStates.LevelStart:
-                    WaitingScreen(e);
+                case GameModell.GameStates.GameProcess:
+                    GameProcess(e);
                     break;
-                case GameModell.GameStates.GameOver:
-                    WaitingScreen(e);
+                case GameModell.GameStates.LevelWin:
+                    PresKeyToNextLevel(e);
                     break;
-                default:
-                    StartGame(e);
+                case GameModell.GameStates.LevelLose:
+                    PresKeyToReloadGame(e);
                     break;
             }
+        }
+
+        private void PresKeyToReloadGame(PaintEventArgs e)
+        {
+            GameProcess(e);
+            e.Graphics.DrawString($"Ты дошел до {GameModell.GameLevel} уровня.\n Макака оказалась сильнее чем ты \n не впадай в депрессию это всего лишь игра \n" +
+                $"Нажм любую клавишу для перезапуска", new Font("Arial", 28), Brushes.Red, 50, 300);
+        }
+
+        private void PresKeyToNextLevel(PaintEventArgs e)
+        {
+            GameProcess(e);
+            e.Graphics.DrawString($"Ты выйграл {GameModell.GameLevel} уровень.\nНажми на любую клавишу для продолжения", new Font("Arial", 28), Brushes.Red, 50, 300);
         }
 
         private void WaitingScreen(PaintEventArgs e)
@@ -47,7 +60,7 @@ namespace Game60s.Viev
                 e.Graphics.DrawImage(Images.WaitingScreenAnim, 0, 0);
         }
 
-        private void StartGame(PaintEventArgs e)
+        private void GameProcess(PaintEventArgs e)
         {
             for (int x = 0; x < SizeVisibleMap; x++)
                 for (int y = 0; y < SizeVisibleMap; y++)

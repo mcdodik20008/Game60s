@@ -1,4 +1,5 @@
 ﻿using Game60s.Model;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -22,18 +23,41 @@ namespace Game60s.Controller
                 case GameModell.GameStates.GameStart:
                     WaitKeyProcess(timerTick);
                     break;
-                case GameModell.GameStates.LevelStart:
-                    WaitKeyProcess(timerTick);
-                    break;
-                case GameModell.GameStates.GameOver:
-                    WaitKeyProcess(timerTick);
-                    break;
-                default:
+                case GameModell.GameStates.GameProcess:
                     GameProcess(timerTick);
+                    break;
+                case GameModell.GameStates.LevelWin:
+                    LevelWin(timerTick);
+                    break;
+                case GameModell.GameStates.LevelLose:
+                    LevelLose(timerTick);
                     break;
             }
         }
 
+        private static void LevelLose(int timerTick)
+        {
+            if (KeysPressed.Count > 0 && timeToWait <= 0)
+            {
+                GameModell.GameLevel = 0;
+                GameModell.ReloadGameModell();
+                GameModell.GameState = GameModell.GameStates.GameProcess;
+                timeToWait = 100;
+            }
+            timeToWait--;
+        }
+
+        static int timeToWait = 100;
+        private static void LevelWin(int timerTick)
+        {
+            if (KeysPressed.Count > 0 && timeToWait <= 0)
+            {
+                GameModell.ReloadGameModell();
+                GameModell.GameState = GameModell.GameStates.GameProcess;
+                timeToWait = 100;
+            }
+            timeToWait--;
+        }
         private static void WaitKeyProcess(int timerTick)
         {
             if (KeysPressed.Count > 0)
@@ -60,11 +84,17 @@ namespace Game60s.Controller
             if (timerTick % GameModell.TickToWaterLineUp == 0)
                 GameModell.IncreaseWaterLine();
 
-            if (GameModell.Raft == null && GameModell.ResoutseToRaft <= GameModell.player.CountResourse && KeysPressed.Contains(Keys.R))
+            if (GameModell.Raft == null && GameModell.ResoutseToRaft <= GameModell.player.CountResourse)
                 GameModell.Raft = new Raft(GameModell.player);
 
             if (GameModell.Raft == null && GameModell.ResoutseToRaft <= GameModell.Babuin.CountResourse)
                 GameModell.Raft = new Raft(GameModell.Babuin);
+
+            if (GameModell.player.CountResourse == GameModell.ResoutseToRaft)
+                GameModell.GameState = GameModell.GameStates.LevelWin;
+
+            if (GameModell.ResoutseToRaft <= GameModell.Babuin.CountResourse)
+                GameModell.GameState = GameModell.GameStates.LevelLose;
         }
     }
 }

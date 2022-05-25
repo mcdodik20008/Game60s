@@ -8,9 +8,9 @@ namespace Game60s.Model
     public class GameModell
     {
         //Сделать рандомную позицию или в центре?
-        internal static Player player = new Player(3 * ElementSize, 3 * ElementSize);
+        internal static Player player;
         internal static Raft Raft = null;
-        internal static Babuin Babuin = new Babuin(5 * ElementSize, 5 * ElementSize);
+        internal static Babuin Babuin;
         /// Катастрофа
         internal const int TickToWaterLineUp = 500;
         internal static int WaterLine = 0;
@@ -26,21 +26,31 @@ namespace Game60s.Model
         private static readonly DirectoryInfo imagesDirectory = new DirectoryInfo(@"..\..\Model\Images");
         internal static Dictionary<string, Bitmap> EntityImage = new Dictionary<string, Bitmap>();
         public static GameStates GameState;
+        public static int GameLevel = 0;
         public enum GameStates
         {
             GameStart,
             GameProcess,
-            LevelStart,
-            GameOver
+            LevelWin,
+            LevelLose
         }
 
         internal GameModell()
         {
+            ReloadGameModell();
+        }
+
+        public static void ReloadGameModell()
+        {
+            GameLevel++;
+            player = new Player(3 * ElementSize, 3 * ElementSize);
+            Babuin = new Babuin(5 * ElementSize, 5 * ElementSize);
+            Raft = null;
             LoadEntityImages();
             Map = MapCreator.Create();
 
             Map.SetMapHeight();
-            
+
             Resourse = new Stick[Rnd.Next(10, 15)];
             for (int i = 0; i < Resourse.Length; i++)
                 Resourse[i] = Stick.CreateRandomXY();
