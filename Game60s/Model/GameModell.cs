@@ -9,7 +9,7 @@ namespace Game60s.Model
     {
         //Сделать рандомную позицию или в центре?
         internal static Player player;
-        internal static Raft Raft = null;
+        internal static Raft Raft;
         internal static Babuin Babuin;
         /// Катастрофа
         internal const int TickToWaterLineUp = 500;
@@ -19,7 +19,6 @@ namespace Game60s.Model
         /// Карта
         internal const int ElementSize = 53;
         internal static Map Map;
-        internal static List<Resourse> ResoursesOnMap = new List<Resourse>();
         internal static Resourse[] Resourse;
         internal static int ResoutseToRaft = new Random().Next(5, 8);
         /// Прочее
@@ -37,7 +36,20 @@ namespace Game60s.Model
 
         internal GameModell()
         {
+            player = new Player(3 * ElementSize, 3 * ElementSize);
+            Map = MapCreator.Create();
+            LoadEntityImages();
             ReloadGameModell();
+        }
+
+        internal GameModell(Map ForTest)
+        {
+            Map = ForTest;
+            Map.SetMapHeight();
+            Map.SwitchBorder();
+            player = null;
+            Babuin = null;
+            Raft = null;
         }
 
         public static void ReloadGameModell()
@@ -46,21 +58,18 @@ namespace Game60s.Model
             player = new Player(3 * ElementSize, 3 * ElementSize);
             Babuin = new Babuin(5 * ElementSize, 5 * ElementSize);
             Raft = null;
-            LoadEntityImages();
-            Map = MapCreator.Create();
 
             Map.SetMapHeight();
+            Map.SwitchBorder();
 
             Resourse = new Stick[Rnd.Next(10, 15)];
             for (int i = 0; i < Resourse.Length; i++)
                 Resourse[i] = Stick.CreateRandomXY();
-
-            Map.SwitchBorder();
         }
 
         internal static void LoadEntityImages()
         {
-            foreach (var e in imagesDirectory.GetFiles("*.png"))
+            foreach (var e in imagesDirectory.GetFiles(@"*.png"))
                 EntityImage[e.Name] = (Bitmap)Image.FromFile(e.FullName);
         }
 

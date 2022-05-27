@@ -64,19 +64,19 @@ namespace Game60s.Controller
                 GameModell.GameState = GameModell.GameStates.GameProcess;
         }
 
-        private static void GameProcess(int timerTick)
+        public static void GameProcess(int timerTick)
         {
-            GameModell.player.Act(KeysPressed);
+            GameModell.player?.Act(KeysPressed);
             GameModell.Raft?.Act(KeysPressed);
-            GameModell.Babuin.Act(KeysPressed);
-            GameModell.Babuin.TryAttack();
+            GameModell.Babuin?.Act(KeysPressed);
+            GameModell.Babuin?.TryAttack();
 
-            foreach (var item in GameModell.ResoursesOnMap)
-                item.DieIfOnOcean();
+            foreach (var item in GameModell.Resourse)
+                item?.DieIfOnOcean();
 
 
-            GameModell.player.TryGetThis(GameModell.Resourse);
-            GameModell.Babuin.TryGetThis(GameModell.Resourse);
+            GameModell.player?.TryGetThis(GameModell.Resourse);
+            GameModell.Babuin?.TryGetThis(GameModell.Resourse);
 
             if (timerTick % 10 == 0)
                 GameModell.Map.SwitchBorder();
@@ -84,16 +84,16 @@ namespace Game60s.Controller
             if (timerTick % GameModell.TickToWaterLineUp == 0)
                 GameModell.IncreaseWaterLine();
 
-            if (GameModell.Raft == null && GameModell.ResoutseToRaft <= GameModell.player.CountResourse)
+            if (GameModell.Raft == null && GameModell.ResoutseToRaft <= GameModell.player?.CountResourse)
                 GameModell.Raft = new Raft(GameModell.player);
 
-            if (GameModell.Raft == null && GameModell.ResoutseToRaft <= GameModell.Babuin.CountResourse)
+            if (GameModell.Raft == null && GameModell.ResoutseToRaft <= GameModell.Babuin?.CountResourse)
                 GameModell.Raft = new Raft(GameModell.Babuin);
 
-            if (GameModell.player.CountResourse == GameModell.ResoutseToRaft)
+            if (GameModell.player?.CountResourse == GameModell.ResoutseToRaft)
                 GameModell.GameState = GameModell.GameStates.LevelWin;
 
-            if (GameModell.ResoutseToRaft <= GameModell.Babuin.CountResourse)
+            if (GameModell.ResoutseToRaft <= GameModell.Babuin?.CountResourse)
                 GameModell.GameState = GameModell.GameStates.LevelLose;
         }
     }

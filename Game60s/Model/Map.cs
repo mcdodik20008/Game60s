@@ -9,7 +9,7 @@ namespace Game60s.Model
         internal int LengthX { get => Mapp.Length; }
         internal int LengthY { get => Mapp.Length; }
 
-        public static Func<int, int, bool> IsWithinMap = (i, j) => i > -1 && j > -1 && i < Mapp.Length * GameModell.ElementSize && j < Mapp.Length * GameModell.ElementSize;
+        public static Func<int, int, bool> IsWithinMap = (i, j) => i > -1 && j > -1 && i < Mapp.Length && j < Mapp.Length;
 
         internal Map(int size)
         {
@@ -24,7 +24,7 @@ namespace Game60s.Model
         {
             get
             {
-                return IsWithinMap(i * GameModell.ElementSize, j * GameModell.ElementSize) ? Mapp[i][j] :
+                return IsWithinMap(i, j) ? Mapp[i][j] :
                     new Ocean(i, j);
             }
             set

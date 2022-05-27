@@ -55,6 +55,7 @@ namespace Game60s.Model
 
         public void TryAttack()
         {
+            if (GameModell.player != null && GameModell.Babuin != null)
             if (Math.Abs((GameModell.player.PositionOnFormV2 - GameModell.Babuin.PositionOnFormV2).Length()) < 40
                 && GameModell.player.StanResist <= 0)
             {
@@ -71,7 +72,6 @@ namespace Game60s.Model
                     GameModell.Babuin.CountResourse -= 1;
                 }
             }
-
         }
         public override AEntity Die() => this;
     }

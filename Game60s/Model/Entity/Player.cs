@@ -20,7 +20,9 @@ namespace Game60s.Model
         {
             X = x; Y = y;
         }
-
+        public AEntity WhereINAXOJYS() =>
+            GameModell.Map[X / GameModell.ElementSize, Y / GameModell.ElementSize];
+        
         public override void Act(HashSet<Keys> keys)
         {
             if (StanTime > 0)
