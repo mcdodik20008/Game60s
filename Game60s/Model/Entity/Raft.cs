@@ -24,20 +24,7 @@ namespace Game60s.Model
             Y = b.Y - delta.Y;
         }
 
-        public override void Act(HashSet<Keys> keys)
-        {
-            //Добавь ограничения на ходьбу
-            step = keys.Contains(Keys.ShiftKey) ? 4 : 2;
-            step = keys.Contains(Keys.ControlKey) ? 1 : 2;
-            if (keys.Contains(Keys.Left))
-                X -= step;
-            if (keys.Contains(Keys.Right))
-                X += step;
-            if (keys.Contains(Keys.Up))
-                Y -= step;
-            if (keys.Contains(Keys.Down))
-                Y += step;
-        }
+        public override void Act(HashSet<Keys> keys) { }
 
         public override AEntity Die() => this;
     }

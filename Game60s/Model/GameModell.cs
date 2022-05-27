@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -7,6 +7,7 @@ namespace Game60s.Model
 {
     public class GameModell
     {
+        #region Переменные
         //Сделать рандомную позицию или в центре?
         internal static Player player;
         internal static Raft Raft;
@@ -26,6 +27,8 @@ namespace Game60s.Model
         internal static Dictionary<string, Bitmap> EntityImage = new Dictionary<string, Bitmap>();
         public static GameStates GameState;
         public static int GameLevel = 0;
+        #endregion
+
         public enum GameStates
         {
             GameStart,
