@@ -39,8 +39,6 @@ namespace Game60s.Model
 
         internal GameModell()
         {
-            player = new Player(3 * ElementSize, 3 * ElementSize);
-            Map = MapCreator.Create();
             LoadEntityImages();
             ReloadGameModell();
         }
@@ -58,8 +56,9 @@ namespace Game60s.Model
         public static void ReloadGameModell()
         {
             GameLevel++;
+            Map = MapCreator.Create();
             player = new Player(3 * ElementSize, 3 * ElementSize);
-            Babuin = new Babuin(5 * ElementSize, 5 * ElementSize);
+           //Babuin = new Babuin(5 * ElementSize, 5 * ElementSize);
             Raft = null;
 
             Map.SetMapHeight();

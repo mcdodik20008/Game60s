@@ -8,10 +8,10 @@ namespace Game60s.Model
 {
     internal abstract class AEntity
     {
-
         public int X, Y;
         public Vector2 PositionOnFormV2 { get { return new Vector2(X, Y); } }
         public Point PositionOnFormPoint { get { return new Point(X, Y); } }
+        public MyPointClass LincOnPosition { get { return new MyPointClass(X, Y); } }
         public abstract void Act(HashSet<Keys> key);
         public abstract AEntity Die();
         public void ActOnRaft()
@@ -47,5 +47,20 @@ namespace Game60s.Model
                     minV = item - currentPos;
             return minV;
         }
+    }
+
+    public class MyPointClass
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
+        public MyPointClass(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
+
+        public static implicit operator Point(MyPointClass point) =>
+            new Point(point.X, point.Y);
+        
     }
 }

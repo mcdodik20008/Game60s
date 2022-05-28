@@ -7,7 +7,8 @@ namespace Game60s.Model
 {
     internal class Player : AEntity, ICanCollect, ICanUseRaft
     {
-        Size sizePng = new Size(28, 46);
+        Size sizePng = new Size(28, 52);
+        public HitBox HitBox;
         int step = 2;
         public List<Resourse> Resourses = new List<Resourse>();
         public bool OnRaft { get; set; }
@@ -16,13 +17,14 @@ namespace Game60s.Model
         public Bitmap Image { get => Images.player; }
         public int StanTime { get; set; }
         public int StanResist { get; set; }
+
         public Player(int x, int y)
         {
             X = x; Y = y;
+            HitBox = new HitBox(x, y, sizePng);
         }
-        public AEntity WhereINAXOJYS() =>
-            GameModell.Map[X / GameModell.ElementSize, Y / GameModell.ElementSize];
-        
+
+
         public override void Act(HashSet<Keys> keys)
         {
             if (StanTime > 0)
@@ -60,6 +62,7 @@ namespace Game60s.Model
                     || keys.Contains(Keys.S)))
                     //&& GameModell.Map[X / GameModell.ElementSize, (Y + step + GameModell.ElementSize) / GameModell.ElementSize] is Ground)
                     Y += step;
+                HitBox.UpdateCoordinate(X, Y);
             }
             else
                 this.ActOnRaft();

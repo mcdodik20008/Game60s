@@ -40,12 +40,81 @@ namespace Game60s.Tests
 
             GameModell.player = new Player(GameModell.ElementSize, GameModell.ElementSize);
 
-            Assert.That(GameModell.player.WhereINAXOJYS() is Ground);
+            Assert.That(!GameModell.player.HitBox.IsOnOcean());
             GameModell.player.Act(KeysPressed);
 
             // Когда доделааешь игрока, должно проходить
-            Assert.That(GameModell.player.WhereINAXOJYS() is Ground);
+            Assert.That(!GameModell.player.HitBox.IsOnOcean());
         }
+
+        [Test]
+        public void PlayerLeftUpIsOceanIsCorrect()
+        {
+            HashSet<Keys> KeysPressed = new HashSet<Keys>() { Keys.Left, Keys.Up };
+            var strMap = new string[3] { "OOO", "OBO", "OOO" };
+            SetGameModell(strMap);
+
+            GameModell.player = new Player(GameModell.ElementSize, GameModell.ElementSize);
+
+            Assert.That(!GameModell.player.HitBox.IsOnOcean());
+            GameModell.player.Act(KeysPressed);
+
+            Assert.That(GameModell.player.HitBox.IsOnOcean());
+        }
+
+        [Test]
+        public void PlayerRightUpIsOceanIsCorrect()
+        {
+            HashSet<Keys> KeysPressed = new HashSet<Keys>() { Keys.Right };
+            var strMap = new string[3] { "OOO", "OBO", "OOO" };
+            SetGameModell(strMap);
+
+            GameModell.player = new Player(GameModell.ElementSize, GameModell.ElementSize);
+
+            Assert.That(!GameModell.player.HitBox.IsOnOcean());
+            for (int i = 0; i < 13; i++)
+                GameModell.player.Act(KeysPressed);
+
+            KeysPressed.Clear(); KeysPressed.Add(Keys.Up);
+            GameModell.player.Act(KeysPressed);
+
+            Assert.That(GameModell.player.HitBox.IsOnOcean());
+        }
+
+        [Test]
+        public void PlayerLeftDownIsOceanIsCorrect()
+        {
+            HashSet<Keys> KeysPressed = new HashSet<Keys>() { Keys.Left, Keys.Down };
+            var strMap = new string[3] { "OOO", "OBO", "OOO" };
+            SetGameModell(strMap);
+
+            GameModell.player = new Player(GameModell.ElementSize, GameModell.ElementSize);
+
+            Assert.That(!GameModell.player.HitBox.IsOnOcean());
+            GameModell.player.Act(KeysPressed);
+
+            Assert.That(GameModell.player.HitBox.IsOnOcean());
+        }
+
+        [Test]
+        public void PlayerRightDownIsOceanIsCorrect()
+        {
+            HashSet<Keys> KeysPressed = new HashSet<Keys>() { Keys.Right };
+            var strMap = new string[3] { "OOO", "OBO", "OOO" };
+            SetGameModell(strMap);
+
+            GameModell.player = new Player(GameModell.ElementSize, GameModell.ElementSize);
+
+            Assert.That(!GameModell.player.HitBox.IsOnOcean());
+            for (int i = 0; i < 13; i++)
+                GameModell.player.Act(KeysPressed);
+
+            KeysPressed.Clear(); KeysPressed.Add(Keys.Down);
+            GameModell.player.Act(KeysPressed);
+
+            Assert.That(GameModell.player.HitBox.IsOnOcean());
+        }
+
 
         [Test]
         public void PlayerCanGetResourse()

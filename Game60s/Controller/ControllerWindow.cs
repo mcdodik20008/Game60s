@@ -9,7 +9,7 @@ namespace Game60s.Controller
     {
         //тут все понятно
         internal static HashSet<Keys> KeysPressed = new HashSet<Keys>();
-
+        public static int couinter = 0;
         public static void SetPressedKey(Keys pressedKey) =>
             KeysPressed.Add(pressedKey);
 
@@ -92,6 +92,11 @@ namespace Game60s.Controller
 
             if (GameModell.player?.CountResourse == GameModell.ResoutseToRaft)
                 GameModell.GameState = GameModell.GameStates.LevelWin;
+
+            if (GameModell.player.HitBox.IsOnOcean())
+            {
+                couinter++;
+            }
 
             if (GameModell.ResoutseToRaft <= GameModell.Babuin?.CountResourse)
                 GameModell.GameState = GameModell.GameStates.LevelLose;

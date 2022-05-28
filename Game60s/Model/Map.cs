@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Drawing;
 
 namespace Game60s.Model
 {
@@ -17,6 +18,12 @@ namespace Game60s.Model
             for (int i = 0; i < Mapp.Length; i++)
                 Mapp[i] = new AEntity[size];
         }
+
+        public AEntity GetItemPoCoordinate(int x, int y) =>
+            Mapp[x / GameModell.ElementSize][y / GameModell.ElementSize];
+
+        public AEntity GetItemPoCoordinate(Point p) =>
+            this[p.X / GameModell.ElementSize, p.Y / GameModell.ElementSize];
 
         internal Map(AEntity[][] mapCells) => Mapp = mapCells;
 
