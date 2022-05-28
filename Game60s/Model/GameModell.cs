@@ -13,7 +13,7 @@ namespace Game60s.Model
         internal static Raft Raft;
         internal static Babuin Babuin;
         /// Катастрофа
-        internal const int TickToWaterLineUp = 500;
+        internal static int TickToWaterLineUp = 500;
         internal static int WaterLine = 0;
         internal static TimeSpan TimeToDisaster = new TimeSpan(0, 1, 0);
         internal static Random Rnd = new Random();
@@ -58,7 +58,9 @@ namespace Game60s.Model
             GameLevel++;
             Map = MapCreator.Create();
             player = new Player(3 * ElementSize, 3 * ElementSize);
-           //Babuin = new Babuin(5 * ElementSize, 5 * ElementSize);
+            player.SetRanomCoordinate();
+            Babuin = new Babuin(5 * ElementSize, 5 * ElementSize);
+            Babuin.SetRanomCoordinate();
             Raft = null;
 
             Map.SetMapHeight();

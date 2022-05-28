@@ -10,7 +10,7 @@ namespace Game60s.Tests
     public class TestsPlayer : Tests
     {
         [Test]
-        public void PlayerMovementIsCorrect()
+        public void MovementIsCorrect()
         {
             HashSet<Keys> KeysPressed = new HashSet<Keys>() { Keys.Right, Keys.Down };
             var strMap = new string[5] { "OOOOO", "OBBBO", "OBBBO", "OBBBO", "OOOOO" };
@@ -32,7 +32,7 @@ namespace Game60s.Tests
         }
 
         [Test]
-        public void PlayerMovementIsCorrectWithOcean()
+        public void MovementIsCorrectWithOcean()
         {
             HashSet<Keys> KeysPressed = new HashSet<Keys>() { Keys.Left, Keys.Up };
             var strMap = new string[3] { "OOO", "OBO", "OOO" };
@@ -48,7 +48,7 @@ namespace Game60s.Tests
         }
 
         [Test]
-        public void PlayerLeftUpIsOceanIsCorrect()
+        public void LeftUpIsOceanIsCorrect()
         {
             HashSet<Keys> KeysPressed = new HashSet<Keys>() { Keys.Left, Keys.Up };
             var strMap = new string[3] { "OOO", "OBO", "OOO" };
@@ -63,7 +63,7 @@ namespace Game60s.Tests
         }
 
         [Test]
-        public void PlayerRightUpIsOceanIsCorrect()
+        public void RightUpIsOceanIsCorrect()
         {
             HashSet<Keys> KeysPressed = new HashSet<Keys>() { Keys.Right };
             var strMap = new string[3] { "OOO", "OBO", "OOO" };
@@ -82,7 +82,7 @@ namespace Game60s.Tests
         }
 
         [Test]
-        public void PlayerLeftDownIsOceanIsCorrect()
+        public void LeftDownIsOceanIsCorrect()
         {
             HashSet<Keys> KeysPressed = new HashSet<Keys>() { Keys.Left, Keys.Down };
             var strMap = new string[3] { "OOO", "OBO", "OOO" };
@@ -97,7 +97,7 @@ namespace Game60s.Tests
         }
 
         [Test]
-        public void PlayerRightDownIsOceanIsCorrect()
+        public void RightDownIsOceanIsCorrect()
         {
             HashSet<Keys> KeysPressed = new HashSet<Keys>() { Keys.Right };
             var strMap = new string[3] { "OOO", "OBO", "OOO" };
@@ -117,7 +117,7 @@ namespace Game60s.Tests
 
 
         [Test]
-        public void PlayerCanGetResourse()
+        public void CanGetResourse()
         {
             var strMap = new string[3] { "OOO", "OBO", "OOO" };
             SetGameModell(strMap);

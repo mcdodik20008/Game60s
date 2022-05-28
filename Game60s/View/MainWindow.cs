@@ -83,6 +83,8 @@ namespace Game60s.Viev
 
             e.Graphics.DrawString($"{GameModell.player.X}, {GameModell.player.Y}", new Font("Arial", 28), Brushes.Gray, 100, 10);
 
+
+            // Задел ли ты океан или нет
             e.Graphics.DrawString($"{ControllerWindow.couinter}", new Font("Arial", 28), Brushes.Gray, 400, 10);
 
             if (GameModell.Babuin != null)

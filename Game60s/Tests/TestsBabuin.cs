@@ -10,7 +10,7 @@ namespace Game60s.Tests
     public class TestsBabuin : Tests
     {
         [Test]
-        public void BabuinMovementIsCorrectWithOutResourses()
+        public void MovementIsCorrectWithOutResourses()
         {
             HashSet<Keys> KeysPressed = new HashSet<Keys>() { };
             var strMap = new string[5] { "OOOOO", "OBBBO", "OBBBO", "OBBBO", "OOOOO" };
@@ -25,7 +25,7 @@ namespace Game60s.Tests
         }
 
         [Test]
-        public void BabuinMovementIsCorrectWithResourse()
+        public void MovementIsCorrectWithResourse()
         {
             HashSet<Keys> KeysPressed = new HashSet<Keys>() { };
             var strMap = new string[5] { "OOOOO", "OBBBO", "OBBBO", "OBBBO", "OOOOO" };
@@ -40,7 +40,7 @@ namespace Game60s.Tests
         }
 
         [Test]
-        public void BabuinMovementIsCorrectWithResourses()
+        public void MovementIsCorrectWithResourses()
         {
             HashSet<Keys> KeysPressed = new HashSet<Keys>() { };
             var strMap = new string[5] { "OOOOO", "OBBBO", "OBBBO", "OBBBO", "OOOOO" };
@@ -59,7 +59,7 @@ namespace Game60s.Tests
         }
 
         [Test]
-        public void BabuinCanGetResourse()
+        public void CanGetResourse()
         {
             var strMap = new string[3] { "OOO", "OBO", "OOO" };
             SetGameModell(strMap);

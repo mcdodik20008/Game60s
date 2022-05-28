@@ -19,11 +19,13 @@ namespace Game60s.Model
                 Mapp[i] = new AEntity[size];
         }
 
+        // не трогай, так НАДА
         public AEntity GetItemPoCoordinate(int x, int y) =>
-            Mapp[x / GameModell.ElementSize][y / GameModell.ElementSize];
+            Mapp[y / GameModell.ElementSize][x / GameModell.ElementSize];
 
+        // Это тоже
         public AEntity GetItemPoCoordinate(Point p) =>
-            this[p.X / GameModell.ElementSize, p.Y / GameModell.ElementSize];
+            this[p.Y / GameModell.ElementSize, p.X / GameModell.ElementSize];
 
         internal Map(AEntity[][] mapCells) => Mapp = mapCells;
 

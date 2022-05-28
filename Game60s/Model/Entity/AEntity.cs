@@ -11,7 +11,6 @@ namespace Game60s.Model
         public int X, Y;
         public Vector2 PositionOnFormV2 { get { return new Vector2(X, Y); } }
         public Point PositionOnFormPoint { get { return new Point(X, Y); } }
-        public MyPointClass LincOnPosition { get { return new MyPointClass(X, Y); } }
         public abstract void Act(HashSet<Keys> key);
         public abstract AEntity Die();
         public void ActOnRaft()
@@ -47,20 +46,11 @@ namespace Game60s.Model
                     minV = item - currentPos;
             return minV;
         }
-    }
 
-    public class MyPointClass
-    {
-        public int X { get; set; }
-        public int Y { get; set; }
-        public MyPointClass(int x, int y)
+        public static void SetRanomCoordinate(this AEntity ent)
         {
-            X = x;
-            Y = y;
+            ent.X = GameModell.Rnd.Next(100, 500);
+            ent.Y = GameModell.Rnd.Next(100, 500);
         }
-
-        public static implicit operator Point(MyPointClass point) =>
-            new Point(point.X, point.Y);
-        
     }
 }

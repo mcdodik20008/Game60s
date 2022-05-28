@@ -19,10 +19,18 @@ namespace Game60s.Model
         public bool OnRaft { get; set; }
         public Bitmap Image { get { return GameModell.player.StanTime > 0 ? Images.babuin_rage : Images.babuin; } }
         public void IncrementResourse() => CountResourse++;
-        private const int step = 1;
+        private int step = 1;
         public Babuin(int x, int y)
         {
             X = x; Y = y;
+        }
+
+        // Для повышения уровня сложности
+        public Babuin(int x, int y, int step)
+        {
+            X = x; 
+            Y = y; 
+            this.step = step;
         }
 
         public override void Act(HashSet<Keys> key)
@@ -53,6 +61,7 @@ namespace Game60s.Model
             res.Dispose();
         }
 
+        // нужно ли?
         public void TryAttack()
         {
             if (GameModell.player != null && GameModell.Babuin != null)

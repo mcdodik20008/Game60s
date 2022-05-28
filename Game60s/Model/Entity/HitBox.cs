@@ -16,9 +16,9 @@ namespace Game60s.Model
 
         public Size size { get; set; }
         public Point LeftUp { get => new Point(x, y); }
-        public Point LeftDown { get => new Point(x, y + size.Width); }
-        public Point RightUp { get => new Point(x + size.Height, y); }
-        public Point RightDown { get => new Point(x + size.Height, y + size.Width); }
+        public Point LeftDown { get => new Point(x, y + size.Height); }
+        public Point RightUp { get => new Point(x + size.Width, y); }
+        public Point RightDown { get => new Point(x + size.Width, y + size.Height); }
 
         public void UpdateCoordinate(int X, int Y)
         {

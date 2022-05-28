@@ -93,7 +93,8 @@ namespace Game60s.Controller
             if (GameModell.player?.CountResourse == GameModell.ResoutseToRaft)
                 GameModell.GameState = GameModell.GameStates.LevelWin;
 
-            if (GameModell.player.HitBox.IsOnOcean())
+            // можно сделать разные концовки игры, типо умер из-за того, что затопило, макака собрала плот быстрее, и тд
+            if (GameModell.player != null && GameModell.player.HitBox.IsOnOcean())
             {
                 couinter++;
             }
