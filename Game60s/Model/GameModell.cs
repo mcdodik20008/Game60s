@@ -17,6 +17,7 @@ namespace Game60s.Model
         internal static int WaterLine = 0;
         internal static TimeSpan TimeToDisaster = new TimeSpan(0, 1, 0);
         internal static Random Rnd = new Random();
+        internal static LevelDificulty LevelDificulty;
         /// Карта
         internal const int ElementSize = 53;
         internal static Map Map;
@@ -55,7 +56,6 @@ namespace Game60s.Model
 
         public static void ReloadGameModell()
         {
-            GameLevel++;
             Map = MapCreator.Create();
             player = new Player(3 * ElementSize, 3 * ElementSize);
             player.SetRanomCoordinate();
@@ -88,46 +88,34 @@ namespace Game60s.Model
                     if ((Map[x, y] as IMapObject).Height < WaterLine)
                         Map[x, y] = Map[x, y].Die();
         }
+
+        internal static void SetLevelDifficulty(int levelBabuin, int increaseWaterLineTick)
+            => LevelDificulty = new LevelDificulty(levelBabuin, increaseWaterLineTick);
     }
     internal class LevelDificulty
     {
         internal  Player player;
         internal  Babuin Babuin1;
         internal  Babuin Babuin2;
+        internal int BabuinLevel;
         internal  int TickToWaterLineUp;
 
-        internal LevelDificulty(LevelBabuin levelBabuin, CountTickToWaterLineUp lineUp)
+        internal LevelDificulty(int levelBabuin, int increaseWaterLineTick)
         {
             Babuin1 = new Babuin(5 * GameModell.ElementSize, 5 * GameModell.ElementSize);
             Babuin1.SetRanomCoordinate();
-            Babuin1.SetFastOrSloyStep((int)levelBabuin % 2 == 1);
+            Babuin1.SetFastOrSloyStep(levelBabuin % 2 == 1);
 
-            if (levelBabuin == LevelBabuin.third || levelBabuin == LevelBabuin.chetverti)
+            if (levelBabuin == 3 || levelBabuin == 4)
             {
                 Babuin2 = new Babuin(5 * GameModell.ElementSize, 5 * GameModell.ElementSize);
                 Babuin2.SetRanomCoordinate();
                 Babuin2.SetFastOrSloyStep((int)levelBabuin % 2 == 1);
             }
 
-            TickToWaterLineUp = (int)lineUp;
+            TickToWaterLineUp = increaseWaterLineTick;
             player = new Player(3 * GameModell.ElementSize, 3 * GameModell.ElementSize);
             player.SetRanomCoordinate();
-        }
-
-        internal enum LevelBabuin
-        {
-            first = 1,
-            second = 2,
-            third = 3,
-            chetverti = 4
-        }
-
-        internal enum CountTickToWaterLineUp
-        {
-            first = 1000,
-            second = 750,
-            third = 500,
-            chetverti = 400
         }
     }
 }
