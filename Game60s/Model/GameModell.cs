@@ -12,12 +12,12 @@ namespace Game60s.Model
         internal static Player player;
         internal static Raft Raft;
         internal static Babuin Babuin;
+        internal static Babuin Babuin2;
         /// Катастрофа
         internal static int TickToWaterLineUp = 500;
         internal static int WaterLine = 0;
         internal static TimeSpan TimeToDisaster = new TimeSpan(0, 1, 0);
         internal static Random Rnd = new Random();
-        internal static LevelDificulty LevelDificulty;
         /// Карта
         internal const int ElementSize = 53;
         internal static Map Map;
@@ -28,6 +28,7 @@ namespace Game60s.Model
         internal static Dictionary<string, Bitmap> EntityImage = new Dictionary<string, Bitmap>();
         public static GameStates GameState;
         public static int GameLevel = 0;
+        private static Level level;
         #endregion
 
         public enum GameStates
@@ -41,7 +42,7 @@ namespace Game60s.Model
         internal GameModell()
         {
             LoadEntityImages();
-            ReloadGameModell();
+            RestartGameModell();
         }
 
         internal GameModell(Map ForTest)
@@ -54,22 +55,40 @@ namespace Game60s.Model
             Raft = null;
         }
 
-        public static void ReloadGameModell()
+        public static void RestartGameModell()
         {
-            Map = MapCreator.Create();
-            player = new Player(3 * ElementSize, 3 * ElementSize);
-            player.SetRanomCoordinate();
-            Babuin = new Babuin(5 * ElementSize, 5 * ElementSize);
-            Babuin.SetRanomCoordinate();
-            Raft = null;
+            GameLevel = 0;
+            level = new Level(GameLevel);
+            player = (Player)new Player().SetRanomCoordinate();
 
             Map.SetMapHeight();
             Map.SwitchBorder();
 
-            Resourse = new Stick[Rnd.Next(10, 15)];
+            Resourse = new Stick[Rnd.Next(20, 25)];
+
             for (int i = 0; i < Resourse.Length; i++)
                 Resourse[i] = Stick.CreateRandomXY();
         }
+
+        public static void NextGameModell()
+        {
+            GameLevel++;
+            level = new Level(GameLevel);
+            player = (Player)new Player().SetRanomCoordinate();
+
+            Map.SetMapHeight();
+            Map.SwitchBorder();
+
+            Resourse = new Stick[
+                Rnd.Next(
+                    Math.Max(20 - GameLevel, 12),
+                    Math.Max(25 - GameLevel, 15)
+                    )];
+
+            for (int i = 0; i < Resourse.Length; i++)
+                Resourse[i] = Stick.CreateRandomXY();
+        }
+
 
         internal static void LoadEntityImages()
         {
@@ -89,33 +108,16 @@ namespace Game60s.Model
                         Map[x, y] = Map[x, y].Die();
         }
 
-        internal static void SetLevelDifficulty(int levelBabuin, int increaseWaterLineTick)
-            => LevelDificulty = new LevelDificulty(levelBabuin, increaseWaterLineTick);
-    }
-    internal class LevelDificulty
-    {
-        internal  Player player;
-        internal  Babuin Babuin1;
-        internal  Babuin Babuin2;
-        internal int BabuinLevel;
-        internal  int TickToWaterLineUp;
-
-        internal LevelDificulty(int levelBabuin, int increaseWaterLineTick)
+        private class Level
         {
-            Babuin1 = new Babuin(5 * GameModell.ElementSize, 5 * GameModell.ElementSize);
-            Babuin1.SetRanomCoordinate();
-            Babuin1.SetFastOrSloyStep(levelBabuin % 2 == 1);
-
-            if (levelBabuin == 3 || levelBabuin == 4)
+            public Level(int gameLevel)
             {
-                Babuin2 = new Babuin(5 * GameModell.ElementSize, 5 * GameModell.ElementSize);
-                Babuin2.SetRanomCoordinate();
-                Babuin2.SetFastOrSloyStep((int)levelBabuin % 2 == 1);
+                if (gameLevel > 12)
+                {
+                    Babuin2 = (Babuin)new Babuin().SetRanomCoordinate();
+                    Babuin2.SetFastOrSloyStep(gameLevel % 4 > 2);
+                }
             }
-
-            TickToWaterLineUp = increaseWaterLineTick;
-            player = new Player(3 * GameModell.ElementSize, 3 * GameModell.ElementSize);
-            player.SetRanomCoordinate();
         }
     }
 }

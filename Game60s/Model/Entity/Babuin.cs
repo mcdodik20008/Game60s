@@ -19,11 +19,19 @@ namespace Game60s.Model
         public bool OnRaft { get; set; }
         public Bitmap Image { get { return GameModell.player.StanTime > 0 ? Images.babuin_rage : Images.babuin; } }
         public void IncrementResourse() => CountResourse++;
+        public BabuinLevel babuinLevel = BabuinLevel.first;
         private int step = 1;
+        public BabuinLevel BLevel;
         
         public Babuin(int x, int y)
         {
             X = x; Y = y;
+            BLevel = BabuinLevel.first;
+        }
+
+        public Babuin()
+        {
+            BLevel = BabuinLevel.first;
         }
 
         public void SetFastOrSloyStep(bool flag) =>
@@ -78,6 +86,15 @@ namespace Game60s.Model
                 }
             }
         }
+
         public override AEntity Die() => this;
+
+        public enum BabuinLevel
+        {
+            first,
+            second,
+            third,
+            fourth
+        }
     }
 }

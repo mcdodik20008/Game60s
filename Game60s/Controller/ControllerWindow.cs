@@ -40,7 +40,7 @@ namespace Game60s.Controller
             if (KeysPressed.Count > 0 && timeToWait <= 0)
             {
                 GameModell.GameLevel = 0;
-                GameModell.ReloadGameModell();
+                GameModell.RestartGameModell();
                 GameModell.GameState = GameModell.GameStates.GameProcess;
                 timeToWait = 100;
             }
@@ -52,9 +52,8 @@ namespace Game60s.Controller
         {
             if (KeysPressed.Count > 0 && timeToWait <= 0)
             {
-                GameModell.GameLevel++;
-                GameModell.SetLevelDifficulty(GameModell.GameLevel, 1000 - GameModell.GameLevel * 150);
-                GameModell.ReloadGameModell();
+                //GameModell.SetLevelDifficulty(GameModell.GameLevel, 1000 - GameModell.GameLevel * 150);
+                GameModell.NextGameModell();
                 GameModell.GameState = GameModell.GameStates.GameProcess;
                 timeToWait = 100;
             }

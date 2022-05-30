@@ -24,6 +24,11 @@ namespace Game60s.Model
             HitBox = new HitBox(x, y, sizePng);
         }
 
+        public Player()
+        {
+            HitBox = new HitBox(0, 0, sizePng);
+        }
+
 
         public override void Act(HashSet<Keys> keys)
         {

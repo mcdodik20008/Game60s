@@ -47,10 +47,11 @@ namespace Game60s.Model
             return minV;
         }
 
-        public static void SetRanomCoordinate(this AEntity ent)
+        public static AEntity SetRanomCoordinate(this AEntity ent)
         {
             ent.X = GameModell.Rnd.Next(100, 500);
             ent.Y = GameModell.Rnd.Next(100, 500);
+            return ent;
         }
     }
 }
