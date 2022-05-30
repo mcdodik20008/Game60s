@@ -20,18 +20,14 @@ namespace Game60s.Model
         public Bitmap Image { get { return GameModell.player.StanTime > 0 ? Images.babuin_rage : Images.babuin; } }
         public void IncrementResourse() => CountResourse++;
         private int step = 1;
+        
         public Babuin(int x, int y)
         {
             X = x; Y = y;
         }
 
-        // Для повышения уровня сложности
-        public Babuin(int x, int y, int step)
-        {
-            X = x; 
-            Y = y; 
-            this.step = step;
-        }
+        public void SetFastOrSloyStep(bool flag) =>
+            step = flag ? 2 : 1;
 
         public override void Act(HashSet<Keys> key)
         {

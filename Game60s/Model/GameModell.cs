@@ -89,4 +89,45 @@ namespace Game60s.Model
                         Map[x, y] = Map[x, y].Die();
         }
     }
+    internal class LevelDificulty
+    {
+        internal  Player player;
+        internal  Babuin Babuin1;
+        internal  Babuin Babuin2;
+        internal  int TickToWaterLineUp;
+
+        internal LevelDificulty(LevelBabuin levelBabuin, CountTickToWaterLineUp lineUp)
+        {
+            Babuin1 = new Babuin(5 * GameModell.ElementSize, 5 * GameModell.ElementSize);
+            Babuin1.SetRanomCoordinate();
+            Babuin1.SetFastOrSloyStep((int)levelBabuin % 2 == 1);
+
+            if (levelBabuin == LevelBabuin.third || levelBabuin == LevelBabuin.chetverti)
+            {
+                Babuin2 = new Babuin(5 * GameModell.ElementSize, 5 * GameModell.ElementSize);
+                Babuin2.SetRanomCoordinate();
+                Babuin2.SetFastOrSloyStep((int)levelBabuin % 2 == 1);
+            }
+
+            TickToWaterLineUp = (int)lineUp;
+            player = new Player(3 * GameModell.ElementSize, 3 * GameModell.ElementSize);
+            player.SetRanomCoordinate();
+        }
+
+        internal enum LevelBabuin
+        {
+            first = 1,
+            second = 2,
+            third = 3,
+            chetverti = 4
+        }
+
+        internal enum CountTickToWaterLineUp
+        {
+            first = 1000,
+            second = 750,
+            third = 500,
+            chetverti = 400
+        }
+    }
 }
