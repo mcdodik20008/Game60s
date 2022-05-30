@@ -13,7 +13,8 @@ namespace Game60s.Model
         internal static Raft Raft;
         internal static Babuin Babuin;
         internal static Babuin Babuin2;
-        /// Катастрофа
+        // Катастрофа
+        internal const int DefoldTickToWaterLineUp = 500;
         internal static int TickToWaterLineUp = 500;
         internal static int WaterLine = 0;
         internal static TimeSpan TimeToDisaster = new TimeSpan(0, 1, 0);
@@ -26,12 +27,12 @@ namespace Game60s.Model
         /// Прочее
         private static readonly DirectoryInfo imagesDirectory = new DirectoryInfo(@"..\..\Model\Images");
         internal static Dictionary<string, Bitmap> EntityImage = new Dictionary<string, Bitmap>();
-        public static GameStates GameState;
-        public static int GameLevel = 0;
+        internal static GameStates GameState;
+        internal static int GameLevel = 1;
         private static Level level;
         #endregion
 
-        public enum GameStates
+        internal enum GameStates
         {
             GameStart,
             GameProcess,
@@ -55,38 +56,17 @@ namespace Game60s.Model
             Raft = null;
         }
 
-        public static void RestartGameModell()
+        internal static void RestartGameModell()
         {
-            GameLevel = 0;
+            GameLevel = 10;
+            Map = MapCreator.Create();
             level = new Level(GameLevel);
-            player = (Player)new Player().SetRanomCoordinate();
-
-            Map.SetMapHeight();
-            Map.SwitchBorder();
-
-            Resourse = new Stick[Rnd.Next(20, 25)];
-
-            for (int i = 0; i < Resourse.Length; i++)
-                Resourse[i] = Stick.CreateRandomXY();
         }
 
-        public static void NextGameModell()
+        internal static void NextGameLevel()
         {
             GameLevel++;
             level = new Level(GameLevel);
-            player = (Player)new Player().SetRanomCoordinate();
-
-            Map.SetMapHeight();
-            Map.SwitchBorder();
-
-            Resourse = new Stick[
-                Rnd.Next(
-                    Math.Max(20 - GameLevel, 12),
-                    Math.Max(25 - GameLevel, 15)
-                    )];
-
-            for (int i = 0; i < Resourse.Length; i++)
-                Resourse[i] = Stick.CreateRandomXY();
         }
 
 
@@ -110,13 +90,27 @@ namespace Game60s.Model
 
         private class Level
         {
-            public Level(int gameLevel)
+            internal Level(int gameLevel)
             {
-                if (gameLevel > 12)
-                {
+                if (gameLevel > 6)
                     Babuin2 = (Babuin)new Babuin().SetRanomCoordinate();
-                    Babuin2.SetFastOrSloyStep(gameLevel % 4 > 2);
-                }
+                //Babuin = (Babuin)new Babuin().SetRanomCoordinate();
+                player = (Player)new Player().SetRanomCoordinate();
+                Raft = null;         
+                
+                Babuin2?.SetFastOrSloyStep(gameLevel % 4 > 2);
+                Babuin?.SetFastOrSloyStep(gameLevel > 3 && gameLevel / 2 == 1);
+
+                WaterLine = 0;
+
+                TickToWaterLineUp = gameLevel == 0 ? DefoldTickToWaterLineUp : (int)(DefoldTickToWaterLineUp * (1 - Math.Min(0.75, gameLevel / 12.0)));
+
+                Map.SetMapHeight();
+                Map.SwitchBorder();
+
+                Resourse = new Stick[Rnd.Next(15, 17)];
+                for (int i = 0; i < Resourse.Length; i++)
+                    Resourse[i] = Stick.CreateRandomXY();
             }
         }
     }

@@ -8,7 +8,6 @@ namespace Game60s.Model
     internal class Player : AEntity, ICanCollect, ICanUseRaft
     {
         Size sizePng = new Size(28, 52);
-        public HitBox HitBox;
         int step = 2;
         public List<Resourse> Resourses = new List<Resourse>();
         public bool OnRaft { get; set; }

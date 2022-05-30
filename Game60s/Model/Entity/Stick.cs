@@ -7,14 +7,18 @@ namespace Game60s.Model
 {
     internal class Stick : Resourse
     {
+        private Size sizePng = new Size(30, 30);
+
         public Stick(int x, int y)
         {
             X = x; Y = y;
+            HitBox = new HitBox(x-2, y-2, sizePng);
         }
 
         public Stick(Point pos)
         {
             X = pos.X; Y = pos.Y;
+            HitBox = new HitBox(X-2, Y-2, sizePng);
         }
 
         public static Bitmap GetImage { get { return Images.sticks; } }

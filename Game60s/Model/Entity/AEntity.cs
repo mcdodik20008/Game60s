@@ -9,6 +9,7 @@ namespace Game60s.Model
     internal abstract class AEntity
     {
         public int X, Y;
+        public HitBox HitBox;
         public Vector2 PositionOnFormV2 { get { return new Vector2(X, Y); } }
         public Point PositionOnFormPoint { get { return new Point(X, Y); } }
         public abstract void Act(HashSet<Keys> key);

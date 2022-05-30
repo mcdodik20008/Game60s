@@ -15,6 +15,7 @@ namespace Game60s.Model
     /// </summary>
     internal class Babuin : AEntity, ICanCollect, ICanUseRaft
     {
+        private Size sizePng;
         public int CountResourse { get; set; }
         public bool OnRaft { get; set; }
         public Bitmap Image { get { return GameModell.player.StanTime > 0 ? Images.babuin_rage : Images.babuin; } }
@@ -23,6 +24,7 @@ namespace Game60s.Model
         private int step = 1;
         public BabuinLevel BLevel;
         
+
         public Babuin(int x, int y)
         {
             X = x; Y = y;
@@ -32,6 +34,7 @@ namespace Game60s.Model
         public Babuin()
         {
             BLevel = BabuinLevel.first;
+            HitBox = new HitBox(0, 0, sizePng);
         }
 
         public void SetFastOrSloyStep(bool flag) =>

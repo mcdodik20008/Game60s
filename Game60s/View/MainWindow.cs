@@ -83,12 +83,10 @@ namespace Game60s.Viev
 
             e.Graphics.DrawString($"{GameModell.player.X}, {GameModell.player.Y}", new Font("Arial", 28), Brushes.Gray, 100, 10);
 
-
-            // Задел ли ты океан или нет
-            e.Graphics.DrawString($"{ControllerWindow.couinter}", new Font("Arial", 28), Brushes.Gray, 400, 10);
+            e.Graphics.DrawString($"{GameModell.WaterLine}", new Font("Arial", 28), Brushes.Gray, 500, 10);
 
             if (GameModell.Babuin != null)
-            e.Graphics.DrawImage(GameModell.Babuin.Image, GameModell.Babuin.PositionOnFormPoint);
+                e.Graphics.DrawImage(GameModell.Babuin.Image, GameModell.Babuin.PositionOnFormPoint);
         }
 
         protected override void OnKeyDown(KeyEventArgs e) => ControllerWindow.SetPressedKey(e.KeyCode);
