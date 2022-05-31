@@ -7,14 +7,14 @@ using System.Windows.Forms;
 namespace Game60s.Tests
 {
     [TestFixture]
-    public class TestsPlayer : Tests
+    public class TestsPlayer
     {
         [Test]
         public void MovementIsCorrect()
         {
             HashSet<Keys> KeysPressed = new HashSet<Keys>() { Keys.Right, Keys.Down };
             var strMap = new string[5] { "OOOOO", "OBBBO", "OBBBO", "OBBBO", "OOOOO" };
-            SetGameModell(strMap);
+            LoadForTest.SetGameModell(strMap);
 
             GameModell.player = new Player(2 * GameModell.ElementSize, 2 * GameModell.ElementSize);
             GameModell.player.Act(KeysPressed);
@@ -36,7 +36,7 @@ namespace Game60s.Tests
         {
             HashSet<Keys> KeysPressed = new HashSet<Keys>() { Keys.Left, Keys.Up };
             var strMap = new string[3] { "OOO", "OBO", "OOO" };
-            SetGameModell(strMap);
+            LoadForTest.SetGameModell(strMap);
 
             GameModell.player = new Player(GameModell.ElementSize, GameModell.ElementSize);
 
@@ -52,7 +52,7 @@ namespace Game60s.Tests
         {
             HashSet<Keys> KeysPressed = new HashSet<Keys>() { Keys.Left, Keys.Up };
             var strMap = new string[3] { "OOO", "OBO", "OOO" };
-            SetGameModell(strMap);
+            LoadForTest.SetGameModell(strMap);
 
             GameModell.player = new Player(GameModell.ElementSize, GameModell.ElementSize);
 
@@ -67,7 +67,7 @@ namespace Game60s.Tests
         {
             HashSet<Keys> KeysPressed = new HashSet<Keys>() { Keys.Right };
             var strMap = new string[3] { "OOO", "OBO", "OOO" };
-            SetGameModell(strMap);
+            LoadForTest.SetGameModell(strMap);
 
             GameModell.player = new Player(GameModell.ElementSize, GameModell.ElementSize);
 
@@ -86,7 +86,7 @@ namespace Game60s.Tests
         {
             HashSet<Keys> KeysPressed = new HashSet<Keys>() { Keys.Left, Keys.Down };
             var strMap = new string[3] { "OOO", "OBO", "OOO" };
-            SetGameModell(strMap);
+            LoadForTest.SetGameModell(strMap);
 
             GameModell.player = new Player(GameModell.ElementSize, GameModell.ElementSize);
 
@@ -101,7 +101,7 @@ namespace Game60s.Tests
         {
             HashSet<Keys> KeysPressed = new HashSet<Keys>() { Keys.Right };
             var strMap = new string[3] { "OOO", "OBO", "OOO" };
-            SetGameModell(strMap);
+            LoadForTest.SetGameModell(strMap);
 
             GameModell.player = new Player(GameModell.ElementSize, GameModell.ElementSize);
 
@@ -120,7 +120,7 @@ namespace Game60s.Tests
         public void CanGetResourse()
         {
             var strMap = new string[3] { "OOO", "OBO", "OOO" };
-            SetGameModell(strMap);
+            LoadForTest.SetGameModell(strMap);
 
             GameModell.Resourse = new Resourse[1] { new Stick(GameModell.ElementSize, GameModell.ElementSize) };
             GameModell.player = new Player(GameModell.ElementSize, GameModell.ElementSize);

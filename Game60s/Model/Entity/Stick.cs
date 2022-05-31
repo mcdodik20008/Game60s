@@ -12,13 +12,13 @@ namespace Game60s.Model
         public Stick(int x, int y)
         {
             X = x; Y = y;
-            HitBox = new HitBox(x-2, y-2, sizePng);
+            HitBox = new HitBox(x, y, sizePng);
         }
 
         public Stick(Point pos)
         {
             X = pos.X; Y = pos.Y;
-            HitBox = new HitBox(X-2, Y-2, sizePng);
+            HitBox = new HitBox(X, Y, sizePng);
         }
 
         public static Bitmap GetImage { get { return Images.sticks; } }

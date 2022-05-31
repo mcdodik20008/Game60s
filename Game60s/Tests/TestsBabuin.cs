@@ -7,14 +7,14 @@ using System.Windows.Forms;
 namespace Game60s.Tests
 {
     [TestFixture]
-    public class TestsBabuin : Tests
+    public class TestsBabuin
     {
         [Test]
         public void MovementIsCorrectWithOutResourses()
         {
             HashSet<Keys> KeysPressed = new HashSet<Keys>() { };
             var strMap = new string[5] { "OOOOO", "OBBBO", "OBBBO", "OBBBO", "OOOOO" };
-            SetGameModell(strMap);
+            LoadForTest.SetGameModell(strMap);
 
             GameModell.Resourse = new Resourse[0] { };
             GameModell.Babuin = new Babuin(2 * GameModell.ElementSize, 2 * GameModell.ElementSize);
@@ -29,7 +29,7 @@ namespace Game60s.Tests
         {
             HashSet<Keys> KeysPressed = new HashSet<Keys>() { };
             var strMap = new string[5] { "OOOOO", "OBBBO", "OBBBO", "OBBBO", "OOOOO" };
-            SetGameModell(strMap);
+            LoadForTest.SetGameModell(strMap);
 
             GameModell.Resourse = new Resourse[1] { new Stick(2 * GameModell.ElementSize, GameModell.ElementSize) };
             GameModell.Babuin = new Babuin(GameModell.ElementSize, GameModell.ElementSize);
@@ -44,7 +44,7 @@ namespace Game60s.Tests
         {
             HashSet<Keys> KeysPressed = new HashSet<Keys>() { };
             var strMap = new string[5] { "OOOOO", "OBBBO", "OBBBO", "OBBBO", "OOOOO" };
-            SetGameModell(strMap);
+            LoadForTest.SetGameModell(strMap);
 
             GameModell.Resourse = new Resourse[2]
             {
@@ -62,7 +62,7 @@ namespace Game60s.Tests
         public void CanGetResourse()
         {
             var strMap = new string[3] { "OOO", "OBO", "OOO" };
-            SetGameModell(strMap);
+            LoadForTest.SetGameModell(strMap);
 
             GameModell.Resourse = new Resourse[1] { new Stick(GameModell.ElementSize, GameModell.ElementSize) };
             GameModell.Babuin = new Babuin(GameModell.ElementSize, GameModell.ElementSize);
