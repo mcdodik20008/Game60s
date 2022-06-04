@@ -80,8 +80,12 @@ namespace Game60s.Controller
                 GameModell.Map.SwitchBorder();
 
             if (timerTick % GameModell.TickToWaterLineUp == 0)
+            {
                 GameModell.IncreaseWaterLine();
-
+                foreach (var item in GameModell.Resourse)
+                    if (item != null && item.HitBox.IsOnOcean())
+                        item.Dispose();
+            }
             if (GameModell.Raft == null && GameModell.ResoutseToRaft <= GameModell.player?.CountResourse)
                 GameModell.Raft = new Raft(GameModell.player);
 
