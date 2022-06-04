@@ -11,6 +11,7 @@ namespace Game60s.Model
         public Ocean(int x, int y)
         {
             X = x; Y = y;
+            HitBox = new HitBox(x, y, new Size(53, 53));
         }
 
         public static AEntity Create(int x, int y) => new Ocean(x, y);

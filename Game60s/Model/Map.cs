@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace Game60s.Model
@@ -48,6 +49,19 @@ namespace Game60s.Model
             foreach (var row in Mapp)
                 foreach (var item in row)
                     yield return item;
+        }
+
+        public string[,] GetStringMap()
+        {
+            var res = new string[Mapp.Length, Mapp.Length];
+            for (int i = 0; i < Mapp.Length; i++)
+            {
+                for (int j = 0; j < Mapp.Length; j++)
+                {
+                    res[i, j] = Mapp[i][j].ToString();
+                }
+            }
+            return res;
         }
     }
 

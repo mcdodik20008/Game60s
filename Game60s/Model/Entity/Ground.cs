@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Game60s.Model
@@ -33,6 +34,7 @@ namespace Game60s.Model
         public Ground(int x, int y)
         {
             X = x; Y = y;
+            HitBox = new HitBox(x, y, new Size(53, 53));
         }
 
         public static AEntity Create(int x, int y) => new Ground(x, y);

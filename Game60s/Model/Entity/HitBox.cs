@@ -10,8 +10,8 @@ namespace Game60s.Model
         public HitBox(int X, int Y, Size s)
         {
             size = s;
-            x = Y;
-            y = X;
+            x = X;
+            y = Y;
         }
 
         public Size size { get; set; }

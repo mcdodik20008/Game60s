@@ -19,6 +19,8 @@ namespace Game60s.Model
             X = GameModell.Raft.X + 50;
             Y = GameModell.Raft.Y + 100;
         }
+        public override string ToString() =>
+            $"({GetType().Name.Split('.').Last().First()}, {HitBox.LeftUp.X}, {HitBox.LeftUp.Y})";
     }
 
     internal static class AEntityExtention
@@ -54,5 +56,7 @@ namespace Game60s.Model
             ent.Y = GameModell.Rnd.Next(100, 500);
             return ent;
         }
+
+
     }
 }

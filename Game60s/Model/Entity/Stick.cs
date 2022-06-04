@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Game60s.Model
@@ -40,5 +41,8 @@ namespace Game60s.Model
             }
             return pos;
         }
+
+        public override string ToString() =>
+    $"({HitBox.LeftUp.X}, {HitBox.LeftUp.Y}, {HitBox.RightDown.X}, {HitBox.RightDown.Y})";
     }
 }
