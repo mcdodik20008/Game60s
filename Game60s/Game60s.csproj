@@ -131,7 +131,7 @@
     <Compile Include="Model\Entity\AEntity.cs" />
     <Compile Include="Model\Map.cs" />
     <Compile Include="Model\MapCreator.cs" />
-    <Compile Include="Serialize.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="Tests\Tests.cs" />
     <Compile Include="Tests\TestsBabuin.cs" />
     <Compile Include="Tests\TestsPlayer.cs" />
