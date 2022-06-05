@@ -81,6 +81,7 @@ namespace Game60s.Controller
 
             if (timerTick % GameModell.TickToWaterLineUp == 0)
             {
+                Logger.CreateNewLog(GameModell.Map, GameModell.Resourse, GameModell.WaterLine);
                 GameModell.IncreaseWaterLine();
                 foreach (var item in GameModell.Resourse)
                     if (item != null && item.HitBox.IsOnOcean())
