@@ -117,7 +117,7 @@ namespace Game60s.Tests
         }
 
         [Test]
-        public void Zaebalo()
+        public void StickDispose()
         {
             var strMap = new string[2] { "BB", "BB" };
             LoadForTest.SetGameModell(strMap);
@@ -138,7 +138,7 @@ namespace Game60s.Tests
         }
 
         [Test]
-        public void NeMozetBit()
+        public void StickDisposeAlt()
         {
             var strMap = new string[5] { "BBBBB", "BBBBB", "BBBBB", "BBBBB", "BBBBB"};
             LoadForTest.SetGameModell(strMap);
