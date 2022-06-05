@@ -30,13 +30,23 @@ namespace Game60s.Viev
                 case GameModell.GameStates.GameProcess:
                     GameProcess(e);
                     break;
-                case GameModell.GameStates.LevelWin:
+                case GameModell.GameStates.PlayerWin:
                     PresKeyToNextLevel(e);
                     break;
-                case GameModell.GameStates.LevelLose:
+                case GameModell.GameStates.BabuinWin:
                     PresKeyToReloadGame(e);
                     break;
+                case GameModell.GameStates.PlayerDieInOcean:
+                    PlayerDieInOcean(e);
+                    break;
             }
+        }
+
+        private void PlayerDieInOcean(PaintEventArgs e)
+        {
+            GameProcess(e);
+            e.Graphics.DrawString($"Ты дошел до {GameModell.GameLevel} уровня.\n Но не смог спарвится с управлением \nи утонул...\n" +
+                $"Нажм любую клавишу для перезапуска", new Font("Arial", 28), Brushes.Red, 50, 300);
         }
 
         private void PresKeyToReloadGame(PaintEventArgs e)

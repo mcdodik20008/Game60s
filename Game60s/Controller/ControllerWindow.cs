@@ -10,6 +10,7 @@ namespace Game60s.Controller
         //тут все понятно
         internal static HashSet<Keys> KeysPressed = new HashSet<Keys>();
         public static int couinter = 0;
+        public static int defoltWair = 30;
         public static void SetPressedKey(Keys pressedKey) =>
             KeysPressed.Add(pressedKey);
 
@@ -26,39 +27,43 @@ namespace Game60s.Controller
                 case GameModell.GameStates.GameProcess:
                     GameProcess(timerTick);
                     break;
-                case GameModell.GameStates.LevelWin:
-                    LevelWin(timerTick);
+                case GameModell.GameStates.PlayerWin:
+                    PlayerWin(timerTick);
                     break;
-                case GameModell.GameStates.LevelLose:
-                    LevelLose(timerTick);
+                case GameModell.GameStates.BabuinWin:
+                    BabuinWin(timerTick);
+                    break;
+                case GameModell.GameStates.PlayerDieInOcean:
+                    PlayerDieInOcean(timerTick);
                     break;
             }
         }
 
-        private static void LevelLose(int timerTick)
+        private static void BabuinWin(int timerTick)
         {
             if (KeysPressed.Count > 0 && timeToWait <= 0)
             {
                 GameModell.GameLevel = 0;
                 GameModell.RestartGameModell();
                 GameModell.GameState = GameModell.GameStates.GameProcess;
-                timeToWait = 100;
+                timeToWait = defoltWair;
             }
             timeToWait--;
         }
 
-        static int timeToWait = 100;
-        private static void LevelWin(int timerTick)
+        static int timeToWait = defoltWair;
+        private static void PlayerWin(int timerTick)
         {
             if (KeysPressed.Count > 0 && timeToWait <= 0)
             {
                 //GameModell.SetLevelDifficulty(GameModell.GameLevel, 1000 - GameModell.GameLevel * 150);
                 GameModell.NextGameLevel();
                 GameModell.GameState = GameModell.GameStates.GameProcess;
-                timeToWait = 100;
+                timeToWait = defoltWair;
             }
             timeToWait--;
         }
+
         private static void WaitKeyProcess(int timerTick)
         {
             if (KeysPressed.Count > 0)
@@ -87,6 +92,7 @@ namespace Game60s.Controller
                     if (item != null && item.HitBox.IsOnOcean())
                         item.Dispose();
             }
+
             if (GameModell.Raft == null && GameModell.ResoutseToRaft <= GameModell.player?.CountResourse)
                 GameModell.Raft = new Raft(GameModell.player);
 
@@ -94,14 +100,26 @@ namespace Game60s.Controller
                 GameModell.Raft = new Raft(GameModell.Babuin);
 
             if (GameModell.player?.CountResourse == GameModell.ResoutseToRaft)
-                GameModell.GameState = GameModell.GameStates.LevelWin;
+                GameModell.GameState = GameModell.GameStates.PlayerWin;
 
             // можно сделать разные концовки игры, типо умер из-за того, что затопило, макака собрала плот быстрее, и тд
             if (GameModell.player != null && GameModell.player.HitBox.IsOnOcean())
-                couinter++;
+                GameModell.GameState = GameModell.GameStates.PlayerDieInOcean;
 
             if (GameModell.ResoutseToRaft <= GameModell.Babuin?.CountResourse)
-                GameModell.GameState = GameModell.GameStates.LevelLose;
+                GameModell.GameState = GameModell.GameStates.BabuinWin;
+        }
+
+        private static void PlayerDieInOcean(int timerTick)
+        {
+            if (KeysPressed.Count > 0 && timeToWait <= 0)
+            {
+                GameModell.GameLevel = 0;
+                GameModell.RestartGameModell();
+                GameModell.GameState = GameModell.GameStates.GameProcess;
+                timeToWait = defoltWair;
+            }
+            timeToWait--;
         }
     }
 }

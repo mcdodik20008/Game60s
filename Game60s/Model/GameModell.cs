@@ -36,8 +36,9 @@ namespace Game60s.Model
         {
             GameStart,
             GameProcess,
-            LevelWin,
-            LevelLose
+            PlayerWin,
+            BabuinWin,
+            PlayerDieInOcean
         }
 
         internal GameModell()
@@ -58,7 +59,7 @@ namespace Game60s.Model
 
         internal static void RestartGameModell()
         {
-            GameLevel = 10;
+            GameLevel = 1;
             Map = MapCreator.Create();
             level = new Level(GameLevel);
         }
@@ -66,6 +67,7 @@ namespace Game60s.Model
         internal static void NextGameLevel()
         {
             GameLevel++;
+            Map = MapCreator.Create();
             level = new Level(GameLevel);
         }
 
