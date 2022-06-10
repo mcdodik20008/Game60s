@@ -61,6 +61,7 @@
     <None Include="AccidentalNoise\README.md" />
     <None Include="AccidentalNoise\TinkerWorX.AccidentalNoiseLibrary.csproj" />
     <None Include="App.config" />
+    <None Include="Model\island__font.otf" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +173,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model\Images\angle.png" />
+    <None Include="Resources\gameover.png" />
+    <None Include="Resources\gameover_anim.png" />
+    <None Include="Resources\lvl_win__anim.png" />
+    <None Include="Resources\lvl_win.png" />
+    <None Include="Resources\shark_death__anim.png" />
+    <None Include="Resources\shark_death.png" />
+    <None Include="Resources\octo_death_anim.png" />
+    <None Include="Resources\octo_death.png" />
     <None Include="Model\Images\angle_0.png" />
     <None Include="Model\Images\angle_90.png" />
     <None Include="Model\Images\angle_180.png" />

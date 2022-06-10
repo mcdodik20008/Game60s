@@ -160,11 +160,29 @@
   <data name="border_90" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Model\Images\border_90.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="gameover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\gameover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gameover_anim" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\gameover_anim.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="grass" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Model\Images\grass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="lvl_win" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\lvl_win.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lvl_win_anim" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\lvl_win__anim.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ocean" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Model\Images\ocean.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="octo_death" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\octo_death.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="octo_death_anim" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\octo_death_anim.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="player" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Model\Images\player.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,8 +190,17 @@
   <data name="raft" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Model\Images\raft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="shark_death" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\shark_death.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shark_death_anim" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\shark_death__anim.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="sticks" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Model\Images\sticks.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value>e.Graphics.DrawImage(Images.lvl_win, 0, 0);</value>
   </data>
   <data name="transparentRed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Model\Images\transparentRed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

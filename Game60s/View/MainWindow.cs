@@ -2,6 +2,7 @@
 using Game60s.Model;
 using System;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Windows.Forms;
 
 namespace Game60s.Viev
@@ -12,12 +13,18 @@ namespace Game60s.Viev
         public const int SizeVisibleMap = 15;
         public static Timer timer = new Timer();
 
+        FontFamily defaultFont;
+
         internal MainWindow()
         {
             DoubleBuffered = true;
             timer.Interval = 10;
             timer.Tick += TimerTick;
             timer.Start();
+
+            PrivateFontCollection fontCollection = new PrivateFontCollection();
+            fontCollection.AddFontFile(@"..\..\Model\island__font.otf"); // файл шрифта
+            defaultFont = fontCollection.Families[0];
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -45,21 +52,68 @@ namespace Game60s.Viev
         private void PlayerDieInOcean(PaintEventArgs e)
         {
             GameProcess(e);
-            e.Graphics.DrawString($"Ты дошел до {GameModell.GameLevel} уровня.\n Но не смог спарвится с управлением \nи утонул...\n" +
-                $"Нажм любую клавишу для перезапуска", new Font("Arial", 28), Brushes.Red, 50, 300);
+            if (timerTick / 30 % 2 == 0)
+                e.Graphics.DrawImage(
+                    (GameModell.player.Y > 400) ? Images.shark_death : Images.octo_death,
+                    0, 0);
+            else
+                e.Graphics.DrawImage(
+                    (GameModell.player.Y > 400) ? Images.shark_death_anim : Images.octo_death_anim,
+                    0, 0);
+
+            var stateText = $"Ты дошел до {GameModell.GameLevel} уровня";
+
+            StringFormat sf = new StringFormat();
+            Rectangle cl = ClientRectangle;
+            cl.Location = new Point(0, -85);
+
+            sf.LineAlignment = StringAlignment.Center;
+            sf.Alignment = StringAlignment.Center;
+
+            e.Graphics.DrawString(stateText, new Font(defaultFont, 40), Brushes.White, cl, sf);
         }
 
         private void PresKeyToReloadGame(PaintEventArgs e)
         {
             GameProcess(e);
-            e.Graphics.DrawString($"Ты дошел до {GameModell.GameLevel} уровня.\n Макака оказалась сильнее чем ты \n не впадай в депрессию это всего лишь игра \n" +
-                $"Нажм любую клавишу для перезапуска", new Font("Arial", 28), Brushes.Red, 50, 300);
+            if (timerTick / 30 % 2 == 0)
+                e.Graphics.DrawImage(Images.gameover, 0, 0);
+            else
+                e.Graphics.DrawImage(Images.gameover_anim, 0, 0);
+
+            var stateText = $"Ты дошел до {GameModell.GameLevel} уровня";
+            var stateSubText = $"К сожалению, макаки украли все ресурсы";
+
+            StringFormat sf = new StringFormat();
+            Rectangle cl = ClientRectangle;
+            cl.Location = new Point(0, -110);
+
+            sf.LineAlignment = StringAlignment.Center;
+            sf.Alignment = StringAlignment.Center;
+
+            e.Graphics.DrawString(stateText, new Font(defaultFont, 40), Brushes.White, cl, sf);
+            cl.Location = new Point(0, -70);
+            e.Graphics.DrawString(stateSubText, new Font(defaultFont, 40), Brushes.White, cl, sf);
         }
 
         private void PresKeyToNextLevel(PaintEventArgs e)
         {
             GameProcess(e);
-            e.Graphics.DrawString($"Ты выйграл {GameModell.GameLevel} уровень.\nНажми на любую клавишу для продолжения", new Font("Arial", 28), Brushes.Red, 50, 300);
+            if (timerTick / 30 % 2 == 0)
+                e.Graphics.DrawImage(Images.lvl_win, 0, 0);
+            else
+                e.Graphics.DrawImage(Images.lvl_win_anim, 0, 0);
+
+            var stateText = $"Ты прошел {GameModell.GameLevel} уровень";
+
+            StringFormat sf = new StringFormat();
+            Rectangle cl = ClientRectangle;
+            cl.Location = new Point(0, -65);
+
+            sf.LineAlignment = StringAlignment.Center;
+            sf.Alignment = StringAlignment.Center;
+
+            e.Graphics.DrawString(stateText, new Font(defaultFont, 40), Brushes.White, cl, sf);
         }
 
         private void WaitingScreen(PaintEventArgs e)

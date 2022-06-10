@@ -96,7 +96,7 @@ namespace Game60s.Model
             {
                 if (gameLevel > 6)
                     Babuin2 = (Babuin)new Babuin().SetRanomCoordinate();
-                //Babuin = (Babuin)new Babuin().SetRanomCoordinate();
+                Babuin = (Babuin)new Babuin().SetRanomCoordinate();
                 player = (Player)new Player().SetRanomCoordinate();
                 Raft = null;         
                 
