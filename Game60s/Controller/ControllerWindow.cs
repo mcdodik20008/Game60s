@@ -37,9 +37,9 @@ namespace Game60s.Controller
                 case GameModell.GameStates.PlayerDieInOcean:
                     PlayerDieInOcean(timerTick);
                     break;
-                case GameModell.GameStates.AllDead:
-                    AllDead(timerTick);
-                    break;
+                //case GameModell.GameStates.AllDead:
+                //    AllDead(timerTick);
+                //    break;
             }
         }
 

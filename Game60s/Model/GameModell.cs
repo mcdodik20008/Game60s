@@ -61,6 +61,8 @@ namespace Game60s.Model
         internal static void RestartGameModell()
         {
             GameLevel = 1;
+            if (GameLevel == 1)
+                Babuin2 = null;
             Map = MapCreator.Create();
             level = new Level();
         }
@@ -95,7 +97,7 @@ namespace Game60s.Model
         {
             internal Level()
             {
-                if (GameLevel > 6)
+                if (GameLevel > 4)
                     Babuin2 = (Babuin)new Babuin().SetRanomCoordinate();
                 Babuin = (Babuin)new Babuin().SetRanomCoordinate();
                 player = (Player)new Player().SetRanomCoordinate();
@@ -106,7 +108,7 @@ namespace Game60s.Model
 
                 WaterLine = 0;
 
-                TickToWaterLineUp = GameLevel == 0 ? DefoldTickToWaterLineUp : (int)(DefoldTickToWaterLineUp * (1 - Math.Min(0.75, GameLevel / 12.0)));
+                TickToWaterLineUp = GameLevel == 0 ? DefoldTickToWaterLineUp : (int)(DefoldTickToWaterLineUp * (1 - Math.Min(0.6, GameLevel / 8)));
 
                 Map.SetMapHeight();
                 Map.SwitchBorder();

@@ -18,7 +18,7 @@ namespace Game60s.Viev
         internal MainWindow()
         {
             DoubleBuffered = true;
-            timer.Interval = 10;
+            timer.Interval = 20;
             timer.Tick += TimerTick;
             timer.Start();
 
@@ -148,6 +148,17 @@ namespace Game60s.Viev
                 e.Graphics.DrawImage(Images.WaitingScreen, 0, 0);
             else
                 e.Graphics.DrawImage(Images.WaitingScreenAnim, 0, 0);
+
+            var stateText = $"Ты попал на необитаемый остров, поднялся сильный ураган. Собирай палки, чтобы построить плот и выбраться с острова живым.";
+
+            StringFormat sf = new StringFormat();
+            Rectangle cl = ClientRectangle;
+            cl.Location = new Point(0, -30);
+
+            sf.LineAlignment = StringAlignment.Center;
+            sf.Alignment = StringAlignment.Center;
+
+            e.Graphics.DrawString(stateText, new Font(defaultFont, 40), Brushes.White, cl, sf);
         }
 
         private void GameProcess(PaintEventArgs e)
