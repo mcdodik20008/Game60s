@@ -1,6 +1,7 @@
 ﻿using Game60s.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Game60s.Controller
@@ -36,7 +37,22 @@ namespace Game60s.Controller
                 case GameModell.GameStates.PlayerDieInOcean:
                     PlayerDieInOcean(timerTick);
                     break;
+                case GameModell.GameStates.AllDead:
+                    AllDead(timerTick);
+                    break;
             }
+        }
+
+        private static void AllDead(int timerTick)
+        {
+            if (KeysPressed.Count > 0 && timeToWait <= 0)
+            {
+                GameModell.GameLevel = 0;
+                GameModell.RestartGameModell();
+                GameModell.GameState = GameModell.GameStates.GameProcess;
+                timeToWait = defoltWair;
+            }
+            timeToWait--;
         }
 
         private static void BabuinWin(int timerTick)
@@ -74,12 +90,15 @@ namespace Game60s.Controller
         {
             GameModell.player?.Act(KeysPressed);
             GameModell.Raft?.Act(KeysPressed);
-            GameModell.Babuin?.Act(KeysPressed);
-            GameModell.Babuin?.TryAttack();
+            GameModell.Babuin?.Act(KeysPressed); 
+            GameModell.Babuin2?.Act(KeysPressed);
 
+            GameModell.Babuin?.TryAttack();
+            GameModell.Babuin2?.TryAttack();
 
             GameModell.player?.TryGetThis(GameModell.Resourse);
             GameModell.Babuin?.TryGetThis(GameModell.Resourse);
+            GameModell.Babuin2?.TryGetThis(GameModell.Resourse);
 
             if (timerTick % 10 == 0)
                 GameModell.Map.SwitchBorder();
@@ -92,6 +111,9 @@ namespace Game60s.Controller
                     if (item != null && item.HitBox.IsOnOcean())
                         item.Dispose();
             }
+
+            if (GameModell.Resourse.All(x => x == null))
+                GameModell.GameState = GameModell.GameStates.AllDead;
 
             if (GameModell.Raft == null && GameModell.ResoutseToRaft <= GameModell.player?.CountResourse)
                 GameModell.Raft = new Raft(GameModell.player);

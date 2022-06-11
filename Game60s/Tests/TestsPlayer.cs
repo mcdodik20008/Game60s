@@ -44,7 +44,7 @@ namespace Game60s.Tests
             GameModell.player.Act(KeysPressed);
 
             // Когда доделааешь игрока, должно проходить
-            Assert.That(!GameModell.player.HitBox.IsOnOcean());
+            Assert.That(GameModell.GameState == GameModell.GameStates.PlayerDieInOcean);
         }
 
         [Test]

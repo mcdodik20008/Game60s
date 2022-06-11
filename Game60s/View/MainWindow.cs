@@ -46,6 +46,9 @@ namespace Game60s.Viev
                 case GameModell.GameStates.PlayerDieInOcean:
                     PlayerDieInOcean(e);
                     break;
+                case GameModell.GameStates.AllDead:
+                    AllDead(e);
+                    break;
             }
         }
 
@@ -96,6 +99,29 @@ namespace Game60s.Viev
             e.Graphics.DrawString(stateSubText, new Font(defaultFont, 40), Brushes.White, cl, sf);
         }
 
+        private void AllDead(PaintEventArgs e)
+        {
+            //GameProcess(e);
+            //if (timerTick / 30 % 2 == 0)
+            //    e.Graphics.DrawImage(Images.gameover, 0, 0);
+            //else
+            //    e.Graphics.DrawImage(Images.gameover_anim, 0, 0);
+
+            //var stateText = $"Ты дошел до {GameModell.GameLevel} уровня";
+            //var stateSubText = $"К сожалению, макаки украли все ресурсы";
+
+            //StringFormat sf = new StringFormat();
+            //Rectangle cl = ClientRectangle;
+            //cl.Location = new Point(0, -110);
+
+            //sf.LineAlignment = StringAlignment.Center;
+            //sf.Alignment = StringAlignment.Center;
+
+            //e.Graphics.DrawString(stateText, new Font(defaultFont, 40), Brushes.White, cl, sf);
+            //cl.Location = new Point(0, -70);
+            //e.Graphics.DrawString(stateSubText, new Font(defaultFont, 40), Brushes.White, cl, sf);
+        }
+
         private void PresKeyToNextLevel(PaintEventArgs e)
         {
             GameProcess(e);
@@ -142,6 +168,9 @@ namespace Game60s.Viev
                 e.Graphics.DrawImage(GameModell.Raft.GetImage(), GameModell.Raft.PositionOnFormPoint);
 
             e.Graphics.DrawImage(GameModell.player.GetImage(), GameModell.player.PositionOnFormPoint);
+
+            if (GameModell.Babuin2 != null)
+                e.Graphics.DrawImage(GameModell.Babuin2.GetImage(), GameModell.Babuin2.PositionOnFormPoint);
 
             e.Graphics.DrawString(GameModell.player.CountResourse + @"/" + GameModell.ResoutseToRaft, new Font("Arial", 28), Brushes.Gray, 10, 10);
 

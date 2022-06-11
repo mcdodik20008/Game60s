@@ -38,7 +38,8 @@ namespace Game60s.Model
             GameProcess,
             PlayerWin,
             BabuinWin,
-            PlayerDieInOcean
+            PlayerDieInOcean,
+            AllDead
         }
 
         internal GameModell()
@@ -61,14 +62,14 @@ namespace Game60s.Model
         {
             GameLevel = 1;
             Map = MapCreator.Create();
-            level = new Level(GameLevel);
+            level = new Level();
         }
 
         internal static void NextGameLevel()
         {
             GameLevel++;
             Map = MapCreator.Create();
-            level = new Level(GameLevel);
+            level = new Level();
         }
 
 
@@ -92,20 +93,20 @@ namespace Game60s.Model
 
         private class Level
         {
-            internal Level(int gameLevel)
+            internal Level()
             {
-                if (gameLevel > 6)
+                if (GameLevel > 6)
                     Babuin2 = (Babuin)new Babuin().SetRanomCoordinate();
                 Babuin = (Babuin)new Babuin().SetRanomCoordinate();
                 player = (Player)new Player().SetRanomCoordinate();
                 Raft = null;         
                 
-                Babuin2?.SetFastOrSloyStep(gameLevel % 4 > 2);
-                Babuin?.SetFastOrSloyStep(gameLevel > 3 && gameLevel / 2 == 1);
+                Babuin2?.SetFastOrSloyStep(GameLevel % 5 > 2);
+                Babuin?.SetFastOrSloyStep(GameLevel > 3 && GameLevel / 2 == 1);
 
                 WaterLine = 0;
 
-                TickToWaterLineUp = gameLevel == 0 ? DefoldTickToWaterLineUp : (int)(DefoldTickToWaterLineUp * (1 - Math.Min(0.75, gameLevel / 12.0)));
+                TickToWaterLineUp = GameLevel == 0 ? DefoldTickToWaterLineUp : (int)(DefoldTickToWaterLineUp * (1 - Math.Min(0.75, GameLevel / 12.0)));
 
                 Map.SetMapHeight();
                 Map.SwitchBorder();
