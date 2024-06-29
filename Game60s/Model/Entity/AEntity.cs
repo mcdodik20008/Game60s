@@ -35,6 +35,10 @@ namespace Game60s.Model
             else
             {
                 var entityType = entity.GetType().ToString().ToLower().Split('.').Last();
+                if (entityType.Equals("player"))
+                {
+                    entityType = "Player";
+                }
                 return GameModell.EntityImage[$"{entityType}.png"];
             }
         }
